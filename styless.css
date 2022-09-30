@@ -1,0 +1,235 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0ex;
+    background-color: white;
+    font-family:Arial,Helvetica, sans-serif;
+
+}
+
+.header {
+    /* border: green solid 3px; */
+    margin: auto;
+    border-bottom: green 3px;
+    height: 80px;
+    display: flex;
+}
+
+.container {
+    /* border: green solid 3px; */
+    width: 80%;
+    margin: auto;
+}
+
+.header .container {
+    /* border: green solid 3px; */
+    color: rgb(255, 140, 0);
+    display: flex;
+    justify-content: space-between;
+    justify-content: end;
+    margin-right: 10%;
+}
+.header img {
+    width: 250px;
+    height: 120px; 
+    display: flex;
+    margin-left: 15%;
+    align-self: center;
+
+}
+
+.navbar {
+    /* border: green solid 3px; */
+    justify-content: space-around;
+    color: rgb(0, 0, 0);
+    display: flex;
+    list-style: none;
+    align-items: center;
+    width: 600px;
+    height: 73px;
+}
+
+.banner {
+    /* border: green solid 3px; */
+    background-image: url(assets/zyro-image.png);
+    height: 650px;
+    width: auto;
+    display: flex;
+    background-size: cover;
+}
+.banner .container {
+    /* border: rgb(255, 0, 0) solid 3px; */
+    height: 350px;
+    display: flex;
+    justify-content: start;
+}
+
+.banner .container .caixa {
+/* border: pink solid 3px; */
+flex-direction: column;
+font-size: 25px;
+color: aliceblue;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+width: 475px;
+
+}
+#titulo{
+    font-size: 100px;
+    font-weight: 900;
+    
+}
+#titulo2{
+    font-size: 40px;
+    font-weight: 900;
+
+}
+#titulo3{
+    font-size: 25px;
+    font-weight: 900;
+}
+.banner .container .caixa span{
+    flex-direction: column-reverse;
+    display: flex;
+    align-items: center;
+
+}
+
+.social {
+    height: 700px;
+}
+
+.social .container {
+    /* border: red solid 3px; */
+    height: 650px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.social .container .box {
+    /* border: green solid 3px; */
+    background-color: #e0c669;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box2 {
+    /* border: green solid 3px; */
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.box .sobre1 {
+   margin: 8px;
+   margin-left: 10%;
+   font-weight: 1000;
+
+}
+
+.box2 .sobre2 {
+    width: 70%;
+}
+
+
+.quemSomos .container {
+    /* border: solid red 3px; */
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.quemSomos .container .boxes {
+    /* border: solid red 3px; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quemSomos .missao {
+    display: flex;
+    flex-direction:column;
+    background-image: url(assets/cloud.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+}
+
+.quemSomos .box span {
+    /* border: solid red 3px; */
+    font-weight: 900;
+    padding: 10px 0px 0px 0px;
+    color: black;
+}
+
+.quemSomos .box {
+    border: solid black 1px;
+    box-shadow: 2px 3px black;
+    width: 135px;
+    background-color: white;
+    color: chocolate;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.quemSomos .box img {
+    /* border: solid red 3px; */
+    margin: 20px 0px 0px 0px;
+    height: 100px;
+}
+
+.quemSomos .valores {
+    display: flex;
+    flex-direction: row;
+}
+
+.quemSomos .tituloValores {
+    font-size: 32px;
+    color: white;
+}
+
+
+.footer {
+    background-color: #BA8B57;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    height: 200px;
+}
+
+.footer .container {
+    /* border: solid 3px yellow; */
+    width: 80%;
+    margin: auto;
+}
+
+.footer .container h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px 0px 30px;
+}
+
+.footer .box {
+    /* border: solid 3px blue; */
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.footer .redes .redesIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer .contato p {
+    /* border: solid red 3px; */
+    margin: 5px 0px 0px 0px;
+}
