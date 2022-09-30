@@ -1,47 +1,82 @@
-*{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:  Helvetica;
+    font-family: Helvetica;
     color: #3d3131;
     border: none;
 }
 
+.header {
+    display: flex;
+    background-color: aliceblue;
+    border-bottom: green 3px;
+    height: 80px;
+    display: flex;
+    margin: auto;
 
+}
 
-h1{
+.header .container {
+    color: rgb(255, 140, 0);
+    display: flex;
+    justify-content: space-between;
+    justify-content: end;
+    margin-right: 10%;
+    width: 100%;
+    height: 30px;
+}
+
+.header img {
+    width: 250px;
+    height: 120px;
+    display: flex;
+    margin-left: 15%;
+    align-self: center;
+
+}
+
+.navbar {
+    border: green solid 3px;
+    justify-content: space-around;
+    color: rgb(0, 0, 0);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 30%;
+}
+
+h1 {
     text-align: center;
     margin-bottom: 20px;
 
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }
 
 
-.banner{
+.banner {
     background-color: #fffbfb;
     width: 600px;
     height: 400px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px 30px;
-    margin-top: 10vh;
     border-radius: 10px;
     text-align: left;
-    
-    
-
+    background-color: rgb(236, 172, 54);
 }
 
-.container{
+.container {
     margin-top: 30px;
     margin-bottom: 40px;
 }
 
- input{
-    
+input {
+
     display: block;
     width: 90%;
     text-align: left;
@@ -54,11 +89,11 @@ textarea:focus, input:focus{
 
 }
 
-input:focus{
-    border-bottom:rgb(12, 12, 161) ;
+input:focus {
+    border-bottom: rgb(12, 12, 161);
 }
 
-    button{
+button {
     color: rgb(255, 255, 255);
     background-color: rgb(114, 111, 111);
     text-align: center;
@@ -69,18 +104,25 @@ input:focus{
     padding: 12px;
     border-radius: 16px;
     margin-left: 70px;
-   cursor: pointer;
-   margin-top: 10px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-button:hover{
+button:hover {
     color: #fff7f7;
     background-color: #353535;
 }
 
-body{
-    background-image: url(../assets/kaldi-login.jpg);
+body {
+    background-image: url(assets/zyro-image.png);
     background-size: cover;
 
 
+}
+
+.footer {
+    display: flex;
+    background-color: brown;
+    height: 100px;
+    margin-top: 50px;
 }
