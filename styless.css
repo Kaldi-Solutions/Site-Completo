@@ -50,6 +50,16 @@ body {
     width: 600px;
     height: 73px;
 }
+.navbar li a {
+    text-decoration: none;
+    color: black;
+}
+.navbar #aqui {
+    color: rgb(215, 170, 56);
+} 
+.navbar a:hover {
+    color: brown;
+}
 
 .banner {
     /* border: green solid 3px; */

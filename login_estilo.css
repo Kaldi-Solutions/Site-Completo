@@ -1,56 +1,60 @@
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Helvetica;
     color: #3d3131;
     border: none;
+    background-image: url(assets/zyro-image.png);
+    background-size: cover;
 }
 
 .header {
-    display: flex;
-    background-color: aliceblue;
-    border-bottom: green 3px;
+    background-color: rgb(255, 255, 255);
     height: 80px;
-    display: flex;
-    margin: auto;
-
+    justify-content: space-around;
 }
 
 .header .container {
-    color: rgb(255, 140, 0);
     display: flex;
-    justify-content: space-between;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 10%;
     width: 100%;
-    height: 30px;
+    height: 80px;
 }
 
-.header img {
+.header .container img {
     width: 250px;
-    height: 120px;
+    height: 120px; 
     display: flex;
     margin-left: 15%;
     align-self: center;
-
 }
 
 .navbar {
-    border: green solid 3px;
-    justify-content: space-around;
+    /* border: green solid 3px; */
     color: rgb(0, 0, 0);
     list-style: none;
     display: flex;
     align-items: center;
-    height: 50px;
-    width: 30%;
+    width: 620px;
+    justify-content: space-between;
+    margin-right: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px;
+    margin: 20px 125px 25px 200px;
 }
+.navbar li a {
+    text-decoration: none;
+    color: black;
+}
+.navbar #aqui {
+    color: rgb(215, 170, 56);
+} 
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
-
 }
 
 textarea:focus,
@@ -60,20 +64,27 @@ input:focus {
 
 
 .banner {
-    background-color: #fffbfb;
     width: 600px;
-    height: 400px;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     text-align: left;
-    background-color: rgb(236, 172, 54);
+    display: flex;
 }
 
-.container {
-    margin-top: 30px;
+.banner .container {
+    background-color: #fffbfb;
+    margin-top: 60px;
     margin-bottom: 40px;
+    height: 400px;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    text-align: left;
 }
+
 
 input {
 
@@ -112,17 +123,51 @@ button:hover {
     color: #fff7f7;
     background-color: #353535;
 }
-
-body {
-    background-image: url(assets/zyro-image.png);
-    background-size: cover;
-
-
+.banner .container .social_container span{
+    margin-left: 30px;
+    font-weight: 700;
 }
 
 .footer {
+    background-image:linear-gradient(to bottom right, #BA8B57, #dfa869);
+    /* background-color: #BA8B57; */
+    border-top: solid 3px black;
+    color: white;
+    height: 190px;
+}
+
+.footer .container {
+    /* border: solid 3px yellow; */
+    width: 80%;
+    margin: auto;
+}
+
+.footer .container h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px 0px 30px;
+    
+}
+
+.footer .box {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border: solid 3px blue; */
     display: flex;
-    background-color: brown;
-    height: 100px;
-    margin-top: 50px;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.footer .redes .redesIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer .contato p {
+    /* border: solid red 3px; */
+    margin: 5px 0px 0px 0px;
+}
+
+.footer .contatoemail p{
+    margin: 5px 0px 0px 0px;
 }
