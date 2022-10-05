@@ -1,0 +1,167 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  Helvetica;
+    color: #3d3131;
+    border: none;
+    
+}
+.header {
+    background-color: rgb(255, 255, 255);
+    height: 80px;
+    justify-content: space-around;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+
+.header .container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+    width: 100%;
+    height: 80px;
+}
+.header .container img{
+    width: 250px;
+    height: 120px; 
+    display: flex;
+    margin-left: 15%;
+    align-self: center;
+}
+
+.navbar {
+    /* border: green solid 3px; */
+    color: rgb(0, 0, 0);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 620px;
+    justify-content: space-between;
+    margin-right: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px;
+    margin: 20px 125px 25px 200px;
+
+
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: black;
+}
+.navbar #aqui {
+    color: rgb(215, 170, 56);
+} 
+
+.navbar a:hover {
+    color: brown;
+}
+.banner {
+    display: flex;
+    background-color: rgb(219, 188, 11);
+    flex-direction: column;
+}
+
+
+
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+text-transform: uppercase;}
+
+h2{
+    text-align: center;
+    margin-bottom: 18px;
+text-transform: uppercase;
+
+}
+
+    p{
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    span{
+        font-size: 18px;
+    }
+
+    .social .container{
+        background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    width: 600px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: left;
+    border: solid 2px rgb(0, 0, 0);
+    
+    }
+
+    
+
+    input{
+    
+        display: block;
+        width: 90%;
+        text-align: left;
+        border-bottom: solid 2px #000000;
+        padding: 10px;
+        font-size: 18px;
+        margin: 20px;
+        border-radius: 8px;
+        background-color: rgb(204, 196, 196);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+    
+    }
+
+    button{
+        color: rgb(255, 255, 255);
+        background-color: rgb(83, 35, 35);
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        width: 70%;
+        padding: 12px;
+        border-radius: 16px;
+        margin-left: 70px;
+       cursor: pointer;
+       margin-bottom: 20px;
+    }
+    
+    button:hover{
+        background-color: #946565;}
+
+        .divtext2{
+            align-items: center;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+        }
+
+       body{
+        background-image: url(assets/colheita-cafe.jpg);
+        background-size: cover;
+        backdrop-filter: blur(4px);
+        
+
+       }

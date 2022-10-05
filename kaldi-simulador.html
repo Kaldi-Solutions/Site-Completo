@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira - Kaldi Solutions</title>
+    <link rel="stylesheet" href="sSimulador.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png" alt="KaldiSolutions">
+            <ul class="navbar">
+                <a href="kaldi-institucional.html">
+                    <li>Inicio
+                </a></li>
+                <li><a href="#">Quem Somos</a></li>
+                <li id="aqui"><a href="#">Simulador</a></li>
+                <li><a href="#">Fale conosco</a></li>
+                <a href="kaldi-Login.html">
+                    <li>Entrar
+                </a></li>
+                <li><a href="#">|</a></li>
+                <a href="kaldi-cadastro.html"><li>Registrar</a></li>
+                <!-- <li><img href="#" src="assets/login.png" alt=""></li> -->
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <h1>Calculadora de estufa cafeeira 🤓</h1>
+        <p>Nós da Kaldi Solutions simulamos o prejuizo que você está tendo agora gratuitamente!! ☕</p>
+        <!--<div class="container">
+        <h2 class="text">Dados pessoais</h2>
+        Nome Completo: <br><input type="text" id="iptNome" placeholder="Digite seu nome"><br><br>
+        Email para contato: <br><input type="text" id="iptEmail" placeholder="Digite seu email"><br><br>
+        Insira o nome de sua empresa em que trabalha ou se é autonomo: <br><input type="text" id="iptEmpresa"
+            placeholder="Digite o nome da empresa"><br><br>
+        Dê uma avaliação para sua colheita de 0 à 10: <br><input type="text" id="iptSatisfacao"
+            placeholder="Digite uma avaliação">
+    </div>-->
+    </div>
+    <div class="social">
+        <div class="text2">
+            <div class="container">
+                <h2>Dados da colheita </h2>
+                <span>Qual a metragem da estufa em m²:</span> <br><input type="text" id="iptMetragem"
+                    placeholder="Digite a metragem da estufa"><br><br>
+                <span>Insira quantas estufas você possui:</span> <br><input type="text" id="iptEstufas"
+                    placeholder="Digite quantas estufas possui"><br><br>
+                <span> Digite a quantidade de sacas (60kg) produzidas na safra:</span> <br><input type="text"
+                    id="iptSacas" placeholder="Digite a quantidade de sacas produzidas"><br><br>
+                <span>Quanto foi o valor investido na sua plantação</span> <br><input type="text" id="iptInveste"
+                    placeholder="Digite o valor investido"><br><br>
+                <span>Digite o valor de venda por saca:</span> <br><input type="text" id="iptVendaSaca"
+                    placeholder="Digite o valor de venda por saca">
+
+                <br><button onclick="simulacao()">Simule seu negócio</button><br><br>
+            </div>
+        </div>
+        <div class='divtext2' id="res">⬇️Veja abaixo a simulação de seu negócio⬇️</div>
+    </div>
+</body>
+
+</html>
+<script>
+    function simulacao() {
+
+        // Variaveis "genericas"
+        var metragem = Number(iptMetragem.value)
+        var qtdEstufa = Number(iptEstufas.value)
+        var qtdSacaS = Number(iptSacas.value)
+        var razao = 1.153
+        var sacaKgS = qtdSacaS * 60
+        var investimento = Number(iptInveste.value)
+        var valorSacaS = Number(iptVendaSaca.value)
+
+        // Variaveis Safrais
+        var capEstufa = qtdSacaS * razao
+        var ganhosS = capEstufa * valorSacaS
+        var lucroAtualS = qtdSacaS * valorSacaS
+        var prejuizoS = ganhosS - lucroAtualS
+        var margemPerdaS = (prejuizoS * 100) / lucroAtualS
+
+        // variaveis projeções futuras
+        var pAno3 = prejuizoS * 3
+        var pAno5 = prejuizoS * 5
+        var pAno10 = prejuizoS * 10
+
+
+        res.innerHTML += `
+                <h1>Sem a Kaldi Solutions</h1>
+                <h2> Projeção de safra </h2>
+                    Olá , ao vender ${qtdSacaS} sacas equivalentes a ${sacaKgS}kg por R$ ${valorSacaS.toFixed(2)} cada,  
+                    nessa safra você teve uma receita de <b>R$ ${lucroAtualS.toFixed(2)}</b>.
+                    <br> Você sabia que hoje você deixa de ganhar cerca de <b>R$ ${prejuizoS.toFixed(2)}</b> em sua produção.
+            `
+        res.innerHTML += `
+                <h2> Projeção de sua safra para anos futuros</h2>
+                <ul>
+                    <li>Em um ano você terá uma perda de aproximadamente <b>R$ ${prejuizoS.toFixed(2)}</b></li>
+                    <li>Em três anos você terá uma perda de aproximadamente <b>R$ ${pAno3.toFixed(2)}</b></li>
+                    <li>Em cinco anos você terá uma perda de aproximadamente <b>R$ ${pAno5.toFixed(2)}</b></li>
+                    <li>Em dez anos você terá uma perda de aproximadamente <b>R$ ${pAno10.toFixed(2)}</b></li>
+                </ul>
+                <h2 style="color: red;"> ...Você está deixando de lucrar!</h2>
+            `
+
+        res.innerHTML += `
+                <h1>Com a Kaldi Solutions</h1>
+                <h2> Projeção de safra do negócio </h2>
+                    Com o nosso apoio, você senhor(a) conseguirá reduzir a perda de produtividade significativamente, potencializando um aumento de <b>${margemPerdaS.toFixed(1)}%</b> que atualmente equivale cerca de <b>R$ ${prejuizoS.toFixed(2)}</b>
+            `
+    }
+</script>
