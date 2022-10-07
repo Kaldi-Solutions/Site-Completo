@@ -1,56 +1,52 @@
 body {
-    margin: 0ex;
+    margin: 0px;
     background-color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
 }
 
-.header {
-    background-color: white;
-    height: 80px;
+.container .logo img{
+    margin: auto 20px auto 20px;
+    height: 100px;
 }
 
-.header .container {
-    /* border: green solid 3px; */
+.logo img{
+    margin-bottom: 50px;
+    height: 50px;
+    
+}
+
+.logo{
+    margin-left: 100px;
+    width: 500px;
+}
+
+header .container{
+    box-shadow: 0 0 3px 0;
     display: flex;
-    justify-content: flex-end;
-    margin-right: 10%;
+    height: 80px;
     width: 100%;
-    height: 80px;
-
+    background-color: rgba(255, 255, 255, 0.938);
 }
 
-.header .container .navbar {
-    color: rgb(0, 0, 0);
-    list-style: none;
+.list{
     display: flex;
-    align-items: center;
-    width: 620px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 1400px;
+    margin: 10px 30px 200px 320px;
+    height: 20px;
     justify-content: space-between;
-    margin-right: 30px;
-    font-size: 15px;
-    padding: 10px;
-    margin: 20px 125px 25px 200px;
+    padding: 20px;
+    list-style-type: none;
 }
 
-a {
+.list li a{
     text-decoration: none;
-    color: Black;
+    color: black;
 }
 
-.header .container img {
-    width: 250px;
-    height: 120px;
-    display: flex;
-    margin-left: 15%;
-    align-self: center;
-}
-
-.navbar #aqui {
-    color: rgb(215, 170, 56);
-}
-
-.navbar a:hover {
-    color: brown;
+.list a:hover{
+    color: #704F4F;
 }
 
 .banner {

@@ -55,7 +55,7 @@ body {
 }
 
 h1 {
-    text-align: center;
+
     margin-bottom: 20px;
 }
 
@@ -87,6 +87,9 @@ input:focus {
     text-align: left;
 }
 
+.banner .container h1{
+    text-align: center;
+}
 
 input {
 
@@ -132,11 +135,10 @@ button:hover {
 }
 
 .footer {
-    background-image: linear-gradient(to bottom right, #BA8B57, #dfa869);
-    /* background-color: #BA8B57; */
-    border-top: solid 3px black;
+    background-color: #BA8B57;
+    border-radius: 10px 10px 0px 0px;
     color: white;
-    height: 190px;
+    height: 200px;
 }
 
 .footer .container {
@@ -146,14 +148,11 @@ button:hover {
 }
 
 .footer .container h1 {
-    font-family: 'Open Sans', sans-serif;
     margin: 0px 0px 0px 0px;
     padding: 10px 0px 0px 30px;
-
 }
 
 .footer .box {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* border: solid 3px blue; */
     display: flex;
     justify-content: space-around;
@@ -168,9 +167,5 @@ button:hover {
 
 .footer .contato p {
     /* border: solid red 3px; */
-    margin: 5px 0px 0px 0px;
-}
-
-.footer .contatoemail p {
     margin: 5px 0px 0px 0px;
 }
