@@ -1,62 +1,54 @@
-html {
-    min-height: 100%;
-}
-
 body {
     margin: 0ex;
     background-color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
 }
 
 .header {
-    /* border: green solid 3px; */
-    margin: auto;
-    border-bottom: green 3px;
+    background-color: white;
     height: 80px;
-    display: flex;
-}
-
-.container {
-    /* border: green solid 3px; */
-    width: 80%;
-    margin: auto;
 }
 
 .header .container {
     /* border: green solid 3px; */
-    color: rgb(255, 140, 0);
     display: flex;
-    justify-content: space-between;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 10%;
+    width: 100%;
+    height: 80px;
+
 }
-.header img {
+
+.header .container .navbar {
+    color: rgb(0, 0, 0);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 620px;
+    justify-content: space-between;
+    margin-right: 30px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 20px 125px 25px 200px;
+}
+
+a {
+    text-decoration: none;
+    color: Black;
+}
+
+.header .container img {
     width: 250px;
-    height: 120px; 
+    height: 120px;
     display: flex;
     margin-left: 15%;
     align-self: center;
-
 }
 
-.navbar {
-    /* border: green solid 3px; */
-    justify-content: space-around;
-    color: rgb(0, 0, 0);
-    display: flex;
-    list-style: none;
-    align-items: center;
-    width: 600px;
-    height: 73px;
-}
-.navbar li a {
-    text-decoration: none;
-    color: black;
-}
 .navbar #aqui {
     color: rgb(215, 170, 56);
-} 
+}
+
 .navbar a:hover {
     color: brown;
 }
@@ -65,107 +57,81 @@ body {
     /* border: green solid 3px; */
     background-image: url(assets/zyro-image.png);
     height: 650px;
-    width: auto;
-    display: flex;
     background-size: cover;
+    margin: 0px 0px 20px 0px;
+
 }
+
 .banner .container {
     /* border: rgb(255, 0, 0) solid 3px; */
-    height: 350px;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: center;
+    align-items: center;
 }
 
-.banner .container .caixa {
-/* border: pink solid 3px; */
-flex-direction: column;
-font-size: 25px;
-color: rgb(255, 255, 255);
-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-width: 475px;
-
+@font-face {
+    font-family: 'Arsenica';
+    src: url('fonts/ArsenicaTrial-Extrabold.ttf') format('truetype');
 }
-#titulo{
+
+#titulo {
+    font-family: 'Arsenica';
     font-size: 100px;
     font-weight: 900;
-    
-}
-#titulo2{
-    font-size: 40px;
-    font-weight: 900;
+    color: white;
 
 }
-#titulo3{
-    font-size: 25px;
-    font-weight: 900;
+
+#subTitulo {
+    font-family: 'Arsenica';
+    font-size: 20px;
+    color: white;
+
 }
-.banner .container .caixa span{
+
+.banner .container .caixa span {
     flex-direction: column-reverse;
     display: flex;
     align-items: center;
-
-}
-
-.social {
-    height: 700px;
-    width: 100%;
 }
 
 .social .container {
     /* border: red solid 3px; */
-    height: 550px;
-    width: 800px;
-justify-content: center;
     display: flex;
-    
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
 }
 
 .social .container .box {
     /* border: green solid 3px; */
-    background-color: #e0c669;
+    background-color: #BA8B57;
     border-radius: 30px;
-    height: 700px;
+    display: flex;
     flex-direction: column;
-    width: 700px;
-    align-items: center;
-    margin-right: 5%;
-    
-
+    width: 400px;
 }
-.box .imagem{
- width: 400px;
- overflow: hidden
-
-}
-
 
 .box .sobre1 {
-   margin: 8px;
-   margin-left: 10%;
-   font-weight: 700;
-   display: flex;
+    display: flex;
+    justify-content: center;
 }
+
 .box2 {
     /* border: green solid 3px; */
     border-radius: 30px;
-    justify-content: space-between;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+    width: 400px;
 }
-.box2 .imagin{
-    width: 420px; 
-    height: 200px; 
+
+.box2 .imagin {
     border-radius: 30px;
     margin-top: 50%;
-    
-}
 
-.box2 .sobre2 {
-    width: 90%;
 }
-
 
 .quemSomos .container {
     display: flex;
@@ -173,7 +139,7 @@ justify-content: center;
     margin: auto;
     width: 80%;
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
 }
 
 .quemSomos .missao {
@@ -201,29 +167,12 @@ justify-content: center;
     width: 100%;
 }
 
-.quemSomos .container .boxes #traco {
+.quemSomos .container .boxes .traco {
     width: 100px;
     align-self: center;
     height: 5px;
     background-color: #4B1F0E;
     border-radius: 10px;
-}
-
-.quemSomos .container .boxes #arrow {
-    padding: 25px 0;
-    align-self: center;
-    width: 20px;
-    height: 10px;
-    background-color: blue;
-    
-
-}
-
-.quemSomos .box span {
-    /* border: solid red 3px; */
-    font-weight: bold;
-    padding: 10px 0px 0px 0px;
-    color: white;
 }
 
 .quemSomos .box {
@@ -239,6 +188,14 @@ justify-content: center;
     padding: 10px;
     color: white;
 }
+
+.quemSomos .box span {
+    /* border: solid red 3px; */
+    font-weight: bold;
+    padding: 10px 0px 0px 0px;
+    color: white;
+}
+
 
 .quemSomos .box p {
     font-size: 16px;
@@ -265,7 +222,6 @@ justify-content: center;
 }
 
 .footer .container h1 {
-    font-family: 'Open Sans', sans-serif;
     margin: 0px 0px 0px 0px;
     padding: 10px 0px 0px 30px;
 }

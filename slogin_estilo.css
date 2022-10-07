@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Helvetica;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
     color: #3d3131;
     border: none;
     background-image: url(assets/zyro-image.png);
@@ -24,7 +24,7 @@ body {
 
 .header .container img {
     width: 250px;
-    height: 120px; 
+    height: 120px;
     display: flex;
     margin-left: 15%;
     align-self: center;
@@ -40,17 +40,19 @@ body {
     justify-content: space-between;
     margin-right: 30px;
     font-size: 15px;
-    font-weight: 700;
+    /* font-weight: 700; */
     padding: 10px;
     margin: 20px 125px 25px 200px;
 }
+
 .navbar li a {
     text-decoration: none;
     color: black;
 }
+
 .navbar #aqui {
     color: rgb(215, 170, 56);
-} 
+}
 
 h1 {
     text-align: center;
@@ -106,7 +108,7 @@ input:focus {
 
 button {
     color: rgb(255, 255, 255);
-    background-color: rgb(162, 2, 2);
+    background: rgb(59, 11, 11);
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -123,13 +125,14 @@ button:hover {
     color: #fff7f7;
     background-color: #353535;
 }
-.banner .container .social_container span{
+
+.banner .container .social_container span {
     margin-left: 30px;
     font-weight: 700;
 }
 
 .footer {
-    background-image:linear-gradient(to bottom right, #BA8B57, #dfa869);
+    background-image: linear-gradient(to bottom right, #BA8B57, #dfa869);
     /* background-color: #BA8B57; */
     border-top: solid 3px black;
     color: white;
@@ -146,7 +149,7 @@ button:hover {
     font-family: 'Open Sans', sans-serif;
     margin: 0px 0px 0px 0px;
     padding: 10px 0px 0px 30px;
-    
+
 }
 
 .footer .box {
@@ -168,6 +171,6 @@ button:hover {
     margin: 5px 0px 0px 0px;
 }
 
-.footer .contatoemail p{
+.footer .contatoemail p {
     margin: 5px 0px 0px 0px;
 }

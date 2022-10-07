@@ -1,24 +1,18 @@
-
-
-*{
+body {
+    background-color: white;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:  Helvetica;
-    color: #3d3131;
-    border: none;
-    
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+ 
+
 }
+
+
 .header {
     background-color: rgb(255, 255, 255);
     height: 80px;
     justify-content: space-around;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-}
 
 
 .header .container {
@@ -28,9 +22,10 @@
     width: 100%;
     height: 80px;
 }
-.header .container img{
+
+.header .container img {
     width: 250px;
-    height: 120px; 
+    height: 120px;
     display: flex;
     margin-left: 15%;
     align-self: center;
@@ -46,10 +41,8 @@
     justify-content: space-between;
     margin-right: 30px;
     font-size: 15px;
-    font-weight: 700;
     padding: 10px;
     margin: 20px 125px 25px 200px;
-
 
 }
 
@@ -57,111 +50,189 @@
     text-decoration: none;
     color: black;
 }
+
 .navbar #aqui {
     color: rgb(215, 170, 56);
-} 
+}
 
 .navbar a:hover {
     color: brown;
 }
+
 .banner {
     display: flex;
-    background-color: rgb(219, 188, 11);
+    background-color: rgb(236, 144, 24);
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: small;
+}
+
+.banner h1 {
+    display: flex;
+    margin-top: 30px;
 }
 
 
-
-
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }
 
-h1{
+.banner .span {
     text-align: center;
-    margin-bottom: 20px;
-text-transform: uppercase;}
+    font-size: 16px;
+    font-weight: bold;
+}
 
-h2{
-    text-align: center;
-    margin-bottom: 18px;
-text-transform: uppercase;
+.social {
+    display: flex;
+    justify-content: space-around;
+    background-image: url(assets/ilha-do-cafe.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1100px;
 
 }
 
-    p{
-        text-align: center;
-        font-size: 18px;
-        font-weight: bold;
-    }
+.social .container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
 
-    span{
-        font-size: 18px;
-    }
+.social .container h2 {
+    text-align: center;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    margin-left: 60px;
 
-    .social .container{
-        background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-    width: 600px;
-    height: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    padding: 20px 30px;
+}
+
+
+span {
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: 500;
+
+}
+
+
+.text2 {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.social .container {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    display: flex;
+    width: 460px;
     border-radius: 12px;
-    text-align: left;
     border: solid 2px rgb(0, 0, 0);
-    
-    }
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    align-items: center;
+    font-size: 18px;
+    align-items: flex-start;
 
-    
+}
 
-    input{
-    
-        display: block;
-        width: 90%;
-        text-align: left;
-        border-bottom: solid 2px #000000;
-        padding: 10px;
-        font-size: 18px;
-        margin: 20px;
-        border-radius: 8px;
-        background-color: rgb(204, 196, 196);
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        
-    
-    }
+.social .divtext2 {
+    /* border: black 2px solid; */
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 12px;
+    width: 460px;
+    height: 725px;
+    margin-top: 14%;
 
-    button{
-        color: rgb(255, 255, 255);
-        background-color: rgb(83, 35, 35);
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: bold;
-        border: none;
-        width: 70%;
-        padding: 12px;
-        border-radius: 16px;
-        margin-left: 70px;
-       cursor: pointer;
-       margin-bottom: 20px;
-    }
-    
-    button:hover{
-        background-color: #946565;}
 
-        .divtext2{
-            align-items: center;
-            text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
-            color: rgb(0, 0, 0);
-            font-size: 18px;
-        }
+}
 
-       body{
-        background-image: url(assets/colheita-cafe.jpg);
-        background-size: cover;
-        backdrop-filter: blur(4px);
-        
+input {
+    width: 90%;
+    text-align: left;
+    border-bottom: solid 2px #000000;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: rgb(204, 196, 196);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 50px;
+    margin-left: 10px;
 
-       }
+}
+
+button {
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    background: rgb(59, 11, 11);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    width: 60%;
+    padding: 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    margin: auto;
+    margin-bottom: 26px;
+}
+
+button:hover {
+    background-color: #946565;
+}
+
+
+
+.footer {
+    background-image: linear-gradient(to bottom right, #BA8B57, #dfa869);
+    /* background-color: #BA8B57; */
+    /* border-top: solid 3px black; */
+    color: white;
+    height: 190px;
+}
+
+.footer .container {
+    /* border: solid 3px yellow; */
+    width: 80%;
+    margin: auto;
+}
+
+.footer .container h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px 0px 30px;
+
+}
+
+.footer .box {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border: solid 3px blue; */
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.footer .redes .redesIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer .contato p {
+    /* border: solid red 3px; */
+    margin: 5px 0px 0px 0px;
+}
+
+.footer .contatoemail p {
+    margin: 5px 0px 0px 0px;
+}

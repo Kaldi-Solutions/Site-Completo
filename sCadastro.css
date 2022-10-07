@@ -1,12 +1,9 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
 body {
     background-color: white;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #704F4F;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
 }
 
 /* .header .container h1 {
@@ -35,9 +32,10 @@ body {
     width: 100%;
     height: 80px;
 }
-.header .container img{
+
+.header .container img {
     width: 250px;
-    height: 120px; 
+    height: 120px;
     display: flex;
     margin-left: 15%;
     align-self: center;
@@ -53,7 +51,6 @@ body {
     justify-content: space-between;
     margin-right: 30px;
     font-size: 15px;
-    font-weight: 700;
     padding: 10px;
     margin: 20px 125px 25px 200px;
 
@@ -64,9 +61,10 @@ body {
     text-decoration: none;
     color: black;
 }
+
 .navbar #aqui {
     color: rgb(215, 170, 56);
-} 
+}
 
 .navbar a:hover {
     color: brown;
@@ -81,7 +79,7 @@ body {
     height: 500px;
     display: flex;
     justify-content: center;
-    background-image: url(assets/background_cafe2.jpg);
+    background-image: url(assets/zyro-image.png);
     background-size: cover;
     background-position: center;
 }
@@ -97,22 +95,24 @@ body {
 
     background-image: none;
     width: 1000px;
-    height: 430px;
+    height: 350px;
     color: black;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-radius: 10px;
-    /* border: 3px solid black; */
+    border: 3px solid black;
     background-size: cover;
     background-position: center;
     backdrop-filter: blur 40px;
+    background-color: white;
 
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
+
 }
 
 .formulario input {
@@ -156,7 +156,7 @@ body {
 /* footer */
 
 .footer {
-    background-image:linear-gradient(to bottom right, #BA8B57, #dfa869);
+    background-image: linear-gradient(to bottom right, #BA8B57, #dfa869);
     /* background-color: #BA8B57; */
     border-top: solid 3px black;
     color: white;
@@ -173,7 +173,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px 0px 0px 0px;
     padding: 10px 0px 0px 30px;
-    
+
 }
 
 .footer .box {
@@ -195,6 +195,6 @@ body {
     margin: 5px 0px 0px 0px;
 }
 
-.footer .contatoemail p{
+.footer .contatoemail p {
     margin: 5px 0px 0px 0px;
 }
