@@ -12,76 +12,21 @@ body {
     text-align: center;
 } */
 
-
-.header {
-    background-color: rgb(255, 255, 255);
-    height: 80px;
-    justify-content: space-around;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-}
-
-
-.header .container {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10%;
-    width: 100%;
-    height: 80px;
-}
-
-.header .container img {
-    width: 250px;
-    height: 120px;
-    display: flex;
-    margin-left: 15%;
-    align-self: center;
-}
-
-.navbar {
-    /* border: green solid 3px; */
-    color: rgb(0, 0, 0);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    width: 620px;
-    justify-content: space-between;
-    margin-right: 30px;
-    font-size: 15px;
-    padding: 10px;
-    margin: 20px 125px 25px 200px;
-
-
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: black;
-}
-
-.navbar #aqui {
-    color: rgb(215, 170, 56);
-}
-
-.navbar a:hover {
-    color: brown;
-}
-
-
 /* Banner */
 
 .banner {
     /* border: solid red 3px; */
     padding: 60px;
-    height: 500px;
+    height: 700px;
     display: flex;
     justify-content: center;
     background-image: url(assets/zyro-image.png);
     background-size: cover;
     background-position: center;
+}
+
+.banner .container{
+    margin-top: 100px;
 }
 
 /* .banner .container .spanum {

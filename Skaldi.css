@@ -4,51 +4,6 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
 }
 
-.container .logo img{
-    margin: auto 20px auto 20px;
-    height: 100px;
-}
-
-.logo img{
-    margin-bottom: 50px;
-    height: 50px;
-    
-}
-
-.logo{
-    margin-left: 100px;
-    width: 500px;
-}
-
-header .container{
-    box-shadow: 0 0 3px 0;
-    display: flex;
-    height: 80px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.938);
-}
-
-.list{
-    display: flex;
-    font-size: 18px;
-    font-weight: 700;
-    width: 1400px;
-    margin: 10px 30px 200px 320px;
-    height: 20px;
-    justify-content: space-between;
-    padding: 20px;
-    list-style-type: none;
-}
-
-.list li a{
-    text-decoration: none;
-    color: black;
-}
-
-.list a:hover{
-    color: #704F4F;
-}
-
 .banner {
     /* border: green solid 3px; */
     background-image: url(assets/zyro-image.png);

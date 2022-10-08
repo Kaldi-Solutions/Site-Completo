@@ -8,51 +8,6 @@ body {
     background-size: cover;
 }
 
-.header {
-    background-color: rgb(255, 255, 255);
-    height: 80px;
-    justify-content: space-around;
-}
-
-.header .container {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10%;
-    width: 100%;
-    height: 80px;
-}
-
-.header .container img {
-    width: 250px;
-    height: 120px;
-    display: flex;
-    margin-left: 15%;
-    align-self: center;
-}
-
-.navbar {
-    /* border: green solid 3px; */
-    color: rgb(0, 0, 0);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    width: 620px;
-    justify-content: space-between;
-    margin-right: 30px;
-    font-size: 15px;
-    /* font-weight: 700; */
-    padding: 10px;
-    margin: 20px 125px 25px 200px;
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: black;
-}
-
-.navbar #aqui {
-    color: rgb(215, 170, 56);
-}
 
 h1 {
 
@@ -67,7 +22,7 @@ input:focus {
 
 .banner {
     width: 600px;
-    height: 600px;
+    height: 700px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -77,7 +32,7 @@ input:focus {
 
 .banner .container {
     background-color: #fffbfb;
-    margin-top: 60px;
+    margin-top: 150px;
     margin-bottom: 40px;
     height: 400px;
     width: 750px;
