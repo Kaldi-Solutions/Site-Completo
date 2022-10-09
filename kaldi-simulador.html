@@ -5,66 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
     <title>Calculadora Financeira - Kaldi Solutions</title>
     <link rel="stylesheet" href="sSimulador.css">
-    <link rel="stylesheet" href="sKaldiHeader.css">
 </head>
 
 <body>
-    <header>
+    <div class="header">
         <div class="container">
-            <div class="logo">
-                <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
-            </div>
+            <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png" alt="KaldiSolutions">
+            <ul class="navbar">
+                <a href="kaldi-institucional.html">
+                    <li>Inicio
+                </a></li>
+                <li><a href="#">Quem Somos</a></li>
+                <li id="aqui"><a href="#">Simulador</a></li>
+                <li><a href="#">Fale Conosco</a></li>
+                <a href="kaldi-Login.html">
+                    <li>Entrar
+                </a></li>
+                <li><a href="#">|</a></li>
+                <a href="kaldi-cadastro.html">
+                    <li>Registrar
+                </a></li>
+                <!-- <li><img href="#" src="assets/login.png" alt=""></li> -->
 
-            <ul class="list">
-
-                <li><a href="kaldi-institucional.html">Início</a></li>
-                <li><a href="#quemSomos">Quem somos nós</a></li>
-                <li><a id="hold" href="kaldi-simulador.html">Simulador</a></li>
-                <li><a href="#faleconosco">Fale Conosco</a></li>
-                <li><a href="kaldi-Login.html">Entrar</a></li>
-                <li>|</li>
-                <li><a href="kaldi-cadastro.html">Cadastre-se</a></li>
             </ul>
         </div>
-    </header>
+    </div>
 
     <div class="banner">
-        <h1>Calculadora de estufa cafeeira 🤓</h1>
-        <span>Nós da Kaldi Solutions simulamos o prejuizo que você está tendo agora gratuitamente!! ☕</span>
-        <!--<div class="container">
-        <h2 class="text">Dados pessoais</h2>
-        Nome Completo: <br><input type="text" id="iptNome" placeholder="Digite seu nome"><br><br>
-        Email para contato: <br><input type="text" id="iptEmail" placeholder="Digite seu email"><br><br>
-        Insira o nome de sua empresa em que trabalha ou se é autonomo: <br><input type="text" id="iptEmpresa"
-            placeholder="Digite o nome da empresa"><br><br>
-        Dê uma avaliação para sua colheita de 0 à 10: <br><input type="text" id="iptSatisfacao"
-            placeholder="Digite uma avaliação">
-    </div>-->
+        <h1>Simulador Financeiro</h1>
+        <span>Nós da Kaldi Solutions simulamos o prejuizo que você está tendo gratuitamente!!</span>
     </div>
     <div class="social">
         <div class="text2">
             <div class="container">
                 <h2>Dados da colheita </h2>
-                <span>Qual a metragem da estufa em m²:</span><input type="text" id="iptMetragem"
-                    placeholder="Digite a metragem da estufa">
-                <span>Insira quantas estufas você possui:</span><input type="text" id="iptEstufas"
-                    placeholder="Digite quantas estufas possui">
-                <span> Digite a quantidade de sacas (60kg) produzidas na safra:</span> <input type="text"
-                    id="iptSacas" placeholder="Digite a quantidade de sacas produzidas">
-                <span>Quanto foi o valor investido na sua plantação</span><input type="text" id="iptInveste"
-                    placeholder="Digite o valor investido">
-                <span>Digite o valor de venda por saca:</span><input type="text" id="iptVendaSaca"
-                    placeholder="Digite o valor de venda por saca">
+                <span>Qual a metragem da estufa em m²:</span>
+                <input type="text" id="iptMetragem" placeholder="Digite a metragem da estufa">
+                <span>Insira quantas estufas você possui:</span>
+                <input type="text" id="iptEstufas" placeholder="Digite quantas estufas possui">
+                <span>Quantidade de sacas (60kg) produzidas na safra:</span>
+                <input type="text" id="iptSacas" placeholder="Digite a quantidade de sacas produzidas">
+                <span>Quanto foi o valor investido na sua plantação</span>
+                <input type="text" id="iptInveste" placeholder="Digite o valor investido">
+                <span>Digite o valor de venda por saca:</span>
+                <input type="text" id="iptVendaSaca" placeholder="Digite o valor de venda por saca">
 
                 <button onclick="simulacao()">Simule seu negócio</button>
             </div>
         </div>
-        <div class='divtext2' id="res">⬇️Veja abaixo a simulação de seu negócio⬇️</div>
+        <div class='divtext2' id="res">
+            <h2>⬇️Veja abaixo a simulação de seu negócio⬇️</h2>
+        </div>
     </div>
-
-    <div class="footer">
+    <div class="footer" id="faleconosco">
         <div class="container">
             <h1>Fale Conosco</h1>
             <hr width="100%" color="#e6b56d">
@@ -86,10 +82,7 @@
                     <p>Contatos</p>
                     <p><i class="fa-brands fa-whatsapp"></i> (11) 98541-3608</p>
                     <p><i class="fa-solid fa-phone"></i> 0800 1548 255 </p>
-                </div>
-                <div class="contatoemail" >
                     <p><i class="fa-solid fa-envelope"></i> kaldi.solutions@contato.com</p>
-                    <p>© 2022 KaldiSolutions, Inc.</p>
                 </div>
             </div>
         </div>
