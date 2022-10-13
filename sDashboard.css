@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    font-family: Calibri;
+}
+
+.container .logo img {
+    margin: auto 20px auto 20px;
+    height: 100px;
+}
+
+.logo img {
+    margin-bottom: 50px;
+    height: 50px;
+
+}
+
+.logo {
+    margin-left: 100px;
+    width: 500px;
+}
+
+header .container {
+    box-shadow: 0 0 3px 0;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: #E3B062;
+}
+
+.list {
+    display: flex;
+    font-size: 17px;
+    font-weight: 700;
+    width: 2500px;
+    margin: 10px 30px 200px 320px;
+    justify-content: space-between;
+    padding: 20px;
+    list-style-type: none;
+}
+
+.list li a {
+    text-decoration: none;
+    color: black;
+}
+
+.list a:hover,
+header .container .list #hold {
+    color: #BA8B57;
+}
+
+/* Corpo */
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Metricas */
+
+.metricas {
+    display: flex;
+    justify-content: space-around;
+    margin: 0% 0% 2.5% 0%;
+}
+
+.metricas .temp,
+.umidade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metricas .temp>span,
+.umidade>span {
+    line-height: 50px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.metricas .box {
+    display: flex;
+    justify-content: space-around;
+    background-color: #E3B062;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.box .alertPerigo {
+    background-color: #FF0000;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 10px;
+}
+
+.box .alertAlerta {
+    background-color: #FFC000;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 10px;
+}
+
+.box .alertIdeal {
+    background-color: #92D050;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 10px;
+}
+
+/* Estufas */
+
+.estufas {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.estufas .estufa .boxes_estufa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('assets/back_estufas.png');
+    background-size: cover;
+    background-position: center;
+    padding: 5px;
+    width: 372.5px;
+    height: 98px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.estufas .estufa .setor {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    color: white;
+    line-height: 25px;
+    font-weight: bolder;
+}
+
+.exclamation {
+    background-image: url('assets/alertaA.png');
+    background-size: cover;
+    align-self: center;
+    width: 22px;
+    height: 88px;
+}
+
+.estufa {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.estufa>span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 50px;
+}
+
+.estufa .transparencia {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.estufa .min {
+    color: #92D050;
+}
+
+.estufa .max {
+    color: #FF0000;
+}
+
+/* Pag 2 - Setores */
+
+.setores {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.setores .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(assets/back_estufas.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin: 5% 0px 0px 0px;
+    padding: 5px;
+    width: 187px;
+    height: 278.5px;
+    cursor: pointer;
+}
+
+.setores .transparencia>span {
+    color: white;
+    margin: 0px 0px 10px 0px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.setores .transparencia {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grafico {
+    background-image: url('assets/grafico.png');
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+}
