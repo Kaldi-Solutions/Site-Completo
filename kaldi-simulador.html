@@ -36,7 +36,7 @@
         <span>Nós da Kaldi Solutions simulamos o prejuizo que você está tendo gratuitamente!!</span>
     </div>
     <div class="social">
-        <div class="text2">
+        <div class="text2" style="display:block;">
             <div class="container">
                 <h2>Dados da colheita </h2>
                 <span>Qual a metragem da estufa em m²:</span>
@@ -53,7 +53,7 @@
                 <button onclick="simulacao()">Simule seu negócio</button>
             </div>
         </div>
-        <div class='divtext2' id="res">
+        <div class='divtext2' id="res" style="display:none;">
             <h2>⬇️Veja abaixo a simulação de seu negócio⬇️</h2>
         </div>
     </div>
@@ -90,6 +90,8 @@
 <script>
     function simulacao() {
 
+        
+
         // Variaveis "genericas"
         var metragem = Number(iptMetragem.value)
         var qtdEstufa = Number(iptEstufas.value)
@@ -110,6 +112,8 @@
         var pAno3 = prejuizoS * 3
         var pAno5 = prejuizoS * 5
         var pAno10 = prejuizoS * 10
+
+        
 
 
         res.innerHTML += `
