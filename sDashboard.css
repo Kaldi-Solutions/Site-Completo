@@ -170,35 +170,11 @@ header .container .list #hold {
     color: #FF0000;
 }
 
-/* Pag 2 - Setores */
+/* Pag 2 - Gráficos */
 
-.setores {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    gap: 5px;
-}
-.setores .card>span {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-}
-.setores .card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: #BA8B57;
-    border-radius: 10px;
-    margin: 2% 0px 0px 0px;
-    padding: 5px;
-    width: 187px;
-    cursor: pointer;
-}
-
-.grafico {
-    background-image: url('assets/grafico.png');
-    background-size: cover;
-    width: 150px;
-    height: 150px;
+.graficos .atual {
+    width: 80%;
+    margin: auto;
+    /* background-color: black; */
+    /* border-radius: 10px; */
 }

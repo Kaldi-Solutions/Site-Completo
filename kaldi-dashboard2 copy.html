@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <div class="container">
             <div class="logo">
                 <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
@@ -26,7 +26,7 @@
                 <li><a href="kaldi-cadastro.html">Cadastre-se</a></li>
             </ul>
         </div>
-    </header> -->
+    </header>
     <div class="corpo">
         <div class="container">
             <div class="metricas">
@@ -103,11 +103,30 @@
                     </div>
                 </div>
             </div>
-            <div class="graficos">
-                <div class="atual">
-                    <canvas id="myChart"></canvas>
+            <div class="setores">
+                <div class="card">
+                    <span>Sensor 1</span>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
-
+                <div class="card">
+                    <span>Sensor 2</span>
+                    <div class="exclamation"></div>
+                    <div class="grafico"></div>
+                </div>
+                <div class="card">
+                    <span>Sensor 3</span>
+                    <div class="grafico"></div>
+                </div>
+                <div class="card">
+                    <span>Sensor 4</span>
+                    <div class="grafico"></div>
+                </div>
+                <div class="card">
+                    <span>Sensor 5</span>
+                    <div class="grafico"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -126,61 +145,24 @@
     const data = {
         labels: labels,
         datasets: [{
-            label: 'Temperatura (C°)',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
             data: [0, 10, 5, 2, 20, 30, 45],
-        }, {
-            label: 'Umidade (%)',
-            backgroundColor: 'rgb(0, 0, 255)',
-            borderColor: 'rgb(0, 0, 255)',
-            data: [56, 64, 52, 68, 55, 60, 40],
-        }]
-    };
-    const data2 = {
-        labels: labels,
-        datasets: [{
-            label: 'Temperatura (C°)',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }, {
-            label: 'Umidade (%)',
-            backgroundColor: 'rgb(0, 0, 255)',
-            borderColor: 'rgb(0, 0, 255)',
-            data: [56, 64, 52, 68, 55, 60, 40],
         }]
     };
 
-    const options = {
-        plugins: {
-            autocolors: false,
-            annotation: {
-                annotations: {
-                    line1: {
-                        type: 'line',
-                        yMin: 60,
-                        yMax: 60,
-                        borderColor: 'rgb(255, 99, 132)',
-                        borderWidth: 2,
-                    }
-                }
-            }
-        }
-    };
     const config = {
         type: 'line',
         data: data,
-        options
+        options: {}
     };
-
 </script>
 
 <script>
     const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
+      document.getElementById('myChart'),
+      config
     );
-</script>
-
+  </script>
 </html>
