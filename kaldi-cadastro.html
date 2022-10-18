@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="sCadastro.css">
     <link rel="stylesheet" href="sKaldiHeader.css">
-    <title>Kaldi Solutions</title>
+    <title>Kaldi Solutions-Cadastrar</title>
 </head>
 
 <body>
@@ -27,6 +27,7 @@
                 <li><a href="kaldi-Login.html">Entrar</a></li>
                 <li>|</li>
                 <li><a id="hold" href="kaldi-cadastro.html">Cadastre-se</a></li>
+
             </ul>
         </div>
     </header>
@@ -37,8 +38,8 @@
                 <h1>Seja Bem-vindo!</h1>
                 <div class="formulario">
                     
-                    <span>CPF:</span>
-                    <input id="cpf_input" type="text" placeholder="Seu CPF" >
+                    <span>CNPJ:</span>
+                    <input id="cnpj_input" type="text" placeholder="Seu CNPJ" >
 
                     <span>Nome:</span>
                     <input id="nome_input" type="text" placeholder="Seu nome" >
@@ -46,30 +47,46 @@
                     <span>E-mail:</span>
                     <input id="email_input" type="email" placeholder="meu.email@provedor.com" >
 
+                    <span>Telefone Fixo:</span>
+                    <input id="telFixo_input" type="text" placeholder="Seu telefone fixo">
+
                     
                 </div>
+
                 <div class="formulario2" >
+
+                    <span>Numero Celular:</span>
+                    <input id="celular_input" type="text" placeholder="Seu número de celular" >
+                       
+                    <span>CEP:</span>
+                    <input id="cep_input" type="text" placeholder="Seu CEP">
+
+                    <span>Cidade:</span>
+                    <input id="cidade_input" type="text" placeholder="Sua Cidade">
+
+                    <span>Estado:</span>
+                    <input id="estado_input" type="text" placeholder="Seu Estado">
+
+                </div>
+
+                <div class="formulario3">
                     
+                    <span>Complemento:</span>
+                    <input id="complemento_input" type="text" placeholder="Seu complemento">
+
                     <span>Senha:</span>
                     <input id="senha_input" type="password" placeholder="*****" >
     
                     <span>Confirmar senha:</span>
                     <input id="confirmarSenha_input" type="password" placeholder="*****" >
 
-                    <span>Numero Celular:</span>
-                    <input id="celular_input" type="text" placeholder="Seu número de celular" >
-
-                </div>
-
-                <div class="formulario3">
-
-                    <button>Cadastrar</button>
+                    <button onclick="Cadastro()">Cadastrar</button>
 
                 </div>
             </div>
         </div>  
     </div>
-    <div class="footer">
+    <div class="footer" id="faleconosco">
         <div class="container">
             <h1>Fale Conosco</h1>
             <hr width="100%" color="#e6b56d">
@@ -100,5 +117,10 @@
         </div>
     </div>
 </body>
+<script>
+    function Cadastro(){
+
+    }
+</script>
 
 </html>
