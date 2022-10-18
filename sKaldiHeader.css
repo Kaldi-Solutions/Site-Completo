@@ -19,7 +19,7 @@ header .container{
     display: flex;
     height: 80px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.938);
+    background-color: white;
 }
 
 .list{
