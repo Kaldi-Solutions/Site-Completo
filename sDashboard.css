@@ -1,57 +1,23 @@
 body {
+    display: flex;
     margin: 0;
     font-family: Calibri;
+    /* background-color: black; */
 }
 
-.container .logo img {
-    margin: auto 20px auto 20px;
-    height: 100px;
+.sidebar {
+    height: 100%;
+    border-right: solid 3px black;
 }
 
 .logo img {
-    margin-bottom: 50px;
-    height: 50px;
-
-}
-
-.logo {
-    margin-left: 100px;
-    width: 500px;
-}
-
-header .container {
-    box-shadow: 0 0 3px 0;
-    display: flex;
-    height: 80px;
-    width: 100%;
-    background-color: #E3B062;
-}
-
-.list {
-    display: flex;
-    font-size: 17px;
-    font-weight: 700;
-    width: 2500px;
-    margin: 10px 30px 200px 320px;
-    justify-content: space-between;
-    padding: 20px;
-    list-style-type: none;
-}
-
-.list li a {
-    text-decoration: none;
-    color: black;
-}
-
-.list a:hover,
-header .container .list #hold {
-    color: #BA8B57;
+    width: 200px;
 }
 
 /* Corpo */
 
-.container {
-    width: 80%;
+.corpo {
+    width: 100%;
     margin: auto;
 }
 
@@ -81,6 +47,8 @@ header .container .list #hold {
 .metricas .box {
     display: flex;
     justify-content: space-around;
+    border: solid 1px black;
+    box-shadow: 1px 1px 1px black;
     background-color: #E3B062;
     padding: 10px 15px;
     border-radius: 10px;
@@ -90,7 +58,7 @@ header .container .list #hold {
 
 .box .alertPerigo {
     background-color: #FF0000;
-    /* border: 2px solid black; */
+    border: solid 1px black;
     border-radius: 10px;
     margin: 0px 10px;
     padding: 10px;
@@ -98,7 +66,7 @@ header .container .list #hold {
 
 .box .alertAlerta {
     background-color: #FFC000;
-    /* border: 2px solid black; */
+    border: solid 1px black;
     border-radius: 10px;
     margin: 0px 10px;
     padding: 10px;
@@ -106,8 +74,8 @@ header .container .list #hold {
 
 .box .alertIdeal {
     background-color: #92D050;
-    /* border: 2px solid black; */
     border-radius: 10px;
+    border: solid 1px black;
     margin: 0px 10px;
     padding: 10px;
 }
@@ -125,6 +93,8 @@ header .container .list #hold {
     align-items: center;
     justify-content: space-around;
     background-color: #BA8B57;
+    border: solid 1px black;
+    box-shadow: 2px 2px 2px black;
     padding: 5px;
     width: 372.5px;
     height: 98px;
@@ -172,9 +142,6 @@ header .container .list #hold {
 
 /* Pag 2 - Gráficos */
 
-.graficos .atual {
-    width: 80%;
-    margin: auto;
-    /* background-color: black; */
-    /* border-radius: 10px; */
+.metricas .grafico {
+    width: 100%;
 }
