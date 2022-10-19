@@ -1,12 +1,17 @@
 body {
-    display: flex;
+    /* display: flex; */
     margin: 0;
     font-family: Calibri;
     /* background-color: black; */
 }
 
+.content {
+    display: flex;
+}
+
 header {
     border-right: solid 2px black;
+    /* background-color: black; */
 }
 
 .logo img {
@@ -15,9 +20,9 @@ header {
 
 /* Corpo */
 
-.corpo .container{
-    width: 95%;
-    margin: auto;
+.corpo{
+    width: 79%;
+    margin:auto;
 }
 
 /* Metricas */
@@ -26,6 +31,8 @@ header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    margin: 10px 0px 0px 0px;
+    border-radius: 10px;
 }
 
 .metricas .temp,
@@ -33,6 +40,9 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0px 20px 20px 20px;
+    border: solid 2px #472D2D;
+    border-radius: 10px;
 }
 
 .metricas .temp>span,
@@ -45,9 +55,9 @@ header {
 
 .metricas .box {
     display: flex;
-    justify-content: space-around;
-    /* border: solid 1px black; */
-    background-color: #E3B062;
+    justify-content: space-between;
+    background-color: #BA8B57;
+    border: solid 2px #472D2D;
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 24px;
@@ -56,25 +66,25 @@ header {
 
 .box .alertPerigo {
     background-color: #FF0000;
-    /* border: solid 1px black; */
+    border: solid 2px #472D2D;
     border-radius: 10px;
-    margin: 0px 10px;
+    align-self: center;
     padding: 10px;
 }
 
 .box .alertAlerta {
     background-color: #FFC000;
-    /* border: solid 1px black; */
+    border: solid 2px #472D2D;
     border-radius: 10px;
-    margin: 0px 10px;
+    align-self: center;
     padding: 10px;
 }
 
 .box .alertIdeal {
     background-color: #92D050;
+    border: solid 2px #472D2D;
     border-radius: 10px;
-    /* border: solid 1px black; */
-    margin: 0px 10px;
+    align-self: center;
     padding: 10px;
 }
 
@@ -84,20 +94,25 @@ header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    margin: 10px 0px 0px 0px;
+    padding: 0px 0px 20px 0px;
+    border: solid 2px #472D2D;
+    border-radius: 10px;
+    background-color: #A77979;
 }
 
 .estufas .estufa .boxes_estufa {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #BA8B57;
-    /* border: solid 1px black;
-    box-shadow: 2px 2px 2px black; */
+    background-color: white;
     padding: 5px;
     width: 372.5px;
     height: 98px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #BA8B57;
+    border: solid 2px #472D2D;
 }
 
 .estufas .estufa .setor {
@@ -105,7 +120,6 @@ header {
     flex-direction: column;
     align-self: center;
     text-align: center;
-    color: white;
     line-height: 25px;
     font-weight: bolder;
 }
@@ -122,6 +136,7 @@ header {
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-size: 18px;
 }
 
 .estufa>span {
@@ -135,11 +150,13 @@ header {
 }
 
 .estufa .max {
-    color: #FF0000;
+    color: #000000;
 }
 
 /* Pag 2 - Gráficos */
 
 .metricas .grafico {
     width: 100%;
+    background-color: #BA8B57;
+    border-radius: 10px;
 }
