@@ -26,6 +26,10 @@ body {
 
 .banner .container{
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    text-align: center;
 }
 
 /* .banner .container .spanum {
