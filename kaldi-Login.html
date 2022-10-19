@@ -42,7 +42,7 @@
                 <span>Senha:</span>
                 <input type="password" id="senha_input" placeholder="Digite sua senha">
 
-                <button>Login</button>
+                <button onclick="validar()">Login</button>
 
             </div>
         </div>
@@ -75,6 +75,37 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
+<script>
+    function validar(){
+    var userName = document.getElementById('email_input');
+    var password = document.getElementById('senha_input');
+
+        if (userName.value == '' && password.value == ''){
+        password.classList.add('invalid'); 
+            userName.classList.add('invalid');
+            alert('campo e-mail e senha não pode estar em branco')
+        }
+        else if(userName.value == '' ){
+            userName.classList.add('invalid');
+            alert('campo e-mail não pode estar em branco')
+        }
+        else if (password.value == '') {
+            password.classList.add('invalid');
+            alert('campo senha não pode estar em branco')
+    
+        }else{
+            password.classList.remove('invalid');
+            userName.classList.remove('invalid');
+        }
+    
+    }
+
+  
+
+</script>
+
+    
