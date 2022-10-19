@@ -125,5 +125,5 @@ button:hover {
     margin: 5px 0px 0px 0px;
 }
 input.invalid{
-    border:  2.0px solid red !important;
+    border:  2px solid red !important;
 }
