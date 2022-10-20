@@ -15,11 +15,10 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
+                <a href="kaldi-institucional.html"><img
+                        src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png"></a>
             </div>
-
             <ul class="list">
-
                 <li><a href="kaldi-institucional.html">Início</a></li>
                 <li><a href="#quemSomos">Quem somos</a></li>
                 <li><a id="hold" href="kaldi-simulador.html">Simulador</a></li>
@@ -90,8 +89,6 @@
 <script>
     function simulacao() {
 
-        
-
         // Variaveis "genericas"
         var metragem = Number(iptMetragem.value)
         var qtdEstufa = Number(iptEstufas.value)
@@ -113,9 +110,7 @@
         var pAno5 = prejuizoS * 5
         var pAno10 = prejuizoS * 10
 
-        
-
-
+        res.innerHTML = ``;
         res.innerHTML += `
                 <h2>Sem a Kaldi Solutions</h2>
                 <h3> Projeção de safra </h3>

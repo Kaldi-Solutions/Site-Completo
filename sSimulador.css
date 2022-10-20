@@ -7,57 +7,6 @@ body {
     background-size: cover;
 }
 
-
-.header {
-    background-color: rgb(255, 255, 255);
-    height: 80px;
-    justify-content: space-around;
-}
-
-.header .container {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10%;
-    width: 100%;
-    height: 80px;
-}
-
-.header .container img {
-    width: 250px;
-    height: 120px;
-    display: flex;
-    margin-left: 15%;
-    align-self: center;
-}
-
-.navbar {
-    /* border: green solid 3px; */
-    color: rgb(0, 0, 0);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    width: 620px;
-    justify-content: space-between;
-    margin-right: 30px;
-    font-size: 15px;
-    padding: 10px;
-    margin: 20px 125px 25px 200px;
-
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: black;
-}
-
-.navbar #aqui {
-    color: rgb(215, 170, 56);
-}
-
-.navbar a:hover {
-    color: brown;
-}
-
 .banner {
     display: flex;
     background-color: rgb(236, 144, 24);

@@ -6,8 +6,8 @@ body {
     border: none;
     background-image: url(assets/zyro-image.png);
     background-size: cover;
+    background-position: center;
 }
-
 
 h1 {
 
@@ -21,13 +21,11 @@ input:focus {
 
 
 .banner {
-    width: 600px;
+    /* border: solid red 3px; */
+    padding: 60px;
     height: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-    text-align: left;
     display: flex;
+    justify-content: center;
 }
 
 .banner .container {

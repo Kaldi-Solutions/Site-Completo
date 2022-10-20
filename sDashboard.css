@@ -1,8 +1,6 @@
 body {
-    /* display: flex; */
     margin: 0;
     font-family: Calibri;
-    /* background-color: black; */
 }
 
 .content {
@@ -10,8 +8,35 @@ body {
 }
 
 header {
-    border-right: solid 2px black;
-    /* background-color: black; */
+    border-right: solid 2px #472D2D;
+    height: 100vh;
+    background-color: brown;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+header ul li {
+    border-radius: 10px;
+    background-color: white;
+    width: 70%;
+    padding: 5px;
+    text-align: center;
+}
+
+header ul li:hover {
+    background-color: black;
+    color: white;
+}
+
+header ul a {
+    text-decoration: none;
+    color: #472D2D;
 }
 
 .logo img {
@@ -20,9 +45,16 @@ header {
 
 /* Corpo */
 
-.corpo{
-    width: 79%;
-    margin:auto;
+.corpo {
+    width: 80%;
+    margin: auto;
+}
+
+.corpo .container {
+    margin-top: 20px;
+    padding: 0px 15px 15px 15px;
+    border: solid 2px #472D2D;
+    border-radius: 10px;
 }
 
 /* Metricas */
@@ -31,7 +63,6 @@ header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    margin: 10px 0px 0px 0px;
     border-radius: 10px;
 }
 
@@ -40,9 +71,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px 20px 20px 20px;
-    border: solid 2px #472D2D;
-    border-radius: 10px;
 }
 
 .metricas .temp>span,
@@ -58,10 +86,10 @@ header {
     justify-content: space-between;
     background-color: #BA8B57;
     border: solid 2px #472D2D;
-    padding: 10px 15px;
     border-radius: 10px;
     font-size: 24px;
-    width: 464.81px;
+    gap: 15px;
+    padding: 10px;
 }
 
 .box .alertPerigo {
@@ -88,27 +116,28 @@ header {
     padding: 10px;
 }
 
+hr {
+    margin: 15px 0px 15px 0px;
+    background-color: #472D2D;
+    border: solid #472D2D 1px;
+    border-radius: 2px;
+    width: 100%;
+}
+
 /* Estufas */
 
 .estufas {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    margin: 10px 0px 0px 0px;
-    padding: 0px 0px 20px 0px;
-    border: solid 2px #472D2D;
-    border-radius: 10px;
-    background-color: #A77979;
 }
 
 .estufas .estufa .boxes_estufa {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: white;
     padding: 5px;
     width: 372.5px;
-    height: 98px;
     border-radius: 10px;
     cursor: pointer;
     background-color: #BA8B57;
@@ -150,13 +179,22 @@ header {
 }
 
 .estufa .max {
-    color: #000000;
+    color: #FF0000;
 }
 
 /* Pag 2 - Gráficos */
 
 .metricas .grafico {
     width: 100%;
-    background-color: #BA8B57;
+    margin-top: 10px;
+}
+
+.metricas.pag2 .temp,
+.metricas.pag2 .umidade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    border: solid #472D2D 2px;
     border-radius: 10px;
 }

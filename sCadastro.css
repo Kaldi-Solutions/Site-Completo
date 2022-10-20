@@ -1,8 +1,11 @@
 
 body {
-    background-color: white;
     margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+    background-image: url(assets/zyro-image.png);
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
 }
 
 /* .header .container h1 {
@@ -19,9 +22,6 @@ body {
     height: 700px;
     display: flex;
     justify-content: center;
-    background-image: url(assets/zyro-image.png);
-    background-size: cover;
-    background-position: center;
 }
 
 .banner .container{
@@ -31,11 +31,6 @@ body {
     height: 500px;
     text-align: center;
 }
-
-/* .banner .container .spanum {
-    background-image: url(assets/kaldi-mudadecafe.webp);
-    background-size: cover;
-} */
 
 /* Formulário cadastro */
 

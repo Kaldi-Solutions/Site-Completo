@@ -6,11 +6,11 @@ body {
 
 .banner {
     /* border: green solid 3px; */
-    background-image: url(assets/zyro-image.png);
     height: 650px;
+    background-image: url(assets/zyro-image.png);
     background-size: cover;
+    background-position: center;
     margin: 0px 0px 20px 0px;
-
 }
 
 .banner .container {
