@@ -184,27 +184,41 @@ else {
         if (cnpj_input.value == '' || nome_input.value == '' || email_input.value == '' || telFixo_input.value == '' ||
         cep_input.value == '' || cidade_input.value == '' || estado_input.value == '' || numero_input.value == '' ||
         complemento_input.value == '' || senha_input.value == '' || confirmarSenha_input.value == ''){
-            alert("Complete todos os campos")
+            alert("Verifique se todos os campos estão completos.")
         } 
         else if (senha_input.value != confirmarSenha_input.value){
-            alert("Senha não coincidem")
+            alert("Senhas não coincidem.");
+            senha_input.style="border: solid 3px red;"
         } 
         else if (cnpj_input.value.length != 14 || isNaN(cnpj_input.value)){
-            alert("CNPJ inválido")
+            alert("CNPJ inválido.");
+            cnpj_input.style="border: solid 3px red;"
         }
         else if (cep_input.value.length != 8 || isNaN(cep_input.value)){
-            alert("CEP inválido")
+            alert("CEP inválido.");
+            cep_input.style="border: solid 3px red;"
         }
         else if (telFixo_input.value.length != 10 || isNaN(telFixo_input.value)){
-            alert("Telefone fixo inválido")
+            alert("Telefone fixo inválido! Verifique também o DDD.");
+            telFixo_input.style="border: solid 3px red;"
         }
         else if (email_input.value.length <= 10){
-            alert("E-mail inválido") 
+            alert("E-mail inválido.");
+            email_input.style="border: solid 3px red;"
+        }
+        else if(email_input.value.includes("@") == false){
+            alert("E-mail inválido.");
+            email_input.style="border: solid 3px red;"
+        }
+        else if (isNaN(complemento_input.value) == false){
+            alert("Complemento inválido.")
+            complemento_input.style="border: solid 3px red;"
         }
         else {
-            alert("Cadastro Realizado")
+            alert("Cadastro Realizado com Sucesso!")
             window.location.href = "kaldi-Login.html"
         }
+        
     }
 </script>
 </html>
