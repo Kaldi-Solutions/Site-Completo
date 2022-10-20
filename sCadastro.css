@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 500px;
-    text-align: center;
+    text-align: left;
 }
 
 /* .banner .container .spanum {
@@ -60,6 +60,10 @@ body {
     display: flex;
     flex-direction: column;
 
+}
+
+.caixa_formulario span {
+    font-weight: bold;
 }
 
 .formulario input {
