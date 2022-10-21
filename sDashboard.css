@@ -11,7 +11,11 @@ header {
     border-right: solid 2px black;
     border-radius: 0px 5px 5px 0px;
     height: 100vh;
-    background-color: brown;
+    background-color: #f0cb87;
+}
+.content .sidebar .titulo{
+    margin: 10%;
+    margin-bottom: 20%;
 }
 
 header ul {
@@ -24,7 +28,7 @@ header ul {
 
 header ul li {
     border-radius: 10px;
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: #3A3845;
     width: 70%;
     padding: 5px;
@@ -38,7 +42,7 @@ header ul li:hover {
 
 header ul a {
     text-decoration: none;
-    color: #472D2D;
+    color: #9892e9;
 }
 
 .logo img {
@@ -139,6 +143,7 @@ hr {
     border-radius: 10px;
     cursor: pointer;
     border: solid 2px black;
+    background-color: #f0cb87;
 }
 
 .estufas .estufa .setor {
@@ -172,10 +177,13 @@ hr {
 
 .estufa .min {
     color: #00AA00;
+    border-radius: 7px;
 }
 
 .estufa .max {
-    color: #DD0000;
+    color: red;
+    border-radius: 7px;
+
 }
 
 /* Pag 2 - Gráficos */
