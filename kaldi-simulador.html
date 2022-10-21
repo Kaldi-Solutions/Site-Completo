@@ -124,25 +124,25 @@
 
         res.innerHTML = ``;
         res.innerHTML += `
-                <h2>Sem a Kaldi Solutions</h2>
+                <h2>Sem a Kaldi Solutions:</h2>
                 <h3> Projeção de safra </h3>
                     Olá , ao vender ${qtdSacaS} sacas equivalentes a ${sacaKgS}kg por R$ ${valorSacaS.toFixed(2)} cada,  
                     nessa safra você teve uma receita de <b>R$ ${lucroAtualS.toFixed(2)}</b>.
-                    <br> Você sabia que hoje você deixa de ganhar cerca de <b>R$ ${prejuizoS.toFixed(2)}</b> em sua produção.
+                    <br> Você sabia que hoje você deixa de ganhar cerca de <b>R$ ${prejuizoS.toFixed(2)}</b> em sua produção?
             `
         res.innerHTML += `
-                <h3> Projeção de sua safra para anos futuros</h2>
+                <h3> Projeção de sua safra para anos futuros:</h2>
                 <ul>
                     <li>Em um ano você terá uma perda de aproximadamente <b>R$ ${prejuizoS.toFixed(2)}</b></li>
                     <li>Em três anos você terá uma perda de aproximadamente <b>R$ ${pAno3.toFixed(2)}</b></li>
                     <li>Em cinco anos você terá uma perda de aproximadamente <b>R$ ${pAno5.toFixed(2)}</b></li>
                     <li>Em dez anos você terá uma perda de aproximadamente <b>R$ ${pAno10.toFixed(2)}</b></li>
                 </ul>
-                <h2 style="color: red;"> ...Você está deixando de lucrar!</h2>
+                <h2 style="color: red;"> ... Você está deixando de lucrar!</h2>
             `
 
         res.innerHTML += `
-                <h2>Com a Kaldi Solutions</h2>
+                <h2>Com a Kaldi Solutions:</h2>
                 <h3> Projeção de safra do negócio </h>
                     Com o nosso apoio, você senhor(a) conseguirá reduzir a perda de produtividade significativamente, potencializando um aumento de <b>${margemPerdaS.toFixed(1)}%</b> que atualmente equivale cerca de <b>R$ ${prejuizoS.toFixed(2)}</b>
             `
