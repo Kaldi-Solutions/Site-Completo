@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="sCadastro.css">
+    <link rel="stylesheet" href="sCadastroUsuario.css">
     <link rel="stylesheet" href="sKaldiHeader.css">
-    <title>Kaldi Solutions-Cadastrar</title>
+    <title>Kaldi Solutions-Cadastrar usuário</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                 <li><a href="#faleconosco">Fale Conosco</a></li>
                 <li><a href="kaldi-Login.html">Entrar</a></li>
                 <li>|</li>
-                <li><a id="hold" href="kaldi-cadastro.html">Cadastre-se</a></li>
+                <li><a href="kaldi-cadastro.html">Cadastre-se</a></li>
 
             </ul>
         </div>
@@ -35,56 +35,40 @@
     <div class="banner">
         <div class="container">
             <div class="caixa_formulario">
-                <div class="titulo_formulario">
                 <h1>Seja Bem-vindo!</h1>
-                <h1>Pré Cadastro</h1>
-                <span>Empresa ja cadastrada?
-                    <a href="kaldi-cadastroUsuario.html" >Cadastre usuário aqui</a>
-                </span>
-                </div>    
-                <div class="formulario">
-                    <span>CNPJ:</span>
-                    <input id="cnpj_input" type="text" placeholder="Seu CNPJ" >
+                <div class="formulario">                   
 
-                    <span>Nome Comercial:</span>
-                    <input id="nomeComercial_input" type="text" placeholder="Seu nome comercial" >
+                    <span>Nome Usuário:</span>
+                    <input id="nomeUsuario_input" type="text" placeholder="Seu nome de usuário" >
+                                    
+                    <span>E-mail:</span>
+                    <input id="email_input" type="email" placeholder="meu.email@provedor.com" >
 
-                    <span>Nome Responsável:</span>
-                    <input id="nome_input" type="text" placeholder="Nome do responsável" >
-                  
+                    <span>Telefone Celular:</span>
+                    <input id="telCel_input" type="text" placeholder="Seu telefone celular">
+
                     <span>Telefone Fixo:</span>
-                    <input id="telFixo_input" type="text" placeholder="Seu telefone fixo">                  
-                    
+                    <input id="telFixoUsuario_input" type="text" placeholder="Seu telefone fixo">
+                  
                 </div>
 
                 <div class="formulario2" >
 
-                    <span>CEP:</span>
-                    <input id="cep_input" onblur="pesquisacep(this.value)" type="text" placeholder="Seu CEP">
+                    <span>CPF:</span>
+                    <input id="cpf_input" type="text" placeholder="Seu CPF" >                   
 
-                    <span>Rua:</span>
-                    <input id="rua_input" type="text" placeholder="Sua Rua">
-                       
-                    <span>Bairro:</span>
-                    <input id="bairro_input" type="text" placeholder="Seu Bairro">
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="*****" >
+    
+                    <span>Confirmar senha:</span>
+                    <input id="confirmarSenha_input" type="password" placeholder="*****" >
 
-                    <span>Cidade:</span>
-                    <input id="cidade_input" type="text" placeholder="Sua Cidade">                                      
-
+                    <button onclick="CadastroUsuario()">Cadastrar</button>
+                                        
                 </div>
 
-                <div class="formulario3">   
+                <div class="formulario3">                                   
 
-                    <span>Estado:</span>
-                    <input id="estado_input" type="text" placeholder="Seu Estado">
-
-                    <span>Número:</span>
-                    <input id="numero_input" type="text" placeholder="Número de endereço">
-                    
-                    <span>Complemento:</span>
-                    <input id="complemento_input" type="text" placeholder="Seu complemento">                   
-    
-                    <button onclick="Cadastro()">Cadastrar</button>
 
                 </div>
             </div>
@@ -125,23 +109,16 @@
     function limpa_formulário_cep() {
             document.getElementById('cidade_input').value=("");
             document.getElementById('estado_input').value=("");
-            document.getElementById('bairro_input').value=("");
-            document.getElementById('rua_input').value=("");
             
     }
 
     function meu_callback(conteudo) {
         if (!("erro" in conteudo)) {
-            document.getElementById('rua_input').value=(conteudo.logradouro);
-            document.getElementById('bairro_input').value=(conteudo.bairro);
             document.getElementById('cidade_input').value=(conteudo.localidade);
             document.getElementById('estado_input').value=(conteudo.uf);
-            
-            rua_input.disabled = "true"
-            bairro_input.disabled = "true"
+
             cidade_input.disabled = "true"
             estado_input.disabled = "true"
-            
         } //end if.
         else {
             //CEP não Encontrado.
@@ -165,8 +142,6 @@ if (cep != "") {
     if(validacep.test(cep)) {
 
         //Preenche os campos com "..." enquanto consulta webservice.
-        document.getElementById('rua_input').value="...";
-        document.getElementById('bairro_input').value="...";
         document.getElementById('cidade_input').value="...";
         document.getElementById('estado_input').value="...";
         // document.getElementById('ibge').value="...";
@@ -193,36 +168,40 @@ else {
     limpa_formulário_cep();
 }
 };
-    function Cadastro(){
-        if (cnpj_input.value == '' || nome_input.value == '' || nomeComercial_input.value == '' ||
-          telFixo_input.value == '' || cep_input.value == '' || rua_input.value == '' || bairro_input.value == '' ||
-          cidade_input.value == '' || estado_input.value == '' ||
-          numero_input.value == '' || complemento_input.value == ''){
+
+    function CadastroUsuario(){
+        if (cpf_input.value == '' || nomeUsuario_input.value == '' || email_input.value == '' || telCel_input.value == '' ||
+        telFixoUsuario_input.value == '' || senha_input.value == '' || confirmarSenha_input.value == ''){
             alert("Verifique se todos os campos estão completos.")
-        }  
-        else if (cnpj_input.value.length != 14 || isNaN(cnpj_input.value)){
-            alert("CNPJ inválido.");
+        } 
+        else if (senha_input.value != confirmarSenha_input.value){
+            alert("Senhas não coincidem.");
+            senha_input.style="border: solid 3px red;"
+        } 
+        else if (cpf_input.value.length != 11 || isNaN(cpf_input.value)){
+            alert("CPF inválido.");
             cnpj_input.style="border: solid 3px red;"
         }
-        else if (cep_input.value.length != 8 || isNaN(cep_input.value)){
-            alert("CEP inválido.");
-            cep_input.style="border: solid 3px red;"
-        }
-        else if (telFixo_input.value.length != 10 || isNaN(telFixo_input.value)){
+        else if (telFixoUsuario_input.value.length != 10 || isNaN(telFixoUsuario_input.value)){
             alert("Telefone fixo inválido! Verifique também o DDD.");
             telFixo_input.style="border: solid 3px red;"
         }
-        else if (isNaN(complemento_input.value) == false){
-            alert("Complemento inválido.")
-            complemento_input.style="border: solid 3px red;"
+        else if (telCel_input.value.length != 11 || isNaN(telCel_input.value)){
+            alert("Telefone celular inválido! Verifique também o DDD.")
         }
-        else if (isNaN(numero_input.value)){
-            alert("Número do complemento inválido.")
+        else if (email_input.value.length <= 10){
+            alert("E-mail inválido.");
+            email_input.style="border: solid 3px red;"
+        }
+        else if(email_input.value.includes("@") == false){
+            alert("E-mail inválido.");
+            email_input.style="border: solid 3px red;"
         }
         else {
             alert("Cadastro Realizado com Sucesso!")
-            alert("Entraremos em contato!")            
-        }       
+            window.location.href = "kaldi-Login.html"
+        }
+        
     }
 </script>
 </html>

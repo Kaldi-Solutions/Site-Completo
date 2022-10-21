@@ -49,7 +49,7 @@
                 <span>Digite o valor de venda por saca:</span>
                 <input type="text" id="iptVendaSaca" placeholder="Digite o valor de venda por saca">
 
-                <button onclick="simulacao()">Simule seu negócio</button>
+                <button onclick="verificar()">Simule seu negócio</button>
             </div>
         </div>
         <div class='divtext2' id="res">
@@ -87,8 +87,20 @@
 
 </html>
 <script>
-    function simulacao() {
-
+    function verificar(){
+    if(iptMetragem.value == '' || iptEstufas.value == '' || iptSacas.value == '' ||
+        iptInveste.value == '' || iptVendaSaca.value == ''){
+            alert("Complete todos os campos.")
+        }
+        else if (isNaN(iptMetragem.value) || isNaN(iptEstufas.value) || isNaN(iptSacas.value) ||
+         isNaN(iptInveste.value) || isNaN(iptVendaSaca.value)){
+            alert("Verifique se os campos só contenham números")
+        }
+        else {
+            simulacao();
+        }
+    }    
+        function simulacao() {
         // Variaveis "genericas"
         var metragem = Number(iptMetragem.value)
         var qtdEstufa = Number(iptEstufas.value)

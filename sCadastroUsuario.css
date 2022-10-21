@@ -38,7 +38,7 @@ body {
 
     background-image: none;
     width: 1000px;
-    height: 450px;
+    height: 500px;
     color: black;
     display: flex;
     align-items: center;
@@ -49,10 +49,6 @@ body {
     backdrop-filter: blur 40px;
     background-color: white;
 
-}
-
-input:focus {
-    border-bottom: rgb(12, 12, 161);
 }
 
 .titulo_formulario{
@@ -68,6 +64,10 @@ input:focus {
 
 .caixa_formulario span {
     font-weight: bold;
+}
+
+input:focus {
+    border-bottom: rgb(12, 12, 161);
 }
 
 .formulario input {
@@ -94,7 +94,7 @@ input:focus {
     flex-direction: column
 }
 
-.formulario3 {
+/* .formulario3 {
     display: flex;
     flex-direction: column;
 }
@@ -106,8 +106,8 @@ input:focus {
     border-radius: 10px;
     margin-bottom: 5px;
     flex-direction: column
-}
-.formulario3 button {
+} */
+ button {
 
     width: 180px;
     margin-top: 10px;
@@ -127,7 +127,6 @@ button:hover {
     color: #fff7f7;
     background-color: #353535;
 }
-
 /* footer */
 
 .footer {
