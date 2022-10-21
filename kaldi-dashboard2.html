@@ -49,14 +49,14 @@
                             <div class="setor">
                                 <span>Temp. (C°)</span>
                                 <span class="min">Min: 12°</span>
-                                <span>Atual: 12°</span>
-                                <span class="max">Max: 30°</span>
+                                <span>Atual: 25°</span>
+                                <span class="max">Max: 25°</span>
                             </div>
                             <div class="setor">
                                 <span>Umidade (%)</span>
-                                <span class="min">Min: 55%</span>
-                                <span>Atual: 60%</span>
-                                <span class="max">Max: 68%</span>
+                                <span class="min">Min: 50%</span>
+                                <span>Atual: 70%</span>
+                                <span class="max">Max: 70%</span>
                             </div>
                             <div class="exclamation"></div>
                         </div>
@@ -131,14 +131,27 @@
                 label: 'Temperatura',
                 data: [12, 14, 20, 25, 25, 20, 12, 12, 14, 20, 25, 25],
                 fill: false,
-                backgroundColor: 'rgb(255, 0, 0)',
-                borderColor: 'rgb(255, 0, 0)',
+                backgroundColor: '#ff474c',
+                borderColor: '#ff474c',
                 tension: 0.1
             }]
         },
         options: {
+            scales: {
+                y: {
+                    ticks: { color: 'black' }
+                },
+                x: {
+                    ticks: { color: 'black' }
+                }
+            },
             plugins: {
                 autocolors: false,
+                legend: {
+                    labels: {
+                        color: 'black'
+                    }
+                },
                 annotation: {
                     annotations: {
                         line1: {
@@ -192,14 +205,27 @@
                 label: 'Umidade',
                 data: [50, 55, 55, 50, 64, 70, 50, 55, 55, 50, 64, 70],
                 fill: false,
-                backgroundColor: 'rgb(0, 0, 255)',
-                borderColor: 'rgb(0, 0, 255)',
+                backgroundColor: '#3cdfff',
+                borderColor: '#3cdfff',
                 tension: 0.1
             }]
         },
         options: {
+            scales: {
+                y: {
+                    ticks: { color: 'black' }
+                },
+                x: {
+                    ticks: { color: 'black' }
+                }
+            },
             plugins: {
                 autocolors: false,
+                legend: {
+                    labels: {
+                        color: 'black'
+                    }
+                },
                 annotation: {
                     annotations: {
                         line1: {
