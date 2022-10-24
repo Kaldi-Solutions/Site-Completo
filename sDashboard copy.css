@@ -98,7 +98,7 @@ header ul a {
     gap: 15px;
     padding: 10px;
     background-color: #865143;
-    box-shadow: 0 3px 6px;
+    box-shadow: 0 3px 6px #a58880;
 }
 
 .box .alertPerigo {
@@ -140,15 +140,20 @@ hr {
 }
 
 .estufas .estufa .boxes_estufa {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5px;
+    padding: 7px;
     width: 372.5px;
     cursor: pointer;
     background-color: #865143;
     border-radius: 5px;
     box-shadow: 0 3px 6px #a58880;
+}
+
+.estufas .estufa .boxes_estufa .transparencia {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2.5px;
 }
 
 .estufas .estufa .setor {
