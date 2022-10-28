@@ -95,9 +95,16 @@
         }
         else if (password.value == '') {
             password.classList.add('invalid');
-            alert('campo senha não pode estar em branco')
+            alert('campo senha não pode estar em branco')  
     
-        }else{
+        }       
+        else if (userName.value == 'kaldi@solutions.com' && password.value == '123'){
+
+            alert("Login realizado com sucesso!");
+            window.location.href = "Kaldi-dashboard.html";
+
+        }
+        else{
             password.classList.remove('invalid');
             userName.classList.remove('invalid');
         }

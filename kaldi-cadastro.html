@@ -44,7 +44,7 @@
                 </div>    
                 <div class="formulario">
                     <span>CNPJ:</span>
-                    <input id="cnpj_input" type="text" placeholder="Seu CNPJ" >
+                    <input id="cnpj_input" type="text" placeholder="12345678901234" >
 
                     <span>Nome Comercial:</span>
                     <input id="nomeComercial_input" type="text" placeholder="Seu nome comercial" >
@@ -53,14 +53,14 @@
                     <input id="nome_input" type="text" placeholder="Nome do responsável" >
                   
                     <span>Telefone Fixo:</span>
-                    <input id="telFixo_input" type="text" placeholder="Seu telefone fixo">                  
+                    <input id="telFixo_input" type="text" placeholder="1234567890">                  
                     
                 </div>
 
                 <div class="formulario2" >
 
                     <span>CEP:</span>
-                    <input id="cep_input" onblur="pesquisacep(this.value)" type="text" placeholder="Seu CEP">
+                    <input id="cep_input" onblur="pesquisacep(this.value)" type="text" placeholder="12345678">
 
                     <span>Rua:</span>
                     <input id="rua_input" type="text" placeholder="Sua Rua">
@@ -194,34 +194,47 @@ else {
 }
 };
     function Cadastro(){
+
         if (cnpj_input.value == '' || nome_input.value == '' || nomeComercial_input.value == '' ||
           telFixo_input.value == '' || cep_input.value == '' || rua_input.value == '' || bairro_input.value == '' ||
           cidade_input.value == '' || estado_input.value == '' ||
           numero_input.value == '' || complemento_input.value == ''){
             alert("Verifique se todos os campos estão completos.")
         }  
+
         else if (cnpj_input.value.length != 14 || isNaN(cnpj_input.value)){
             alert("CNPJ inválido.");
             cnpj_input.style="border: solid 3px red;"
+            
         }
+
         else if (cep_input.value.length != 8 || isNaN(cep_input.value)){
             alert("CEP inválido.");
             cep_input.style="border: solid 3px red;"
+
         }
+
         else if (telFixo_input.value.length != 10 || isNaN(telFixo_input.value)){
             alert("Telefone fixo inválido! Verifique também o DDD.");
             telFixo_input.style="border: solid 3px red;"
+
         }
+
         else if (isNaN(complemento_input.value) == false){
             alert("Complemento inválido.")
             complemento_input.style="border: solid 3px red;"
+
         }
+
         else if (isNaN(numero_input.value)){
             alert("Número do complemento inválido.")
+
         }
+
         else {
             alert("Cadastro Realizado com Sucesso!")
-            alert("Entraremos em contato!")            
+            alert("Entraremos em contato!")           
+             
         }       
     }
 </script>

@@ -42,20 +42,20 @@
                     <input id="nomeUsuario_input" type="text" placeholder="Seu nome de usuário" >
                                     
                     <span>E-mail:</span>
-                    <input id="email_input" type="email" placeholder="meu.email@provedor.com" >
+                    <input id="email_input" type="email" placeholder="meu.email@dominio.com" >
 
                     <span>Telefone Celular:</span>
-                    <input id="telCel_input" type="text" placeholder="Seu telefone celular">
+                    <input id="telCel_input" type="text" placeholder="12345678901">
 
                     <span>Telefone Fixo:</span>
-                    <input id="telFixoUsuario_input" type="text" placeholder="Seu telefone fixo">
+                    <input id="telFixoUsuario_input" type="text" placeholder="1234567890">
                   
                 </div>
 
                 <div class="formulario2" >
 
                     <span>CPF:</span>
-                    <input id="cpf_input" type="text" placeholder="Seu CPF" >                   
+                    <input id="cpf_input" type="text" placeholder="12345678901" >                   
 
                     <span>Senha:</span>
                     <input id="senha_input" type="password" placeholder="*****" >
@@ -170,36 +170,53 @@ else {
 };
 
     function CadastroUsuario(){
+
         if (cpf_input.value == '' || nomeUsuario_input.value == '' || email_input.value == '' || telCel_input.value == '' ||
         telFixoUsuario_input.value == '' || senha_input.value == '' || confirmarSenha_input.value == ''){
-            alert("Verifique se todos os campos estão completos.")
+            
+            alert("Verifique se todos os campos estão completos.");
+
         } 
+
         else if (senha_input.value != confirmarSenha_input.value){
             alert("Senhas não coincidem.");
-            senha_input.style="border: solid 3px red;"
+            senha_input.style="border: solid 3px red;";
+
         } 
+
         else if (cpf_input.value.length != 11 || isNaN(cpf_input.value)){
             alert("CPF inválido.");
-            cnpj_input.style="border: solid 3px red;"
+            cnpj_input.style="border: solid 3px red;";
+
         }
+
         else if (telFixoUsuario_input.value.length != 10 || isNaN(telFixoUsuario_input.value)){
             alert("Telefone fixo inválido! Verifique também o DDD.");
-            telFixo_input.style="border: solid 3px red;"
+            telFixo_input.style="border: solid 3px red;";
+
         }
+
         else if (telCel_input.value.length != 11 || isNaN(telCel_input.value)){
-            alert("Telefone celular inválido! Verifique também o DDD.")
+            alert("Telefone celular inválido! Verifique também o DDD.");
+
         }
+
         else if (email_input.value.length <= 10){
             alert("E-mail inválido.");
-            email_input.style="border: solid 3px red;"
+            email_input.style="border: solid 3px red;";
+
         }
+
         else if(email_input.value.includes("@") == false){
             alert("E-mail inválido.");
-            email_input.style="border: solid 3px red;"
+            email_input.style="border: solid 3px red;";
+
         }
+
         else {
             alert("Cadastro Realizado com Sucesso!")
-            window.location.href = "kaldi-Login.html"
+            window.location.href = "kaldi-Login.html";
+
         }
         
     }
