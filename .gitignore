@@ -1,1 +1,4 @@
-node_modules
+# A linha abaixo determina que o diretório node_modules não será enviado ao repositório remoto
+dat-acqu-ino/node_modules
+web-data-viz/site/node_modules
+.github

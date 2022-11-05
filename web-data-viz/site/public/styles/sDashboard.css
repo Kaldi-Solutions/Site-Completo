@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    font-family: Calibri;
+    background: blanchedalmond;
+    color: blanchedalmond;
+}
+
+.content {
+    display: flex;
+}
+
+header {
+    border-radius: 0px 5px 5px 0px;
+    height: 100vh;
+    background-color: #865143;
+    box-shadow: 0 3px 6px #865143;
+}
+.content .sidebar .titulo{
+    margin: 10%;
+    margin-bottom: 20%;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+header ul li {
+    border-radius: 10px;
+    color: blanchedalmond;
+    background-color: #3A3845;
+    width: 70%;
+    padding: 5px;
+    text-align: center;
+}
+
+header ul li:hover {
+    background-color: black;
+    transform: scale(120%, 120%);
+    transition: 0.8s;
+}
+
+header ul a {
+    text-decoration: none;
+}
+
+.logo img {
+    width: 200px;
+}
+
+/* Corpo */
+
+.corpo {
+    width: 80%;
+    margin: auto;
+}
+
+.corpo .container {
+    margin-top: 20px;
+    padding: 0px 20px 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px #a58880;
+}
+
+/* Metricas */
+
+.metricas {
+    color: #663629;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.metricas .temp,
+.umidade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metricas .temp>span,
+.umidade>span {
+    line-height: 50px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.metricas .box {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-size: 24px;
+    gap: 15px;
+    padding: 10px;
+    background-color: #865143;
+    box-shadow: 0 3px 6px #a58880;
+}
+
+.box .alertPerigo {
+    background-color: #DD0000;
+    border-radius: 10px;
+    align-self: center;
+    padding: 10px;
+}
+
+.box .alertAlerta {
+    background-color: #EEB000;
+    border-radius: 10px;
+    align-self: center;
+    padding: 10px;
+}
+
+.box .alertIdeal {
+    background-color: #00AA00;
+    border-radius: 10px;
+    align-self: center;
+    padding: 10px;
+}
+
+hr {
+    margin: 20px 0px 20px 0px;
+    background-color: black;
+    border-radius: 2px;
+    width: 100%;
+}
+
+/* Estufas */
+
+.estufas.pag1 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow-y: scroll;
+    height: 70vh;
+}
+
+.estufas .estufa .boxes_estufa {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    width: 372.5px;
+    cursor: pointer;
+    background-color: #865143;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px #a58880;
+}
+
+.estufas .estufa .setor {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    line-height: 25px;
+}
+
+.exclamation {
+    background-image: url('../assets/alertaA.png');
+    background-size: cover;
+    align-self: center;
+    width: 22px;
+    height: 88px;
+}
+
+.estufa {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.estufa>span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 50px;
+    color: #663629;
+}
+
+.estufa .min {
+    color: #00AA00;
+    border-radius: 7px;
+}
+
+.estufa .max {
+    color: red;
+    border-radius: 7px;
+
+}
+
+/* Pag 2 - Gráficos */
+
+.metricas.pag2 .temp,
+.metricas.pag2 .umidade {
+    box-shadow: 0 3px 6px #a58880;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.metricas .grafico {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.estufas.pag2 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 20px;
+
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #865143;
+    border-radius: 20px;
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 20px;
+  }

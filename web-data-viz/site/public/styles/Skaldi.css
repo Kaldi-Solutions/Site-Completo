@@ -1,0 +1,196 @@
+body {
+    margin: 0px;
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
+}
+
+.banner {
+    /* border: green solid 3px; */
+    height: 650px;
+    background-image: url(../assets/zyro-image.png);
+    background-size: cover;
+    background-position: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.banner .container {
+    /* border: rgb(255, 0, 0) solid 3px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'Arsenica';
+    src: url('../fonts/ArsenicaTrial-Extrabold.ttf') format('truetype');
+}
+
+#titulo {
+    font-family: 'Arsenica';
+    font-size: 100px;
+    font-weight: 900;
+    color: white;
+
+}
+
+#subTitulo {
+    font-family: 'Arsenica';
+    font-size: 20px;
+    color: white;
+
+}
+
+.banner .container .caixa span {
+    flex-direction: column-reverse;
+    display: flex;
+    align-items: center;
+}
+
+.social .container {
+    /* border: red solid 3px; */
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+}
+
+.social .container .box {
+    /* border: green solid 3px; */
+    background-color: #BA8B57;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.box .sobre1 {
+    display: flex;
+    justify-content: center;
+}
+
+.box2 {
+    /* border: green solid 3px; */
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.box2 .imagin {
+    border-radius: 30px;
+    margin-top: 50%;
+
+}
+
+.quemSomos .container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.quemSomos .missao {
+    background: #BA8B57;
+    border: solid black 1px;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+    border-radius: 10px;
+    color: #4B1F0E;
+    padding: 20px;
+    margin: 15px 0px 0px 0px;
+    color: white;
+}
+
+.quemSomos .valores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 20px 0px;
+}
+
+.quemSomos .container .boxes {
+    /* border: solid red 3px; */
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.quemSomos .container .boxes .traco {
+    width: 100px;
+    align-self: center;
+    height: 5px;
+    background-color: #4B1F0E;
+    border-radius: 10px;
+}
+
+.quemSomos .box {
+    border: solid black 1px;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+    width: 135px;
+    background-color: #BA8B57;
+    color: #4B1F0E;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.quemSomos .box span {
+    /* border: solid red 3px; */
+    font-weight: bold;
+    padding: 10px 0px 0px 0px;
+    color: white;
+}
+
+
+.quemSomos .box p {
+    font-size: 16px;
+}
+
+.quemSomos .box img {
+    /* border: solid red 3px; */
+    margin: 20px 0px 0px 0px;
+    width: 135px;
+    height: 100px;
+}
+
+.footer {
+    background-color: #BA8B57;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    height: 200px;
+}
+
+.footer .container {
+    /* border: solid 3px yellow; */
+    width: 80%;
+    margin: auto;
+}
+
+.footer .container h1 {
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px 0px 30px;
+}
+
+.footer .box {
+    /* border: solid 3px blue; */
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.footer .redes .redesIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer .contato p {
+    /* border: solid red 3px; */
+    margin: 5px 0px 0px 0px;
+}

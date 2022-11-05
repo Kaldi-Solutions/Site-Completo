@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
+    <title>Entrar</title>
+    <link rel="stylesheet" href="styles/slogin_estilo.css">
+    <link rel="stylesheet" href="styles/sKaldiHeader.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
+            </div>
+
+            <ul class="list">
+
+                <li><a href="kaldi-institucional.html">Início</a></li>
+                <li><a href="#quemSomos">Quem somos</a></li>
+                <li><a href="kaldi-simulador.html">Simulador</a></li>
+                <li><a href="#faleconosco">Fale Conosco</a></li>
+                <li><a id="hold" href="kaldi-Login.html">Entrar</a></li>
+                <li>|</li>
+                <li><a href="kaldi-cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <h1>Iniciar Sessão</h1>
+            <div class="social_container">
+                <span>E-mail:</span>
+                <input type="email" id="email_input" placeholder="Digite seu E-mail">
+
+                <span>Senha:</span>
+                <input type="password" id="senha_input" placeholder="Digite sua senha">
+
+                <button onclick="validar()">Login</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" id="faleconosco">
+        <div class="container">
+            <h1>Fale Conosco</h1>
+            <hr width="100%" color="#e6b56d">
+            <div class="box">
+                <div class="termos">
+                    <p>Termos de uso</p>
+                    <p>Documentos</p>
+                </div>
+                <div class="redes">
+                    <p>Siga-nos nas principais redes sociais</p>
+                    <div class="redesIcons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="contato">
+                    <p>Contatos</p>
+                    <p><i class="fa-brands fa-whatsapp"></i> (11) 98541-3608</p>
+                    <p><i class="fa-solid fa-phone"></i> 0800 1548 255 </p>
+                    <p><i class="fa-solid fa-envelope"></i> kaldi.solutions@contato.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    function validar(){
+    var userName = document.getElementById('email_input');
+    var password = document.getElementById('senha_input');
+
+        if (userName.value == '' && password.value == ''){
+        password.classList.add('invalid'); 
+            userName.classList.add('invalid');
+            alert('campo e-mail e senha não pode estar em branco')
+        }
+        else if(userName.value == ''){
+            userName.classList.add('invalid');
+            alert('campo e-mail não pode estar em branco')
+        }
+        else if (password.value == '') {
+            password.classList.add('invalid');
+            alert('campo senha não pode estar em branco')
+    
+        }else{
+            password.classList.remove('invalid');
+            userName.classList.remove('invalid');
+        }
+    
+    }
+
+  
+
+</script>
+
+    

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/sCadastroUsuario.css">
+    <link rel="stylesheet" href="styles/sKaldiHeader.css">
+    <script src="./js/funcoes.js"></script>
+    <title>Kaldi Solutions-Cadastrar usuário</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
+            </div>
+
+            <ul class="list">
+
+                <li><a href="kaldi-institucional.html">Início</a></li>
+                <li><a href="#quemSomos">Quem somos</a></li>
+                <li><a href="kaldi-simulador.html">Simulador</a></li>
+                <li><a href="#faleconosco">Fale Conosco</a></li>
+                <li><a href="kaldi-Login.html">Entrar</a></li>
+                <li>|</li>
+                <li><a href="kaldi-cadastro.html">Cadastre-se</a></li>
+
+            </ul>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <div class="caixa_formulario">
+                <h1>Seja Bem-vindo!</h1>
+                <div class="formulario">
+
+                    <span>Nome Usuário:</span>
+                    <input id="nomeUsuario_input" type="text" placeholder="Seu nome de usuário">
+
+                    <span>E-mail:</span>
+                    <input id="email_input" type="email" placeholder="meu.email@provedor.com">
+
+                    <span>Telefone Celular:</span>
+                    <input id="telCel_input" type="text" placeholder="Seu telefone celular">
+
+                    <span>Telefone Fixo:</span>
+                    <input id="telFixoUsuario_input" type="text" placeholder="Seu telefone fixo">
+
+                </div>
+
+                <div class="formulario2">
+
+                    <span>CPF:</span>
+                    <input id="cpf_input" type="text" placeholder="Seu CPF">
+
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="*****">
+
+                    <span>Confirmar senha:</span>
+                    <input id="confirmarSenha_input" type="password" placeholder="*****">
+
+                    <button onclick="CadastroUsuario()">Cadastrar</button>
+
+                </div>
+                <div id="div_aguardar" class="loading-div">
+                    <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
+                </div>
+                <div id="div_erros_login"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" id="faleconosco">
+        <div class="container">
+            <h1>Fale Conosco</h1>
+            <hr width="100%" color="#e6b56d">
+            <div class="box">
+                <div class="termos">
+                    <p>Termos de uso</p>
+                    <p>Documentos</p>
+                </div>
+                <div class="redes">
+                    <p>Siga-nos nas principais redes sociais</p>
+                    <div class="redesIcons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="contato">
+                    <p>Contatos</p>
+                    <p><i class="fa-brands fa-whatsapp"></i> (11) 98541-3608</p>
+                    <p><i class="fa-solid fa-phone"></i> 0800 1548 255 </p>
+                    <p><i class="fa-solid fa-envelope"></i> kaldi.solutions@contato.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function CadastroUsuario() {
+
+        if (cpf_input.value == '' || nomeUsuario_input.value == '' || email_input.value == '' || telCel_input.value == '' ||
+            telFixoUsuario_input.value == '' || senha_input.value == '' || confirmarSenha_input.value == '') {
+            alert("Verifique se todos os campos estão completos.");
+
+        } else if (senha_input.value != confirmarSenha_input.value) {
+            alert("Senhas não coincidem.");
+            senha_input.style = "border: solid 3px red;";
+
+        } else if (cpf_input.value.length != 11 || isNaN(cpf_input.value)) {
+            alert("CPF inválido.");
+            cnpj_input.style = "border: solid 3px red;";
+
+        } else if (telFixoUsuario_input.value.length != 10 || isNaN(telFixoUsuario_input.value)) {
+            alert("Telefone fixo inválido! Verifique também o DDD.");
+            telFixo_input.style = "border: solid 3px red;";
+
+        } else if (telCel_input.value.length != 11 || isNaN(telCel_input.value)) {
+            alert("Telefone celular inválido! Verifique também o DDD.");
+
+        } else if (email_input.value.length <= 10) {
+            alert("E-mail inválido.");
+            email_input.style = "border: solid 3px red;";
+
+        } else if (email_input.value.includes("@") == false) {
+            alert("E-mail inválido.");
+            email_input.style = "border: solid 3px red;";
+
+        } else {
+            alert("Cadastro Realizado com Sucesso!")
+            window.location.href = "kaldi-Login.html";
+            cadastrarUsuario()
+        }
+
+        function cadastrarUsuario() {
+            aguardar();
+
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var usuario = nomeUsuario_input.value;
+            var email = email_input.value;
+            var cel = telCel_input.value;
+            var telFixo = telFixoUsuario_input.value;
+            var cpf = cpf_input.value;
+            var senha = senha_input.value;
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrarUsuario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    usuarioServer: usuario,
+                    emailServer: email,
+                    celServer: cel,
+                    telFixoServer: telFixo,
+                    cpfServer: cpf,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "kaldi-Login.html";
+                    }, "2000")
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+            return false;
+        }
+
+        function sumirMensagem() {
+            cardErro.style.display = "none"
+        }
+    }
+</script>
+
+</html>

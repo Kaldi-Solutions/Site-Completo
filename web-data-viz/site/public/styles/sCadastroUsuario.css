@@ -1,0 +1,166 @@
+
+body {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+    background-image: url(../assets/zyro-image.png);
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+/* .header .container h1 {
+    color: black;
+    font-size: 30px;
+    text-align: center;
+} */
+
+/* Banner */
+
+.banner {
+    /* border: solid red 3px; */
+    padding: 60px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+.banner .container{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    text-align: left;
+}
+
+/* Formulário cadastro */
+
+.caixa_formulario {
+
+    background-image: none;
+    width: 1000px;
+    height: 500px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur 40px;
+    background-color: white;
+
+}
+
+.titulo_formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.caixa_formulario span {
+    font-weight: bold;
+}
+
+input:focus {
+    border-bottom: rgb(12, 12, 161);
+}
+
+.formulario input {
+    padding: 10px 15px;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    flex-direction: column
+}
+
+
+.formulario2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario2 input {
+    padding: 10px 15px;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    flex-direction: column
+}
+
+/* .formulario3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario3 input {
+    padding: 10px 15px;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    flex-direction: column
+} */
+ button {
+
+    width: 180px;
+    margin-top: 10px;
+    background: rgb(59, 11, 11);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    align-self: center;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+button:hover {
+    color: #fff7f7;
+    background-color: #353535;
+}
+/* footer */
+
+.footer {
+    background-color: #BA8B57;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    height: 200px;
+}
+
+.footer .container {
+    /* border: solid 3px yellow; */
+    width: 80%;
+    margin: auto;
+}
+
+.footer .container h1 {
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px 0px 30px;
+}
+
+.footer .box {
+    /* border: solid 3px blue; */
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.footer .redes .redesIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer .contato p {
+    /* border: solid red 3px; */
+    margin: 5px 0px 0px 0px;
+}
