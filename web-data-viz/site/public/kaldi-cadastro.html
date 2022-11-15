@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/d4c883c854.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/sCadastro.css">
     <link rel="stylesheet" href="styles/sKaldiHeader.css">
-    <script src="./js/funcoes.js"></script>
     <title>Kaldi Solutions-Cadastrar</title>
 </head>
 
@@ -85,12 +84,8 @@
                     <span>Complemento:</span>
                     <input id="complemento_input" type="text" placeholder="Seu complemento">
 
-                    <button onclick="Cadastro()">Cadastrar</button>
+                    <button onclick="cadastrarEmpresa()">Cadastrar</button>
                 </div>
-                <div id="div_aguardar" class="loading-div">
-                    <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
-                </div>
-                <div id="div_erros_login"></div>
             </div>
         </div>
     </div>
@@ -197,52 +192,54 @@
             limpa_formulário_cep();
         }
     };
-    function Cadastro() {
+
+    function cadastrarEmpresa() {
         if (cnpj_input.value == '' || nome_input.value == '' || nomeComercial_input.value == '' ||
             telFixo_input.value == '' || cep_input.value == '' || rua_input.value == '' || bairro_input.value == '' ||
             cidade_input.value == '' || estado_input.value == '' ||
             numero_input.value == '' || complemento_input.value == '') {
             alert("Verifique se todos os campos estão completos.")
+            return false;
         }
         else if (cnpj_input.value.length != 14 || isNaN(cnpj_input.value)) {
             alert("CNPJ inválido.");
             cnpj_input.style = "border: solid 3px red;"
+            return false;
         }
         else if (cep_input.value.length != 8 || isNaN(cep_input.value)) {
             alert("CEP inválido.");
             cep_input.style = "border: solid 3px red;"
+            return false;
         }
         else if (telFixo_input.value.length != 10 || isNaN(telFixo_input.value)) {
             alert("Telefone fixo inválido! Verifique também o DDD.");
             telFixo_input.style = "border: solid 3px red;"
+            return false;
         }
         else if (isNaN(complemento_input.value) == false) {
             alert("Complemento inválido.")
             complemento_input.style = "border: solid 3px red;"
+            return false;
         }
         else if (isNaN(numero_input.value)) {
             alert("Número do complemento inválido.")
+            return false;
         }
         else {
             alert("Cadastro Realizado com Sucesso!")
             alert("Entraremos em contato!")
-            cadastrarEmpresa();
         }
-    }
-
-    function cadastrarEmpresa() {
-        aguardar();
+        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var cnpjVar = cnpj_input.value;
-        var comercialVar = nomeComercial_input.value;
-        var nomeVar = nome_input.value;
+        var nomeCVar = nomeComercial_input.value;
+        var nomeRVar = nome_input.value;
         var telFixoVar = telFixo_input.value;
         var cepVar = cep_input.value;
         var numVar = numero_input.value;
-        var complVar = complemento_input.value;
-
+        var compVar = complemento_input.value;
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrarEmpresa", {
@@ -254,42 +251,39 @@
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
                 cnpjServer: cnpjVar,
-                comercialServer: comercialVar,
-                nomeServer: nomeVar,
+                nomeCServer: nomeCVar,
+                nomeRServer: nomeRVar,
                 telFixoServer: telFixoVar,
                 cepServer: cepVar,
                 numServer: numVar,
-                compServer: complVar
+                compServer: compVar
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
                     window.location = "kaldi-cadastroUsuario.html";
                 }, "2000")
-
-                limparFormulario();
-                finalizarAguardar();
+                
+                // limparFormulario();
+                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
 
 </script>
 

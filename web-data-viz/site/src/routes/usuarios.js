@@ -12,7 +12,7 @@ router.get("/listar", function (req, res) {
 });
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrarEmpresa", function (req, res) {
+router.post("/cadastrarEmpresa", function(req,res) {
     usuarioController.cadastrarEmpresa(req, res);
 })
 

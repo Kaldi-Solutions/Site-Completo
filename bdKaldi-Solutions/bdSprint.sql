@@ -1,3 +1,4 @@
+DROP DATABASE Kaldi;
 CREATE DATABASE Kaldi;
 USE Kaldi;
 
@@ -6,10 +7,11 @@ CREATE TABLE Empresa (
 	CNPJ char(14),
     nomeComercial VARCHAR(100),
     responsavel VARCHAR(45),
-    telfixo char(8),
+    telfixo char(10),
     CEP CHAR(9),
     Numero int,
-    Complemento varchar(45));
+    Complemento varchar(45)
+    );
     
 CREATE TABLE usuario (
     idUsuario int,
