@@ -22,7 +22,8 @@ CREATE TABLE usuario (
     telcel char(11),
     fkEmpresa int,
     foreign key (fkEmpresa) references Empresa (idEmpresa),
-	primary key (fkEmpresa, idUsuario));
+	primary key (fkEmpresa, idUsuario)
+);
     
 Create table Estufa (
 	idEstufa int primary key auto_increment,
