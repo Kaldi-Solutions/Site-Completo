@@ -4,6 +4,10 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .banner {
     /* border: green solid 3px; */
     height: 650px;
@@ -24,7 +28,7 @@ body {
 
 @font-face {
     font-family: 'Arsenica';
-    src: url('../fonts/ArsenicaTrial-Extrabold.ttf') format('truetype');
+    src: url('../Font/ArsenicaTrial-Extrabold.ttf') format('truetype');
 }
 
 #titulo {
@@ -47,6 +51,8 @@ body {
     display: flex;
     align-items: center;
 }
+
+
 
 .social .container {
     /* border: red solid 3px; */
