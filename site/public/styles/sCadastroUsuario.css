@@ -125,7 +125,7 @@ input:focus {
 
 button:hover {
     color: #fff7f7;
-    background-color: #353535;
+    background-color: rgb(110, 41, 41);;
 }
 /* footer */
 
@@ -158,7 +158,25 @@ button:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
 }
+#facebook:hover {
+    color: #352020;
+    cursor: pointer;
+ }
+
+ #linkedin:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #insta:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #twitter:hover{
+    color: #352020;
+    cursor: pointer;
+ }
 
 .footer .contato p {
     /* border: solid red 3px; */
