@@ -151,5 +151,6 @@ module.exports = {
     entrar,
     cadastrarEmpresa,
     listar,
-    testar
+    testar,
+    cadastrarUsuario
 }
