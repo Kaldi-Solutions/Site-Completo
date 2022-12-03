@@ -14,15 +14,13 @@ CREATE TABLE Empresa (
     );
     
 CREATE TABLE usuario (
-    idUsuario int,
+    idUsuario int primary key auto_increment,
     nomeUsuario VARCHAR(45),
     email VARCHAR(45), CONSTRAINT chkEmailUsuario check (email like '%@%'),
     CPF char(11),
     senha VARCHAR(45),
     telcel char(11),
-    fkEmpresa int,
-    foreign key (fkEmpresa) references Empresa (idEmpresa),
-	primary key (fkEmpresa, idUsuario)
+    telFixo char(10)
 );
     
 Create table Estufa (
@@ -83,8 +81,7 @@ insert into sensor values
 (null, 'Manutenção', 1),
 (null, 'Inativo', 2);
 
-
-
+delete from Usuario where idUsuario =2;
 
 SELECT * FROM Usuario;
 SELECT * FROM Empresa;
