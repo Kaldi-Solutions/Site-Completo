@@ -136,7 +136,7 @@
 
         } else {
             alert("Cadastro Realizado com Sucesso!")
-          //  window.location.href = "kaldi-Login.html";
+           window.location.href = "kaldi-Login.html";
             cadastrarUsuario()
         }
 
@@ -176,10 +176,6 @@
                     cardErro.style.display = "block";
 
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "kaldi-Login.html";
-                    }, "2000")
 
                     limparFormulario();
                     finalizarAguardar();
