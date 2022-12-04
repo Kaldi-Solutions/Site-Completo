@@ -34,7 +34,7 @@
         <h1>Simulador Financeiro</h1>
         <span>Nós da Kaldi Solutions simulamos o prejuizo que você está tendo gratuitamente!!</span>
     </div>
-    <div class="social">
+    <div class="social" id="telaInicial" style="display: block;">
         <div class="text2">
             <div class="container">
                 <h2>Dados da colheita </h2>
@@ -50,11 +50,14 @@
                 <input type="text" id="iptVendaSaca" placeholder="Digite o valor de venda por saca">
 
                 <button onclick="verificar()">Simule seu negócio</button>
+                
             </div>
+            
         </div>
-        <div class='divtext2' id="res">
-            <h2>⬇️Veja abaixo a simulação de seu negócio⬇️</h2>
-        </div>
+        
+    </div>
+    <div class='divtext2' id="res" style="display: none;">
+        <h2>⬇️Veja abaixo a simulação de seu negócio⬇️</h2>
     </div>
     <div class="footer" id="faleconosco">
         <div class="container">
@@ -98,6 +101,9 @@
         }
         else {
             simulacao();
+
+            telaInicial.style='display:none;';
+            res.style='display:block;'
         }
     }    
         function simulacao() {

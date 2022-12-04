@@ -33,7 +33,7 @@ body {
     border: solid 2px rgb(0, 0, 0);
     border-radius: 12px;
     align-items: center;
-    margin: 3% 0% 3% 0% ; 
+    margin: 1% 0% 1% 35%; 
 }
 
 .social .text2 .container {
@@ -41,7 +41,7 @@ body {
     margin: auto;
     display: flex;
     flex-direction: column;
-    font-size: large;
+    font-size: 1.2rem;
 }
 
 input {
@@ -70,7 +70,7 @@ button:hover {
     background-color: #946565;
 }
 
-.social .divtext2 {
+ .divtext2 {
     /* border: black 2px solid; */
     background: #dfa869;
     align-items: center;
@@ -81,7 +81,9 @@ button:hover {
     border: solid 2px rgb(0, 0, 0);
     border-radius: 12px;
     width: 60%;
-    margin: 1% 0% 1% 0%;
+    margin: 1% 20% 1% 20%;
+    font-size: 1.2rem;
+
 }
 
 .divtext2 h2, h3{
