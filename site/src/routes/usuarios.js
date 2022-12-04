@@ -24,4 +24,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/pegarEmpresa", function (req, res) {
+    usuarioController.pegarEmpresa(req, res);
+});
+
+router.post("/pegarToken", function (req, res) {
+    usuarioController.pegarToken(req, res);
+});
+
 module.exports = router;

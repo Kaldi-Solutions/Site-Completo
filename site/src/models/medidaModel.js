@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idEmpresa, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -14,14 +14,10 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                     where fk_aquario = ${idAquario}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Sensor.statusSensor, leitura.temperatura,
+        leitura.umidade , leitura.dtHora 
+        from Empresa join Estufa on fkEmpresa =idEmpresa 
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} order by dtHora desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,7 +27,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idEmpresa) {
 
     instrucaoSql = ''
 

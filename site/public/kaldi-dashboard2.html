@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="node_modules/chart.js/dist/chart.min.js"></script>
-    <script src="node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles/sDashboard.css">
     <title>Document</title>
 </head>
@@ -20,6 +19,7 @@
                         <a href="index.html"><img
                                 src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png"></a>
                     </div>
+                    <div id="b_usuario"></div>
                     <ul>
                         <a href="Kaldi-dashboard.html">
                             <li>Home</li>
@@ -121,166 +121,108 @@
         </div>
     </div>
 </body>
-
-<script>
-    const config = {
-        type: 'line',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
-            datasets: [{
-                label: 'Temperatura',
-                data: [12, 14, 20, 25, 25, 20, 12, 12, 14, 20, 25, 25],
-                fill: false,
-                backgroundColor: '#ff474c',
-                borderColor: '#ff474c',
-                tension: 0.1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    ticks: { color: 'black' }
-                },
-                x: {
-                    ticks: { color: 'black' }
-                }
-            },
-            plugins: {
-                autocolors: false,
-                legend: {
-                    labels: {
-                        color: 'black'
-                    }
-                },
-                annotation: {
-                    annotations: {
-                        line1: {
-                            type: 'line',
-                            yMin: 15,
-                            yMax: 15,
-                            borderColor: '#FF0000',
-                            borderWidth: 2,
-                        }, line2: {
-                            type: 'line',
-                            yMin: 17,
-                            yMax: 17,
-                            borderColor: '#FFC000',
-                            borderWidth: 2,
-                        }, line3: {
-                            type: 'line',
-                            yMin: 18,
-                            yMax: 18,
-                            borderColor: '#92D050',
-                            borderWidth: 2,
-                        }, line4: {
-                            type: 'line',
-                            yMin: 21,
-                            yMax: 21,
-                            borderColor: '#92D050',
-                            borderWidth: 2,
-                        }, line5: {
-                            type: 'line',
-                            yMin: 22,
-                            yMax: 22,
-                            borderColor: '#FFC000',
-                            borderWidth: 2,
-                        }, line6: {
-                            type: 'line',
-                            yMin: 24,
-                            yMax: 24,
-                            borderColor: '#FF0000',
-                            borderWidth: 2,
-                        }
-                    }
-                }
-            }
-        }
-    };
-
-    const config2 = {
-        type: 'line',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
-            datasets: [{
-                label: 'Umidade',
-                data: [50, 55, 55, 50, 64, 70, 50, 55, 55, 50, 64, 70],
-                fill: false,
-                backgroundColor: '#3cdfff',
-                borderColor: '#3cdfff',
-                tension: 0.1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    ticks: { color: 'black' }
-                },
-                x: {
-                    ticks: { color: 'black' }
-                }
-            },
-            plugins: {
-                autocolors: false,
-                legend: {
-                    labels: {
-                        color: 'black'
-                    }
-                },
-                annotation: {
-                    annotations: {
-                        line1: {
-                            type: 'line',
-                            yMin: 30,
-                            yMax: 30,
-                            borderColor: '#FF0000',
-                            borderWidth: 2,
-                        }, line2: {
-                            type: 'line',
-                            yMin: 45,
-                            yMax: 45,
-                            borderColor: '#FFC000',
-                            borderWidth: 2,
-                        }, line3: {
-                            type: 'line',
-                            yMin: 50,
-                            yMax: 50,
-                            borderColor: '#92D050',
-                            borderWidth: 2,
-                        }, line4: {
-                            type: 'line',
-                            yMin: 60,
-                            yMax: 60,
-                            borderColor: '#92D050',
-                            borderWidth: 2,
-                        }, line5: {
-                            type: 'line',
-                            yMin: 70,
-                            yMax: 70,
-                            borderColor: '#FFC000',
-                            borderWidth: 2,
-                        }, line6: {
-                            type: 'line',
-                            yMin: 80,
-                            yMax: 80,
-                            borderColor: '#FF0000',
-                            borderWidth: 2,
-                        }
-                    }
-                }
-            }
-        }
-    };
-</script>
-<script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config,
-    );
-
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2,
-    );
-</script>
-
 </html>
+<script>
+  
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var pontos = []
+    var ids = []
+
+
+
+    window.onload = obterDadosGrafico(1);
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    var idEmpresa = sessionStorage.ID_EMPRESA
+    function obterDadosGrafico(idEmpresa) {
+
+
+        fetch(`/medidas/ultimas/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idEmpresa);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idEmpresa) {
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [
+
+        ];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Pontos',
+                backgroundColor: 'rgb(0,206,209)',
+                borderColor: 'rgb(199,21,133)',
+                data: [],
+                fill: false,
+                tension: 0.1,
+
+            },]
+        };
+
+        Chart.defaults.color = '#ffff';
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.temperatura);
+            dados.datasets[0].data.push(registro.dtHora);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        const config = {
+            type: 'line',
+            data: dados,
+            options: {}
+        };
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2,
+        );
+    }
+ 
+</script>
+

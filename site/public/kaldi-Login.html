@@ -82,6 +82,8 @@
 </html>
 <script>
 
+
+    
     function validar() {
        // aguardar();
 
@@ -121,8 +123,9 @@
                     console.log(JSON.stringify(json));
 
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
                     setTimeout(function () {
                         window.location = "Kaldi-dashboard.html";

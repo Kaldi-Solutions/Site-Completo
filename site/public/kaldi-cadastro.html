@@ -119,6 +119,7 @@
         </div>
     </div>
 </body>
+</html>
 <script>
     // API VIACEP 
 
@@ -269,7 +270,7 @@
                 // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "kaldi-cadastroUsuario.html";
+                  //  window.location = "kaldi-cadastroUsuario.html";
                 }, "2000")
                 
                 // limparFormulario();
@@ -282,10 +283,61 @@
             // finalizarAguardar();
         });
 
+        pegarEmpresa()
+        return false;
+    }
+
+    function pegarEmpresa() {
+        // aguardar();
+ 
+        var nomeComercial = nomeComercial_input.value
+
+        linkFoto = sessionStorage
+        fetch("/usuarios/pegarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeComercialServer: nomeComercial,
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then((json) => {
+                        console.log(json);
+                        console.log("Resposta" + JSON.stringify(json));
+                        setTimeout(function () {
+
+                            sessionStorage.NOME_EMPRESA = json.nomeComercial;
+                            sessionStorage.ID_EMPRESA = json.idEmpresa;
+                            console.log(sessionStorage.NOME_EMPRESA);
+                            console.log(sessionStorage.ID_EMPRESA);
+                        
+                            //   window.location = "Perfil.html";
+
+                            if (sessionStorage.ID_EMPRESA == "undefined") {
+                                console.log("Ainda não tem empresa");
+                            } else {
+                                console.log("SessionStorage carregada com sucesso!")
+                            }
+                        }, 10); // apenas para exibir o loading
+                    });
+                } else {
+                    console.log("Houve um erro ao tentar realizar o login!");
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+            });
+
         return false;
     }
 
 
 </script>
 
-</html>

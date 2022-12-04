@@ -65,7 +65,10 @@
                     <span>Confirmar senha:</span>
                     <input id="confirmarSenha_input" type="password" placeholder="*****">
 
-                    <button onclick="CadastroUsuario()">Cadastrar</button>
+                    <span>Token de acesso:</span>
+                    <input id="token_input" type="text" placeholder="Token da Empresa">
+
+                    <button onclick="pegarToken()">Cadastrar</button>
 
                 </div>
                 <div id="div_aguardar" class="loading-div">
@@ -104,7 +107,65 @@
         </div>
     </div>
 </body>
-<script>
+<script> 
+     function pegarToken() {
+    // aguardar();
+
+    var tokenEmpresa = token_input.value
+
+    fetch("/usuarios/pegarToken", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            tokenEmpresaServer: tokenEmpresa,
+        }),
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then((json) => {
+                    console.log(json);
+                    console.log("Resposta" + JSON.stringify(json));
+                    setTimeout(function () {
+
+                        sessionStorage.NOME_EMPRESA = json.nomeComercial;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+                        sessionStorage.TOKEN_EMPRESA = json.Token;
+                        console.log(sessionStorage.NOME_EMPRESA);
+                        console.log(sessionStorage.ID_EMPRESA);
+                        console.log(sessionStorage.TOKEN_EMPRESA);
+                    
+                        //   window.location = "Perfil.html";
+
+                        if (sessionStorage.TOKEN_EMPRESA == "undefined" || token_input.value != sessionStorage.TOKEN_EMPRESA) {
+                            alert("Token invalido.");
+                            token_input.style = "border: solid 3px red;";
+                            console.log("Token falso");
+                        } else {
+                            console.log("SessionStorage carregada com sucesso!")
+                            CadastroUsuario();
+                        }
+                    }, 10); // apenas para exibir o loading
+                });
+            } else {
+                alert("Token invalido.");
+                token_input.style = "border: solid 3px red;";
+                console.log("Houve um erro ao tentar realizar o login!");
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+        });
+
+    return false;
+}
+
+
     function CadastroUsuario() {
 
         if (cpf_input.value == '' || nomeUsuario_input.value == '' || email_input.value == '' || telCel_input.value == '' ||
@@ -134,9 +195,13 @@
             alert("E-mail inválido.");
             email_input.style = "border: solid 3px red;";
 
+        } else if (token_input.value != sessionStorage.TOKEN_EMPRESA) {
+            alert("Token invalido.");
+            token_input.style = "border: solid 3px red;";
+
         } else {
             alert("Cadastro Realizado com Sucesso!")
-           window.location.href = "kaldi-Login.html";
+            window.location.href = "kaldi-Login.html";
             cadastrarUsuario()
         }
 
@@ -151,6 +216,7 @@
             var telFixo = telFixoUsuario_input.value;
             var cpf = cpf_input.value;
             var senha = senha_input.value;
+            var idEmpresa= sessionStorage.ID_EMPRESA
 
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrarUsuario", {
@@ -166,7 +232,8 @@
                     celServer: cel,
                     telFixoServer: telFixo,
                     cpfServer: cpf,
-                    senhaServer: senha
+                    senhaServer: senha,
+                    idEmpresaServer: idEmpresa
                 })
             }).then(function (resposta) {
 
@@ -176,6 +243,10 @@
                     cardErro.style.display = "block";
 
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "kaldi-Login.html";
+                    }, "2000")
 
                     limparFormulario();
                     finalizarAguardar();
@@ -194,7 +265,7 @@
             cardErro.style.display = "none"
         }
     }
-
+  
     
 </script>
 

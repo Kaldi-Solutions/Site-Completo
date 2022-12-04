@@ -10,7 +10,8 @@ CREATE TABLE Empresa (
     telfixo char(10),
     CEP CHAR(9),
     Numero int,
-    Complemento varchar(45)
+    Complemento varchar(45),
+    Token varchar(50)
     );
     
 CREATE TABLE usuario (
@@ -20,8 +21,12 @@ CREATE TABLE usuario (
     CPF char(11),
     senha VARCHAR(45),
     telcel char(11),
-    telFixo char(10)
+    telFixo char(10),
+    fkEmpresa int,
+    foreign key (fkEmpresa) references empresa(idEmpresa)
 );
+
+
     
 Create table Estufa (
 	idEstufa int primary key auto_increment,
@@ -49,11 +54,14 @@ CREATE TABLE Leitura(
     primary key (idLeitura, fkSensor)
 );
 
+
 insert into empresa values 
-(null, 18457358124513, 'Kaldi Solutions', 'André', '22029458', 'São Paulo', 'São Paulo', '02124730', '126', null ),
-(null, 18457356924513, 'Agronomios', 'Alan', '22014568', 'São Paulo', 'São Paulo', '02334740', '154', null ),
-(null, 18457321469513, 'Mecoffee', 'Caio', '24752058', 'São Paulo', 'São Paulo', '02351030', '159', null),
-(null, 18457345921349, 'CoffeeZN', 'Gabriel', '22014688', 'São Paulo', 'São Paulo', '02234030', '157', null);
+(null, 18457358124513, 'Kaldi Solutions', 'André', '22029458', '02960090', '216', '1325',1234567),
+(null, 18457358124512, 'MRI Tech', 'Bruno', '22029450', '02022020', '210', '1325',102030),
+(null, 18457358124511, 'Koldi solução', 'Jonatas', '22029412', '01310300', '200', '1325',777888);
+
+
+
 
 INSERT INTO usuario VALUES
 (1, 'Alexander Kimura' , 'alexander@gmail.com', '84572384591' , '1234', '11993457456', 1),
@@ -66,13 +74,10 @@ insert into Estufa values
 (2,1,1),
 (3,2,2),
 (4,4,2);
+insert into Estufa values 
+(4,4,3);
 
-insert into leitura values 
 
-(1, '22.50', '60.5', '2022-10-10 13:30:00', 1),
-(2, '24.15', '60.5', '2022-10-10 14:00:00', 2),
-(3, '28.96', '60.5', '2022-10-10 14:30:00', 3),
-(4, '21.13', '60.5', '2022-10-10 15:00:00', 4);
 
 insert into sensor values 
 
@@ -80,6 +85,13 @@ insert into sensor values
 (null ,'Ativo', 1),
 (null, 'Manutenção', 1),
 (null, 'Inativo', 2);
+
+insert into leitura values 
+
+(1, '22.50', '60.5', '2022-10-10 13:30:00', 1),
+(2, '24.15', '60.5', '2022-10-10 14:00:00', 2),
+(3, '28.96', '60.5', '2022-10-10 14:30:00', 3),
+(4, '21.13', '60.5', '2022-10-10 15:00:00', 4);
 
 delete from Usuario where idUsuario =2;
 
@@ -92,6 +104,19 @@ SELECT * FROM Estufa;
 select empresa.nomeComercial, empresa.responsavel, usuario.nomeUsuario, usuario.email, leitura.* from usuario 
 join empresa on fkEmpresa = idEmpresa
 join leitura on fkSensor = idleitura;
+
+select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Sensor.statusSensor, leitura.temperatura,
+leitura.umidade , leitura.dtHora from Empresa join Estufa on fkEmpresa =idEmpresa 
+join Sensor on idEstufa = fkEstufa 
+join Leitura on idSensor = fkSensor where idEmpresa = 1;
+
+select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Sensor.statusSensor, leitura.temperatura,
+        leitura.umidade , leitura.dtHora 
+        from Empresa join Estufa on fkEmpresa =idEmpresa 
+        join Sensor on idEstufa = fkEstufa 
+        join Leitura on idSensor = fkSensor where idEmpresa = 1
+                    order by dtHora  desc limit 12;
+
 
 DROP TABLE usuario;
 DROP TABLE Empresa;
