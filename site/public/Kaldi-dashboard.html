@@ -90,7 +90,7 @@
                 </div>
                 <hr>
                 <div class="estufas pag1">
-                    <div class="estufa">
+                    <div class="estufa" id="estufa1">
                         <span>Estufa 1</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -544,6 +544,7 @@
 
             if(registro.temperatura >= 24 && registro.temperatura < 27){
                 alerta1.style.backgroundImage=`url(assets/Alerta.png)`
+                estufa1.style.backgroundColor="red";
             }
             if(registro.temperatura >= 27){
                 alerta1.style.backgroundImage=`url(assets/perigo.png)`
