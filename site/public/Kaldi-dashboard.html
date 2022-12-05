@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/sDashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Kaldi - Dashboard</title><link rel="shortcut icon" href="assets/kaldi-image.jpg" type="image/x-icon">
 </head>
 
@@ -17,16 +19,23 @@
                     <img src="assets/090C8883-CC7D-43F0-99B3-2E54480A89B8-removebg-preview.png">
                 </div>
                 <div class="titulo">
-                    <h1>Olá usuário</h1>
+                    <span id="ola">Olá,<span id="b_usuario"></span></span>
                 </div>
+             
+                <button onclick="sair()" class="sair">
+                    Sair
+                </button>
                 <ul>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 1</li></a>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 2</li></a>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 3</li></a>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 4</li></a>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 5</li></a>
-                    <a href="kaldi-dashboard2.html"><li>Estufa 6</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero1()" id="estufa1">Estufa 1</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero2()" id="estufa2">Estufa 2</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero3()" id="estufa3">Estufa 3</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero4()" id="estufa4">Estufa 4</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero5()" id="estufa5">Estufa 5</li></a>
+                    <a href="kaldi-dashboard2.html"><li onclick="estufaNumero6()" id="estufa6">Estufa 6</li></a>
                 </ul>
+                <span id="green"></span>Temperatura/umidade ideal!
+                <span id="yellow"></span>Atenção, saindo do ideal!
+                <span id="red"></span>Perigo, estado critico!
             </div>
         </header>
         <div class="corpo">
@@ -86,27 +95,146 @@
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
+                                <span id="minHora"></span>
+                                <span id="atualHora"></span>
+                                <span id="maxHora"></span>
                             </div>
                             <div class="setor">
                                 <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
+                                <span class="min">Min: <span id="minTemp"></span>º</span>
+                                <span >Atual: <span id="atualTemp"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp"></span>°</span>
                             </div>
                             <div class="setor">
                                 <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
+                                <span class="min">Min: <span id="minUmid"></span>%</span>
+                                <span >Atual: <span id="atualUmid"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid"></span>%</span>
                             </div>
-                            <div class="exclamation"></div>
+                            <div class="exclamation" id="alerta1"></div>
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 2</span>
+                        <div class="boxes_estufa">
+                            <div class="setor">
+                                <span>Horário</span>
+                                <span id="minHora2"></span>
+                                <span id="atualHora2"></span>
+                                <span id="maxHora2"></span>
+                            </div>
+                            <div class="setor">
+                                <span>Temp. (C°)</span>
+                                <span class="min">Min: <span id="minTemp2"></span>º</span>
+                                <span >Atual: <span id="atualTemp2"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp2"></span>°</span>
+                            </div>
+                            <div class="setor">
+                                <span>Umidade (%)</span>
+                                <span class="min">Min: <span id="minUmid2"></span>%</span>
+                                <span >Atual: <span id="atualUmid2"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid2"></span>%</span>
+                            </div>
+                            <div class="exclamation" id="alerta2"></div>
+                        </div>
+                    </div>
+                    <div class="estufa">
+                        <span>Estufa 3</span>
+                        <div class="boxes_estufa">
+                            <div class="setor">
+                                <span>Horário</span>
+                                <span id="minHora3"></span>
+                                <span id="atualHora3"></span>
+                                <span id="maxHora3"></span>
+                            </div>
+                            <div class="setor">
+                                <span>Temp. (C°)</span>
+                                <span class="min">Min: <span id="minTemp3"></span>º</span>
+                                <span >Atual: <span id="atualTemp3"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp3"></span>°</span>
+                            </div>
+                            <div class="setor">
+                                <span>Umidade (%)</span>
+                                <span class="min">Min: <span id="minUmid3"></span>%</span>
+                                <span >Atual: <span id="atualUmid3"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid3"></span>%</span>
+                            </div>
+                            <div class="exclamation" id="alerta3"></div>
+                        </div>
+                    </div>
+                    <div class="estufa">
+                        <span>Estufa 4</span>
+                        <div class="boxes_estufa">
+                            <div class="setor">
+                                <span>Horário</span>
+                                <span id="minHora4"></span>
+                                <span id="atualHora4"></span>
+                                <span id="maxHora4"></span>
+                            </div>
+                            <div class="setor">
+                                <span>Temp. (C°)</span>
+                                <span class="min">Min: <span id="minTemp4"></span>º</span>
+                                <span >Atual: <span id="atualTemp4"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp4"></span>°</span>
+                            </div>
+                            <div class="setor">
+                                <span>Umidade (%)</span>
+                                <span class="min">Min: <span id="minUmid4"></span>%</span>
+                                <span >Atual: <span id="atualUmid4"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid4"></span>%</span>
+                            </div>
+                            <div class="exclamation" id="alerta4"></div>
+                        </div>
+                    </div>
+                    <div class="estufa">
+                        <span>Estufa 5</span>
+                        <div class="boxes_estufa">
+                            <div class="setor">
+                                <span>Horário</span>
+                                <span id="minHora5"></span>
+                                <span id="atualHora5"></span>
+                                <span id="maxHora5"></span>
+                            </div>
+                            <div class="setor">
+                                <span>Temp. (C°)</span>
+                                <span class="min">Min: <span id="minTemp5"></span>º</span>
+                                <span >Atual: <span id="atualTemp5"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp5"></span>°</span>
+                            </div>
+                            <div class="setor">
+                                <span>Umidade (%)</span>
+                                <span class="min">Min: <span id="minUmid5"></span>%</span>
+                                <span >Atual: <span id="atualUmid5"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid5"></span>%</span>
+                            </div>
+                            <div class="exclamation" id="alerta5"></div>
+                        </div>
+                    </div>
+                    <div class="estufa">
+                        <span>Estufa 6</span>
+                        <div class="boxes_estufa">
+                            <div class="setor">
+                                <span>Horário</span>
+                                <span id="minHora6"></span>
+                                <span id="atualHora6"></span>
+                                <span id="maxHora6"></span>
+                            </div>
+                            <div class="setor">
+                                <span>Temp. (C°)</span>
+                                <span class="min">Min: <span id="minTemp6"></span>º</span>
+                                <span >Atual: <span id="atualTemp6"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp6"></span>°</span>
+                            </div>
+                            <div class="setor">
+                                <span>Umidade (%)</span>
+                                <span class="min">Min: <span id="minUmid6"></span>%</span>
+                                <span >Atual: <span id="atualUmid6"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid6"></span>%</span>
+                            </div>
+                            <div class="exclamation" id="alerta6"></div>
+                    </div>
+                    <div class="estufa">
+                        <span>Estufa 7</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -129,7 +257,7 @@
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 8</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -152,7 +280,7 @@
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 9</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -175,7 +303,7 @@
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 10</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -198,7 +326,7 @@
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 11</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -221,122 +349,7 @@
                         </div>
                     </div>
                     <div class="estufa">
-                        <span>Estufa 1</span>
-                        <div class="boxes_estufa">
-                            <div class="setor">
-                                <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
-                            </div>
-                            <div class="setor">
-                                <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
-                            </div>
-                            <div class="setor">
-                                <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="estufa">
-                        <span>Estufa 1</span>
-                        <div class="boxes_estufa">
-                            <div class="setor">
-                                <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
-                            </div>
-                            <div class="setor">
-                                <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
-                            </div>
-                            <div class="setor">
-                                <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="estufa">
-                        <span>Estufa 1</span>
-                        <div class="boxes_estufa">
-                            <div class="setor">
-                                <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
-                            </div>
-                            <div class="setor">
-                                <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
-                            </div>
-                            <div class="setor">
-                                <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="estufa">
-                        <span>Estufa 1</span>
-                        <div class="boxes_estufa">
-                            <div class="setor">
-                                <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
-                            </div>
-                            <div class="setor">
-                                <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
-                            </div>
-                            <div class="setor">
-                                <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="estufa">
-                        <span>Estufa 1</span>
-                        <div class="boxes_estufa">
-                            <div class="setor">
-                                <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
-                            </div>
-                            <div class="setor">
-                                <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
-                            </div>
-                            <div class="setor">
-                                <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa 12</span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
@@ -366,5 +379,497 @@
 
 </html>
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function sair(){
+        sessionStorage.clear()
+        window.location = 'index.html';
+    }
+
+
+    function estufaNumero1(){
+            sessionStorage.NUMERO_ESTUFA= 1
+   
+    }
+    function estufaNumero2(){
+            sessionStorage.NUMERO_ESTUFA= 2
+   
+    }
+    function estufaNumero3(){
+            sessionStorage.NUMERO_ESTUFA= 3
+   
+    }
+    function estufaNumero4(){
+            sessionStorage.NUMERO_ESTUFA= 4
+   
+    }
+    function estufaNumero5(){
+            sessionStorage.NUMERO_ESTUFA= 5
+   
+    }
+    function estufaNumero6(){
+            sessionStorage.NUMERO_ESTUFA= 6
+   
+    }
+
+    
+    window.onload = obterDadosGrafico(1);
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    var idEmpresa = sessionStorage.ID_EMPRESA
+    function obterDadosGrafico(idEmpresa) {
+
+
+        fetch(`/medidas/ultimas/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idEmpresa);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idEmpresa) {
+        var maiorTemperatura = -9999
+        var maiorUmidade = -9999
+        var menorTemperatura = 9999
+        var menorUmidade = 9999
+        var tempAtual =0
+        var umidAtual =0
+
+        var hora_min_temp=0
+        var hora_max_temp=0
+        var hora_min_umid=0
+        var hora_max_umid=0
+        var hora_atual =0
+        
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [
+
+        ];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Temperatura',
+                backgroundColor: 'rgb(0,206,209)',
+                borderColor: 'rgb(199,21,133)',
+                data: [],
+                fill: false,
+                tension: 0.1,
+
+            },
+          ]
+        };
+
+        let labels2 = [
+
+        ];
+
+        let dados2 = {
+            labels: labels2,
+            datasets: [{
+                label: 'Umidade',
+                backgroundColor: 'rgb(0,206,209)',
+                borderColor: 'rgb(199,21,133)',
+                data: [],
+                fill: false,
+                tension: 0.1,
+
+            },
+          ]
+        };
+
+        Chart.defaults.color = 'black';
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+     
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            hora_atual=registro.HORA
+            tempAtual=registro.temperatura
+            umidAtual=registro.umidade
+
+
+            if(registro.idEstufa == 1){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta1.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta1.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            minTemp.innerHTML = `${menorTemperatura}`
+            maxTemp.innerHTML = `${maiorTemperatura}`
+            minUmid.innerHTML = `${menorUmidade}`
+            maxUmid.innerHTML = `${menorUmidade}`
+    
+            minHora.innerHTML =`${hora_min_temp}`
+            maxHora.innerHTML =`${hora_max_temp}`
+            atualHora.innerHTML =`${hora_atual}`
+            atualTemp.innerHTML =`${tempAtual}`
+            atualUmid.innerHTML =`${umidAtual}`
+    
+            }
+
+
+
+            if(registro.idEstufa == 2){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta2.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta2.style.backgroundImage=`url(assets/perigo.png)`
+            }
+
+            
+            minTemp2.innerHTML = `${menorTemperatura}`
+            maxTemp2.innerHTML = `${maiorTemperatura}`
+            minUmid2.innerHTML = `${menorUmidade}`
+            maxUmid2.innerHTML = `${menorUmidade}`
+    
+            minHora2.innerHTML =`${hora_min_temp}`
+            maxHora2.innerHTML =`${hora_max_temp}`
+            atualHora2.innerHTML =`${hora_atual}`
+            atualTemp2.innerHTML =`${tempAtual}`
+            atualUmid2.innerHTML =`${umidAtual}`
+    
+            }
+
+
+            if(registro.idEstufa == 3){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta3.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta3.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            minTemp3.innerHTML = `${menorTemperatura}`
+            maxTemp3.innerHTML = `${maiorTemperatura}`
+            minUmid3.innerHTML = `${menorUmidade}`
+            maxUmid3.innerHTML = `${menorUmidade}`
+    
+            minHora3.innerHTML =`${hora_min_temp}`
+            maxHora3.innerHTML =`${hora_max_temp}`
+            atualHora3.innerHTML =`${hora_atual}`
+            atualTemp3.innerHTML =`${tempAtual}`
+            atualUmid3.innerHTML =`${umidAtual}`
+            }
+
+
+
+            if(registro.idEstufa == 4){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta4.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta4.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            minTemp4.innerHTML = `${menorTemperatura}`
+            maxTemp4.innerHTML = `${maiorTemperatura}`
+            minUmid4.innerHTML = `${menorUmidade}`
+            maxUmid4.innerHTML = `${menorUmidade}`
+    
+            minHora4.innerHTML =`${hora_min_temp}`
+            maxHora4.innerHTML =`${hora_max_temp}`
+            atualHora4.innerHTML =`${hora_atual}`
+            atualTemp4.innerHTML =`${tempAtual}`
+            atualUmid4.innerHTML =`${umidAtual}`
+            }
+
+
+            if(registro.idEstufa == 5){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta5.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta5.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            minTemp5.innerHTML = `${menorTemperatura}`
+            maxTemp5.innerHTML = `${maiorTemperatura}`
+            minUmid5.innerHTML = `${menorUmidade}`
+            maxUmid5.innerHTML = `${menorUmidade}`
+    
+            minHora5.innerHTML =`${hora_min_temp}`
+            maxHora5.innerHTML =`${hora_max_temp}`
+            atualHora5.innerHTML =`${hora_atual}`
+            atualTemp5.innerHTML =`${tempAtual}`
+            atualUmid5.innerHTML =`${umidAtual}`
+            }
+
+
+            if(registro.idEstufa == 6){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta6.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta6.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            minTemp6.innerHTML = `${menorTemperatura}`
+            maxTemp6.innerHTML = `${maiorTemperatura}`
+            minUmid6.innerHTML = `${menorUmidade}`
+            maxUmid6.innerHTML = `${menorUmidade}`
+    
+            minHora6.innerHTML =`${hora_min_temp}`
+            maxHora6.innerHTML =`${hora_max_temp}`
+            atualHora6.innerHTML =`${hora_atual}`
+            atualTemp6.innerHTML =`${tempAtual}`
+            atualUmid6.innerHTML =`${umidAtual}`
+            }
+
+
+            if(registro.idEstufa == 7){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta1.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta1.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            }
+
+
+
+            if(registro.idEstufa == 8){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta1.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta1.style.backgroundImage=`url(assets/perigo.png)`
+            }
+            }
+        }
+
+  
+
+
+        console.log(maiorTemperatura)
+        console.log(menorTemperatura)
+        console.log(maiorUmidade)
+        console.log(menorUmidade)
+
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        const config = {
+            type: 'line',
+            data: dados,
+            options: {}
+        };
+        const config2 = {
+            type: 'line',
+            data: dados2,
+            options: {}
+        };
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2,
+        );
+    }
 
 </script>

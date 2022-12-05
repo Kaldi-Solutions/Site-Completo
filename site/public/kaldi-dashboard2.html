@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles/sDashboard.css">
-    <title>Document</title>
+    <title>Estufas</title>
 </head>
 
 <body>
@@ -38,27 +38,27 @@
                 </div>
                 <div class="estufas pag2">
                     <div class="estufa">
-                        <span>Estufa 1</span>
+                        <span>Estufa <span id="numero_estufa"></span></span>
                         <div class="boxes_estufa">
                             <div class="setor">
                                 <span>Horário</span>
-                                <span>11:00</span>
-                                <span>23:00</span>
-                                <span>15:00</span>
+                                <span id="minHora"></span>
+                                <span id="atualHora"></span>
+                                <span id="maxHora"></span>
                             </div>
                             <div class="setor">
                                 <span>Temp. (C°)</span>
-                                <span class="min">Min: 12°</span>
-                                <span>Atual: 25°</span>
-                                <span class="max">Max: 25°</span>
+                                <span class="min">Min: <span id="minTemp"></span>º</span>
+                                <span >Atual: <span id="atualTemp"></span>°</span>
+                                <span class="max">Max: <span id="maxTemp"></span>°</span>
                             </div>
                             <div class="setor">
                                 <span>Umidade (%)</span>
-                                <span class="min">Min: 50%</span>
-                                <span>Atual: 70%</span>
-                                <span class="max">Max: 70%</span>
+                                <span class="min">Min: <span id="minUmid"></span>%</span>
+                                <span >Atual: <span id="atualUmid"></span>%</span>
+                                <span class="max">Max: <span id="maxUmid"></span>%</span>
                             </div>
-                            <div class="exclamation"></div>
+                            <div class="exclamation" id="alerta"></div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,8 @@
 </body>
 </html>
 <script>
-  
+
+    numero_estufa.innerHTML = sessionStorage.NUMERO_ESTUFA
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     var pontos = []
     var ids = []
@@ -169,6 +170,19 @@
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idEmpresa) {
+        var maiorTemperatura = -9999
+        var maiorUmidade = -9999
+        var menorTemperatura = 9999
+        var menorUmidade = 9999
+        var tempAtual =0
+        var umidAtual =0
+
+        var hora_min_temp=0
+        var hora_max_temp=0
+        var hora_min_umid=0
+        var hora_max_umid=0
+        var hora_atual =0
+        
         console.log('iniciando plotagem do gráfico...');
 
         let labels = [
@@ -178,28 +192,100 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Pontos',
+                label: 'Temperatura',
                 backgroundColor: 'rgb(0,206,209)',
                 borderColor: 'rgb(199,21,133)',
                 data: [],
                 fill: false,
                 tension: 0.1,
 
-            },]
+            },
+          ]
         };
 
-        Chart.defaults.color = '#ffff';
+        let labels2 = [
+
+        ];
+
+        let dados2 = {
+            labels: labels2,
+            datasets: [{
+                label: 'Umidade',
+                backgroundColor: 'rgb(0,206,209)',
+                borderColor: 'rgb(199,21,133)',
+                data: [],
+                fill: false,
+                tension: 0.1,
+
+            },
+          ]
+        };
+
+        Chart.defaults.color = 'black';
 
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
+     
+
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.temperatura);
-            dados.datasets[0].data.push(registro.dtHora);
+
+            hora_atual=registro.HORA
+            tempAtual=registro.temperatura
+            umidAtual=registro.umidade
+
+
+            if(registro.idEstufa == sessionStorage.NUMERO_ESTUFA){
+            labels.push(registro.HORA);
+            labels2.push(registro.HORA);
+            dados.datasets[0].data.push(registro.temperatura);
+            dados2.datasets[0].data.push(registro.umidade);
+            if(registro.temperatura > maiorTemperatura){
+                maiorTemperatura = registro.temperatura
+                hora_max_temp = registro.HORA
+            }
+            if(registro.umidade > maiorUmidade){
+                maiorUmidade = registro.umidade
+                hora_max_umid = registro.HORA
+            }
+            if(registro.temperatura < menorTemperatura){
+                menorTemperatura = registro.temperatura
+                hora_min_temp = registro.HORA
+            }
+            if(registro.umidade < menorUmidade){
+                menorUmidade = registro.umidade
+                hora_min_umid = registro.HORA
+            }
+
+            if(registro.temperatura >= 24 && registro.temperatura < 27){
+                alerta.style.backgroundImage=`url(assets/Alerta.png)`
+            }
+            if(registro.temperatura >= 27){
+                alerta.style.backgroundImage=`url(assets/perigo.png)`
+
+            }
+
+
+            }
         }
+        console.log(maiorTemperatura)
+        console.log(menorTemperatura)
+        console.log(maiorUmidade)
+        console.log(menorUmidade)
+
+        minTemp.innerHTML += `${menorTemperatura}`
+        maxTemp.innerHTML += `${maiorTemperatura}`
+        minUmid.innerHTML += `${menorUmidade}`
+        maxUmid.innerHTML += `${menorUmidade}`
+
+        minHora.innerHTML +=`${hora_min_temp}`
+        maxHora.innerHTML +=`${hora_max_temp}`
+        atualHora.innerHTML +=`${hora_atual}`
+        atualTemp.innerHTML +=`${tempAtual}`
+        atualUmid.innerHTML +=`${umidAtual}`
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -214,6 +300,11 @@
             data: dados,
             options: {}
         };
+        const config2 = {
+            type: 'line',
+            data: dados2,
+            options: {}
+        };
         let myChart = new Chart(
             document.getElementById('myChart'),
             config
@@ -222,6 +313,60 @@
             document.getElementById('myChart2'),
             config2,
         );
+    }
+
+    function atualizarGrafico(idEmpresa, dados, myChart) {
+
+
+
+        fetch(`/medidas/tempo-real/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idEmpresa}`)
+                    avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
  
 </script>
