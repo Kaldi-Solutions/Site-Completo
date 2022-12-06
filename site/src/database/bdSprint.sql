@@ -13,6 +13,7 @@ CREATE TABLE Empresa (
     Complemento varchar(45),
     Token varchar(50)
     );
+ select * from usuarios;   
     
 CREATE TABLE usuario (
     idUsuario int primary key auto_increment,
@@ -44,7 +45,7 @@ CREATE TABLE Sensor (
 );
 
 CREATE TABLE Leitura(
-	idLeitura INT,
+	idLeitura INT auto_increment,
 	temperatura FLOAT,
     umidade FLOAT,
     dt DATE,
@@ -126,7 +127,7 @@ insert into leitura values
 (9, '19.13', '45.5', '2022-10-10','20:00:00', 1),
 (10, '21.57', '45.9', '2022-10-10','21:00:00', 1),
 (11, '22.03', '46.6', '2022-10-10','22:00:00', 1),
-(12, '24.18', '48.0', '2022-10-10','23:00:00', 1),
+(12, '28.18', '48.0', '2022-10-10','23:00:00', 1),
 
 -- Estufa 2
 (13, '22.50', '60.5', '2022-10-10','12:00:00', 2),
@@ -157,19 +158,23 @@ insert into leitura values
 (36, '24.18', '48.0', '2022-10-10','23:00:00', 3);
 -- Empresa 2
 
+insert into leitura values (690, '27', '57', '2022-12-06', '16:04:30',1);
+
 
 delete from Usuario where idUsuario =2;
 
 SELECT * FROM Usuario;
 SELECT * FROM Empresa;
 SELECT * FROM Sensor;
-SELECT * FROM Leitura;
+SELECT * FROM Leitura order by idLeitura desc;
 SELECT * FROM Estufa;
 
-select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa, Sensor.statusSensor, leitura.temperatura,
+INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (20.0, 50.0, CURDATE(), CURTIME(), 1);
+
+select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa, Sensor.statusSensor, idLeitura, leitura.temperatura,
         leitura.umidade , leitura.dt, leitura.HORA 
         from Empresa join Estufa on fkEmpresa =idEmpresa 
-        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = 1 and numeroEstufa= 1 and 2
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = 1 and numeroEstufa in(1)
         order by HORA desc limit 12;
 
 select * from Leitura join sensor on fkSensor = idSensor join Estufa on idEstufa = fkEstufa join empresa
