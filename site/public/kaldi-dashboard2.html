@@ -146,18 +146,20 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     var idEmpresa = sessionStorage.ID_EMPRESA
     var numeroDaEstufa = sessionStorage.NUMERO_ESTUFA
-    function obterDadosGrafico(idEmpresa, numeroDaEstufa) {
-        numeroDaEstufa = sessionStorage.NUMERO_ESTUFA;
+    var limite_linhas = 12
+    function obterDadosGrafico(idEmpresa, numeroDaEstufa, limite_linhas) {
+        numeroDaEstufa = (`(${sessionStorage.NUMERO_ESTUFA})`);
         idEmpresa=sessionStorage.ID_EMPRESA;
+        limite_linhas = 12;
         console.log(numeroDaEstufa)
 
 
-        fetch(`/medidas/ultimas/${numeroDaEstufa}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    plotarGrafico(resposta,idEmpresa, numeroDaEstufa);
+                    plotarGrafico(resposta,idEmpresa, numeroDaEstufa, limite_linhas);
 
                 });
             } else {
@@ -173,7 +175,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta,idEmpresa, numeroDaEstufa) {
+    function plotarGrafico(resposta,idEmpresa, numeroDaEstufa, limite_linhas) {
         var maiorTemperatura = -9999
         var maiorUmidade = -9999
         var menorTemperatura = 9999

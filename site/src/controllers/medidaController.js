@@ -2,7 +2,7 @@ var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 12;
+    var limite_linhas = req.params.limite_linhas;
     var idEmpresa = req.params.idEmpresa;
     var numeroDaEstufa = req.params.numeroDaEstufa;
 
