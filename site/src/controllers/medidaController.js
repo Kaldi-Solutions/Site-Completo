@@ -25,11 +25,14 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var numeroDaEstufa= req.params.numeroDaEstufa;
+    var limite_linhas = req.params.limite_linhas;
+    var idEmpresa = req.params.idEmpresa;
+    var numeroDaEstufa = req.params.numeroDaEstufa;
 
+    
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(numeroDaEstufa).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idEmpresa, numeroDaEstufa, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

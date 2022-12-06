@@ -8,7 +8,7 @@ router.get("/ultimas/:numeroDaEstufa/:idEmpresa/:limite_linhas", function (req, 
 });
 
 
-router.get("/tempo-real/:medidas", function (req, res) {
+router.get("/tempo-real/:numeroDaEstufa/:idEmpresa/:limite_linhas", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 

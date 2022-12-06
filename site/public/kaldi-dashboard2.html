@@ -315,10 +315,73 @@
             document.getElementById('myChart'),
             config
         );
-        const myChart2 = new Chart(
+        let myChart2 = new Chart(
             document.getElementById('myChart2'),
             config2,
         );
+
+
+        setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, myChart, myChart2), 2000);
+
+    }
+
+    function atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, myChart, myChart2) {
+
+
+
+        fetch(`/medidas/tempo-real/${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`)
+
+
+                    if (novoRegistro[0].HORA == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                     
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].temperatura)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].HORA); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        myChart.update();
+                        
+                        dados2.labels2.shift(); // apagar o primeiro
+                        dados2.labels2.push(novoRegistro[0].HORA); // incluir um novo momento
+                        
+                        dados2.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados2.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                        
+                        myChart2.update();
+                      
+
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, myChart, myChart2), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, myChart, myChart2), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 
   
