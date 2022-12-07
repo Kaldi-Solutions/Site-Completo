@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="estufas pag1">
+                <div id="estufas" class="estufas pag1">
                     <div class="estufa" id="estufaone">
                         <span>Estufa 1</span>
                         <div class="boxes_estufa">
@@ -246,13 +246,19 @@
                             </div>
                             <div class="exclamation" id="alerta6"></div>
                         </div>
-
                     </div>
                 </div>
-
+                <div id="sexo" class="sexo"></div>
             </div>
 
         </div>
+    </div>
+
+    <div class="grafico">
+        <canvas id="myChart2"></canvas>
+    </div>
+    <div class="grafico">
+        <canvas id="myChart"></canvas>
     </div>
 
 </body>
@@ -260,7 +266,6 @@
 </html>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
     function sair() {
         sessionStorage.clear()
         window.location = 'index.html';
@@ -690,10 +695,349 @@
             document.getElementById('myChart'),
             config
         );
-        const myChart2 = new Chart(
+        let myChart2 = new Chart(
             document.getElementById('myChart2'),
             config2,
         );
+
+        setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+
+    }
+
+    function atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2, myChart, myChart2) {
+        var maiorTemperatura = -9999
+        var maiorUmidade = -9999
+        var menorTemperatura = 9999
+        var menorUmidade = 9999
+        var tempAtual =0
+        var umidAtual =0
+
+        var hora_min_temp=0
+        var hora_max_temp=0
+        var hora_min_umid=0
+        var hora_max_umid=0
+        var hora_atual =0
+
+
+
+        fetch(`/medidas/tempo-real/${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`)
+
+
+                    if (novoRegistro[0].HORA == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                     
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].temperatura)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].HORA); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        
+                        dados2.labels.shift(); // apagar o primeiro
+                        dados2.labels.push(novoRegistro[0].HORA); // incluir um novo momento
+                        
+                        dados2.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados2.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                        hora_atual=novoRegistro[0].HORA
+                        tempAtual=novoRegistro[0].temperatura
+                        umidAtual=novoRegistro[0].umidade
+
+                        
+                        if (novoRegistro[0].numeroEstufa == 1) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(registro.temperatura);
+                            dados2.datasets[0].data.push(registro.umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[0].temperatura
+                                hora_min_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = rnovoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta1.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufaone.style.backgroundColor = "yellow";
+                            }
+                            if (novoRegistro[0].temperatura >= 27) {
+                                alerta1.style.backgroundImage = `url(assets/perigo.png)`
+                                estufaone.style.backgroundColor = "red";
+            
+                            }
+                            minTemp.innerHTML = `${menorTemperatura}`
+                            maxTemp.innerHTML = `${maiorTemperatura}`
+                            minUmid.innerHTML = `${menorUmidade}`
+                            maxUmid.innerHTML = `${menorUmidade}`
+            
+                            minHora.innerHTML = `${hora_min_temp}`
+                            maxHora.innerHTML = `${hora_max_temp}`
+                            atualHora.innerHTML = `${hora_atual}`
+                            atualTemp.innerHTML = `${tempAtual}`
+                            atualUmid.innerHTML = `${umidAtual}`
+            
+                        }
+            
+            
+            
+                        if (novoRegistro[0].numeroEstufa == 2) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(novoRegistro[0].temperatura);
+                            dados2.datasets[0].data.push(novoRegistro[0].umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[0].temperatura
+                                hora_min_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = novoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta2.style.backgroundImage = `url(assets/Alerta.png)`
+                            }
+                            if (novoRegistro[0].temperatura >= 27) {
+                                alerta2.style.backgroundImage = `url(assets/perigo.png)`
+                            }
+            
+            
+                            minTemp2.innerHTML = `${menorTemperatura}`
+                            maxTemp2.innerHTML = `${maiorTemperatura}`
+                            minUmid2.innerHTML = `${menorUmidade}`
+                            maxUmid2.innerHTML = `${menorUmidade}`
+            
+                            minHora2.innerHTML = `${hora_min_temp}`
+                            maxHora2.innerHTML = `${hora_max_temp}`
+                            atualHora2.innerHTML = `${hora_atual}`
+                            atualTemp2.innerHTML = `${tempAtual}`
+                            atualUmid2.innerHTML = `${umidAtual}`
+            
+                        }
+            
+            
+                        if (novoRegistro[0].numeroEstufa == 3) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(novoRegistro[0].temperatura);
+                            dados2.datasets[0].data.push(novoRegistro[0].umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[0].temperatura
+                                hora_min_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = novoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta3.style.backgroundImage = `url(assets/Alerta.png)`
+                            }
+                            if (novoRegistro[0].temperatura >= 27) {
+                                alerta3.style.backgroundImage = `url(assets/perigo.png)`
+                            }
+                            minTemp3.innerHTML = `${menorTemperatura}`
+                            maxTemp3.innerHTML = `${maiorTemperatura}`
+                            minUmid3.innerHTML = `${menorUmidade}`
+                            maxUmid3.innerHTML = `${menorUmidade}`
+            
+                            minHora3.innerHTML = `${hora_min_temp}`
+                            maxHora3.innerHTML = `${hora_max_temp}`
+                            atualHora3.innerHTML = `${hora_atual}`
+                            atualTemp3.innerHTML = `${tempAtual}`
+                            atualUmid3.innerHTML = `${umidAtual}`
+                        }
+            
+            
+            
+                        if (novoRegistro[0].numeroEstufa == 4) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(novoRegistro[0].temperatura);
+                            dados2.datasets[0].data.push(novoRegistro[0].umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[0].temperatura
+                                hora_min_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = novoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta4.style.backgroundImage = `url(assets/Alerta.png)`
+                            }
+                            if (registro.temperatura >= 27) {
+                                alerta4.style.backgroundImage = `url(assets/perigo.png)`
+                            }
+                            minTemp4.innerHTML = `${menorTemperatura}`
+                            maxTemp4.innerHTML = `${maiorTemperatura}`
+                            minUmid4.innerHTML = `${menorUmidade}`
+                            maxUmid4.innerHTML = `${menorUmidade}`
+            
+                            minHora4.innerHTML = `${hora_min_temp}`
+                            maxHora4.innerHTML = `${hora_max_temp}`
+                            atualHora4.innerHTML = `${hora_atual}`
+                            atualTemp4.innerHTML = `${tempAtual}`
+                            atualUmid4.innerHTML = `${umidAtual}`
+                        }
+            
+            
+                        if (novoRegistro[0].numeroEstufa == 5) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(novoRegistro[0].temperatura);
+                            dados2.datasets[0].data.push(novoRegistro[0].umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura =novoRegistro[0].temperatura
+                                hora_min_temp = rnovoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = novoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta5.style.backgroundImage = `url(assets/Alerta.png)`
+                            }
+                            if (novoRegistro[0].temperatura >= 27) {
+                                alerta5.style.backgroundImage = `url(assets/perigo.png)`
+                            }
+                            minTemp5.innerHTML = `${menorTemperatura}`
+                            maxTemp5.innerHTML = `${maiorTemperatura}`
+                            minUmid5.innerHTML = `${menorUmidade}`
+                            maxUmid5.innerHTML = `${menorUmidade}`
+            
+                            minHora5.innerHTML = `${hora_min_temp}`
+                            maxHora5.innerHTML = `${hora_max_temp}`
+                            atualHora5.innerHTML = `${hora_atual}`
+                            atualTemp5.innerHTML = `${tempAtual}`
+                            atualUmid5.innerHTML = `${umidAtual}`
+                        }
+            
+            
+                        if (novoRegistro[0].numeroEstufa == 6) {
+                            labels.push(novoRegistro[0].HORA);
+                            labels2.push(novoRegistro[0].HORA);
+                            dados.datasets[0].data.push(novoRegistro[0].temperatura);
+                            dados2.datasets[0].data.push(novoRegistro[0].umidade);
+                            if (novoRegistro[0].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[0].temperatura
+                                hora_max_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[0].umidade
+                                hora_max_umid = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[0].temperatura
+                                hora_min_temp = novoRegistro[0].HORA
+                            }
+                            if (novoRegistro[0].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[0].umidade
+                                hora_min_umid = novoRegistro[0].HORA
+                            }
+            
+                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                                alerta6.style.backgroundImage = `url(assets/Alerta.png)`
+                            }
+                            if (novoRegistro[0].temperatura >= 27) {
+                                alerta6.style.backgroundImage = `url(assets/perigo.png)`
+                            }
+                            minTemp6.innerHTML = `${menorTemperatura}`
+                            maxTemp6.innerHTML = `${maiorTemperatura}`
+                            minUmid6.innerHTML = `${menorUmidade}`
+                            maxUmid6.innerHTML = `${menorUmidade}`
+            
+                            minHora6.innerHTML = `${hora_min_temp}`
+                            maxHora6.innerHTML = `${hora_max_temp}`
+                            atualHora6.innerHTML = `${hora_atual}`
+                            atualTemp6.innerHTML = `${tempAtual}`
+                            atualUmid6.innerHTML = `${umidAtual}`
+                        }
+                        
+                        
+
+
+                    
+                            
+                        
+                        myChart.update();
+                        myChart2.update();
+                      
+
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 
 </script>
