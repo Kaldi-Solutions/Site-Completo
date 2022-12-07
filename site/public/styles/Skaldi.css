@@ -205,6 +205,24 @@ html{
     align-items: center;
 }
 
+#facebook:hover {
+    color: #352020;
+    cursor: pointer;
+ }
+
+ #linkedin:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #insta:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #twitter:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+
 
 .footer .contato p {
     /* border: solid red 3px; */

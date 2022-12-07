@@ -127,6 +127,25 @@ button:hover {
     /* border: solid red 3px; */
     margin: 5px 0px 0px 0px;
 }
+#facebook:hover {
+    color: #352020;
+    cursor: pointer;
+ }
+
+ #linkedin:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #insta:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+ #twitter:hover{
+    color: #352020;
+    cursor: pointer;
+ }
+
+
 input.invalid{
     border:  2px solid red !important;
 }
