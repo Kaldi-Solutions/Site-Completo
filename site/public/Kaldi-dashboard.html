@@ -127,7 +127,7 @@
                             <div class="exclamation" id="alerta1"></div>
                         </div>
                     </div>
-                    <div class="estufa">
+                    <div class="estufa" id="estufatwo">
                         <span>Estufa 2</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -151,7 +151,7 @@
                             <div class="exclamation" id="alerta2"></div>
                         </div>
                     </div>
-                    <div class="estufa">
+                    <div class="estufa" id="estufathree">
                         <span>Estufa 3</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -175,7 +175,7 @@
                             <div class="exclamation" id="alerta3"></div>
                         </div>
                     </div>
-                    <div class="estufa">
+                    <div class="estufa" id="estufafour">
                         <span>Estufa 4</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -199,7 +199,7 @@
                             <div class="exclamation" id="alerta4"></div>
                         </div>
                     </div>
-                    <div class="estufa">
+                    <div class="estufa" id="estufafive">
                         <span>Estufa 5</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -223,7 +223,7 @@
                             <div class="exclamation" id="alerta5"></div>
                         </div>
                     </div>
-                    <div class="estufa">
+                    <div class="estufa" id="estufasix">
                         <span>Estufa 6</span>
                         <div class="boxes_estufa">
                             <div class="setor">
@@ -316,16 +316,16 @@
         var limite_linhas = 60
         const idEmpresa = sessionStorage.ID_EMPRESA
         console.log(idEmpresa)
-       var numeroEstufa = '(1,2,3,4,5,6)'
+       var numeroDaEstufa = '(1,2,3,4,5,6)'
 
 
-        fetch(`/medidas/ultimas/${numeroEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idEmpresa, numeroEstufa, limite_linhas);
+                    plotarGrafico(resposta, idEmpresa, numeroDaEstufa, limite_linhas);
 
                 });
             } else {
@@ -340,7 +340,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idEmpresa, numeroEstufa, limite_linhas) {
+    function plotarGrafico(resposta, idEmpresa, numeroDaEstufa, limite_linhas) {
         var maiorTemperatura = -9999
         var maiorUmidade = -9999
         var menorTemperatura = 9999
@@ -433,7 +433,7 @@
 
                 if (registro.temperatura >= 24 && registro.temperatura < 27) {
                     alerta1.style.backgroundImage = `url(assets/Alerta.png)`
-                    estufaone.style.backgroundColor = "yellow";
+                    
                 }
                 if (registro.temperatura >= 27) {
                     alerta1.style.backgroundImage = `url(assets/perigo.png)`
@@ -443,7 +443,7 @@
                 minTemp.innerHTML = `${menorTemperatura}`
                 maxTemp.innerHTML = `${maiorTemperatura}`
                 minUmid.innerHTML = `${menorUmidade}`
-                maxUmid.innerHTML = `${menorUmidade}`
+                maxUmid.innerHTML = `${maiorUmidade}`
 
                 minHora.innerHTML = `${hora_min_temp}`
                 maxHora.innerHTML = `${hora_max_temp}`
@@ -488,7 +488,7 @@
                 minTemp2.innerHTML = `${menorTemperatura}`
                 maxTemp2.innerHTML = `${maiorTemperatura}`
                 minUmid2.innerHTML = `${menorUmidade}`
-                maxUmid2.innerHTML = `${menorUmidade}`
+                maxUmid2.innerHTML = `${maiorUmidade}`
 
                 minHora2.innerHTML = `${hora_min_temp}`
                 maxHora2.innerHTML = `${hora_max_temp}`
@@ -530,7 +530,7 @@
                 minTemp3.innerHTML = `${menorTemperatura}`
                 maxTemp3.innerHTML = `${maiorTemperatura}`
                 minUmid3.innerHTML = `${menorUmidade}`
-                maxUmid3.innerHTML = `${menorUmidade}`
+                maxUmid3.innerHTML = `${maiorUmidade}`
 
                 minHora3.innerHTML = `${hora_min_temp}`
                 maxHora3.innerHTML = `${hora_max_temp}`
@@ -565,14 +565,18 @@
 
                 if (registro.temperatura >= 24 && registro.temperatura < 27) {
                     alerta4.style.backgroundImage = `url(assets/Alerta.png)`
+                    estufafour.style.backgroundColor = "yellow";
+
                 }
                 if (registro.temperatura >= 27) {
                     alerta4.style.backgroundImage = `url(assets/perigo.png)`
+                    estufafour.style.backgroundColor = "red";
+
                 }
                 minTemp4.innerHTML = `${menorTemperatura}`
                 maxTemp4.innerHTML = `${maiorTemperatura}`
                 minUmid4.innerHTML = `${menorUmidade}`
-                maxUmid4.innerHTML = `${menorUmidade}`
+                maxUmid4.innerHTML = `${maiorUmidade}`
 
                 minHora4.innerHTML = `${hora_min_temp}`
                 maxHora4.innerHTML = `${hora_max_temp}`
@@ -613,7 +617,7 @@
                 minTemp5.innerHTML = `${menorTemperatura}`
                 maxTemp5.innerHTML = `${maiorTemperatura}`
                 minUmid5.innerHTML = `${menorUmidade}`
-                maxUmid5.innerHTML = `${menorUmidade}`
+                maxUmid5.innerHTML = `${maiorUmidade}`
 
                 minHora5.innerHTML = `${hora_min_temp}`
                 maxHora5.innerHTML = `${hora_max_temp}`
@@ -654,7 +658,7 @@
                 minTemp6.innerHTML = `${menorTemperatura}`
                 maxTemp6.innerHTML = `${maiorTemperatura}`
                 minUmid6.innerHTML = `${menorUmidade}`
-                maxUmid6.innerHTML = `${menorUmidade}`
+                maxUmid6.innerHTML = `${maiorUmidade}`
 
                 minHora6.innerHTML = `${hora_min_temp}`
                 maxHora6.innerHTML = `${hora_max_temp}`
@@ -758,42 +762,55 @@
                         tempAtual=novoRegistro[0].temperatura
                         umidAtual=novoRegistro[0].umidade
 
+                        estufaone.style.backgroundColor = "transparent";
+                        estufatwo.style.backgroundColor = "transparent";
+                        estufathree.style.backgroundColor = "transparent";
+                        estufafour.style.backgroundColor = "transparent";
+                        estufafive.style.backgroundColor = "transparent";
+
                         
                         if (novoRegistro[0].numeroEstufa == 1) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
-                            dados.datasets[0].data.push(registro.temperatura);
-                            dados2.datasets[0].data.push(registro.umidade);
-                            if (novoRegistro[0].temperatura > maiorTemperatura) {
-                                maiorTemperatura = novoRegistro[0].temperatura
-                                hora_max_temp = novoRegistro[0].HORA
+                            dados.datasets[0].data.push(novoRegistro.temperatura);
+                            dados2.datasets[0].data.push(novoRegistro.umidade);
+                            for(var index = 11; index >= 0; index--){
+                            if (novoRegistro[index].temperatura > maiorTemperatura) {
+                                maiorTemperatura = novoRegistro[index].temperatura
+                                hora_max_temp = novoRegistro[index].HORA
                             }
-                            if (novoRegistro[0].umidade > maiorUmidade) {
-                                maiorUmidade = novoRegistro[0].umidade
-                                hora_max_umid = novoRegistro[0].HORA
+                        
+                            if (novoRegistro[index].umidade > maiorUmidade) {
+                                maiorUmidade = novoRegistro[index].umidade
+                                hora_max_umid = novoRegistro[index].HORA
                             }
-                            if (novoRegistro[0].temperatura < menorTemperatura) {
-                                menorTemperatura = novoRegistro[0].temperatura
-                                hora_min_temp = novoRegistro[0].HORA
+                            if (novoRegistro[index].temperatura < menorTemperatura) {
+                                menorTemperatura = novoRegistro[index].temperatura
+                                hora_min_temp = novoRegistro[index].HORA
                             }
-                            if (novoRegistro[0].umidade < menorUmidade) {
-                                menorUmidade = novoRegistro[0].umidade
-                                hora_min_umid = rnovoRegistro[0].HORA
+                            if (novoRegistro[index].umidade < menorUmidade) {
+                                menorUmidade = novoRegistro[index].umidade
+                                hora_min_umid = novoRegistro[index].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta1.style.backgroundImage = `url(assets/Alerta.png)`
-                                estufaone.style.backgroundColor = "yellow";
+                                setTimeout(function () {
+                                    estufaone.style.backgroundColor = "yellow";
+                                }, 1000); // apenas para exibir o loading
                             }
-                            if (novoRegistro[0].temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                            || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta1.style.backgroundImage = `url(assets/perigo.png)`
                                 estufaone.style.backgroundColor = "red";
             
                             }
+                        }
                             minTemp.innerHTML = `${menorTemperatura}`
                             maxTemp.innerHTML = `${maiorTemperatura}`
                             minUmid.innerHTML = `${menorUmidade}`
-                            maxUmid.innerHTML = `${menorUmidade}`
+                            maxUmid.innerHTML = `${maiorUmidade}`
             
                             minHora.innerHTML = `${hora_min_temp}`
                             maxHora.innerHTML = `${hora_max_temp}`
@@ -806,8 +823,7 @@
             
             
                         if (novoRegistro[0].numeroEstufa == 2) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
+                           
                             dados.datasets[0].data.push(novoRegistro[0].temperatura);
                             dados2.datasets[0].data.push(novoRegistro[0].umidade);
                             if (novoRegistro[0].temperatura > maiorTemperatura) {
@@ -827,11 +843,19 @@
                                 hora_min_umid = novoRegistro[0].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta2.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufatwo.style.backgroundColor = "yellow";
+
                             }
-                            if (novoRegistro[0].temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                            || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta2.style.backgroundImage = `url(assets/perigo.png)`
+                                estufatwo.style.backgroundColor = "red";
+
                             }
             
             
@@ -850,8 +874,7 @@
             
             
                         if (novoRegistro[0].numeroEstufa == 3) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
+                    
                             dados.datasets[0].data.push(novoRegistro[0].temperatura);
                             dados2.datasets[0].data.push(novoRegistro[0].umidade);
                             if (novoRegistro[0].temperatura > maiorTemperatura) {
@@ -871,11 +894,19 @@
                                 hora_min_umid = novoRegistro[0].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta3.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufathree.style.backgroundColor = "yellow";
+
                             }
-                            if (novoRegistro[0].temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta3.style.backgroundImage = `url(assets/perigo.png)`
+                                estufathree.style.backgroundColor = "red";
+
                             }
                             minTemp3.innerHTML = `${menorTemperatura}`
                             maxTemp3.innerHTML = `${maiorTemperatura}`
@@ -892,8 +923,7 @@
             
             
                         if (novoRegistro[0].numeroEstufa == 4) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
+             
                             dados.datasets[0].data.push(novoRegistro[0].temperatura);
                             dados2.datasets[0].data.push(novoRegistro[0].umidade);
                             if (novoRegistro[0].temperatura > maiorTemperatura) {
@@ -913,11 +943,19 @@
                                 hora_min_umid = novoRegistro[0].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta4.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufafour.style.backgroundColor = "yellow";
+
                             }
-                            if (registro.temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta4.style.backgroundImage = `url(assets/perigo.png)`
+                                estufafour.style.backgroundColor = "red";
+
                             }
                             minTemp4.innerHTML = `${menorTemperatura}`
                             maxTemp4.innerHTML = `${maiorTemperatura}`
@@ -933,8 +971,7 @@
             
             
                         if (novoRegistro[0].numeroEstufa == 5) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
+          
                             dados.datasets[0].data.push(novoRegistro[0].temperatura);
                             dados2.datasets[0].data.push(novoRegistro[0].umidade);
                             if (novoRegistro[0].temperatura > maiorTemperatura) {
@@ -954,11 +991,19 @@
                                 hora_min_umid = novoRegistro[0].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta5.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufafive.style.backgroundColor = "yellow";
+
                             }
-                            if (novoRegistro[0].temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta5.style.backgroundImage = `url(assets/perigo.png)`
+                                estufafive.style.backgroundColor = "red";
+
                             }
                             minTemp5.innerHTML = `${menorTemperatura}`
                             maxTemp5.innerHTML = `${maiorTemperatura}`
@@ -974,8 +1019,7 @@
             
             
                         if (novoRegistro[0].numeroEstufa == 6) {
-                            labels.push(novoRegistro[0].HORA);
-                            labels2.push(novoRegistro[0].HORA);
+                 
                             dados.datasets[0].data.push(novoRegistro[0].temperatura);
                             dados2.datasets[0].data.push(novoRegistro[0].umidade);
                             if (novoRegistro[0].temperatura > maiorTemperatura) {
@@ -995,11 +1039,19 @@
                                 hora_min_umid = novoRegistro[0].HORA
                             }
             
-                            if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27) {
+                            if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
                                 alerta6.style.backgroundImage = `url(assets/Alerta.png)`
+                                estufasix.style.backgroundColor = "yellow";
+
                             }
-                            if (novoRegistro[0].temperatura >= 27) {
+                            if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
+                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
                                 alerta6.style.backgroundImage = `url(assets/perigo.png)`
+                                estufasix.style.backgroundColor = "red";
+
                             }
                             minTemp6.innerHTML = `${menorTemperatura}`
                             maxTemp6.innerHTML = `${maiorTemperatura}`

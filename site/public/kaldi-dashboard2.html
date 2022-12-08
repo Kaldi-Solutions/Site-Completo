@@ -246,7 +246,7 @@
             umidAtual=registro.umidade
 
 
-            if(registro.idEstufa == sessionStorage.NUMERO_ESTUFA){
+            if(registro.numeroEstufa == sessionStorage.NUMERO_ESTUFA){
             labels.push(registro.HORA);
             labels2.push(registro.HORA);
             dados.datasets[0].data.push(registro.temperatura);
@@ -283,7 +283,7 @@
         minTemp.innerHTML += `${menorTemperatura}`
         maxTemp.innerHTML += `${maiorTemperatura}`
         minUmid.innerHTML += `${menorUmidade}`
-        maxUmid.innerHTML += `${menorUmidade}`
+        maxUmid.innerHTML += `${maiorUmidade}`
 
         minHora.innerHTML +=`${hora_min_temp}`
         maxHora.innerHTML +=`${hora_max_temp}`
