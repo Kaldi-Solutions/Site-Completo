@@ -6,7 +6,7 @@ const sql = require('mssql');
 
 // não altere!
 const SERIAL_BAUD_RATE = 9600;
-const SERVIDOR_PORTA = 3300;
+const SERVIDOR_PORTA = 8080;
 
 // configure a linha abaixo caso queira que os dados capturados sejam inseridos no banco de dados.
 // false -> nao insere
@@ -16,7 +16,7 @@ const HABILITAR_OPERACAO_INSERIR = true;
 // altere o valor da variável AMBIENTE para o valor desejado:
 // API conectada ao banco de dados remoto, SQL Server -> 'producao'
 // API conectada ao banco de dados local, MySQL Workbench - 'desenvolvimento'
-const AMBIENTE = 'desenvolvimento';
+const AMBIENTE = 'producao';
 
 const serial = async (
     valoresDht11Umidade,
@@ -38,6 +38,7 @@ const serial = async (
         ).promise();
     } else if (AMBIENTE == 'producao') {
         console.log('Projeto rodando inserindo dados em nuvem. Configure as credenciais abaixo.');
+        
     } else {
         throw new Error('Ambiente não configurado. Verifique o arquivo "main.js" e tente novamente.');
     }
@@ -76,16 +77,16 @@ const serial = async (
                 // -> altere nome da tabela e colunas se necessário
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> Importante! você deve ter o aquario de id 1 cadastrado.
-                sqlquery = `INSERT INTO Leitura (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave, momento, fk_aquario) VALUES (${dht11Umidade}, ${dht11Temperatura}, ${luminosidade}, ${lm35Temperatura}, ${chave}, CURRENT_TIMESTAMP, 1)`;
+                sqlquery = `INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 1),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 2),  (${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 3),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 4),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 5),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), CURTIME(), 6)`;
 
                 // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
                 // Importante! você deve ter criado o usuário abaixo com os comandos presentes no arquivo
                 // "script-criacao-usuario-sqlserver.sql", presente neste diretório.
-                const connStr = "Server=servidor-acquatec.database.windows.net;Database=bd-acquatec;User Id=usuarioParaAPIArduino_datawriter;Password=#Gf_senhaParaAPI;";
+                const connStr = "Server=kaldisolutions.database.windows.net;Database=bdKaldi;User Id=admin-Kaldi;Password=#Gfgrupo4;";
 
                 function inserirComando(conn, sqlquery) {
                     conn.query(sqlquery);
-                    console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade + ", " + lm35Temperatura + ", " + chave)
+                    console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", ")
                 }
 
                 sql.connect(connStr)

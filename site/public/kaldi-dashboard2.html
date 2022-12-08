@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="path/to/chartjs/dist/chart.min.js"></script>
+    <script src="path/to/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
     <link rel="stylesheet" href="styles/sDashboard.css">
     <title>Estufas</title>
 </head>
@@ -49,13 +51,13 @@
                             <div class="setor">
                                 <span>Temp. (C°)</span>
                                 <span class="min">Min: <span id="minTemp"></span>º</span>
-                                <span >Atual: <span id="atualTemp"></span>°</span>
+                                <span>Atual: <span id="atualTemp"></span>°</span>
                                 <span class="max">Max: <span id="maxTemp"></span>°</span>
                             </div>
                             <div class="setor">
                                 <span>Umidade (%)</span>
                                 <span class="min">Min: <span id="minUmid"></span>%</span>
-                                <span >Atual: <span id="atualUmid"></span>%</span>
+                                <span>Atual: <span id="atualUmid"></span>%</span>
                                 <span class="max">Max: <span id="maxUmid"></span>%</span>
                             </div>
                             <div class="exclamation" id="alerta"></div>
@@ -121,6 +123,7 @@
         </div>
     </div>
 </body>
+
 </html>
 <script>
 
@@ -129,18 +132,20 @@
     var pontos = []
     var ids = []
 
+
+
     var maiorTemperatura = -9999
     var maiorUmidade = -9999
     var menorTemperatura = 9999
     var menorUmidade = 9999
-    var tempAtual =0
-    var umidAtual =0
+    var tempAtual = 0
+    var umidAtual = 0
 
-    var hora_min_temp=0
-    var hora_max_temp=0
-    var hora_min_umid=0
-    var hora_max_umid=0
-    var hora_atual =0
+    var hora_min_temp = 0
+    var hora_max_temp = 0
+    var hora_min_umid = 0
+    var hora_max_umid = 0
+    var hora_atual = 0
 
 
 
@@ -162,7 +167,7 @@
     var limite_linhas = 12
     function obterDadosGrafico(idEmpresa, numeroDaEstufa, limite_linhas) {
         numeroDaEstufa = (`(${sessionStorage.NUMERO_ESTUFA})`);
-        idEmpresa=sessionStorage.ID_EMPRESA;
+        idEmpresa = sessionStorage.ID_EMPRESA;
         limite_linhas = 12;
         console.log(numeroDaEstufa)
 
@@ -172,7 +177,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    plotarGrafico(resposta,idEmpresa, numeroDaEstufa, limite_linhas);
+                    plotarGrafico(resposta, idEmpresa, numeroDaEstufa, limite_linhas);
 
                 });
             } else {
@@ -188,9 +193,9 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta,idEmpresa, numeroDaEstufa, limite_linhas) {
-     
-        
+    function plotarGrafico(resposta, idEmpresa, numeroDaEstufa, limite_linhas) {
+
+
         console.log('iniciando plotagem do gráfico...');
 
         let labels = [
@@ -208,7 +213,7 @@
                 tension: 0.1,
 
             },
-          ]
+            ]
         };
 
         let labels2 = [
@@ -226,7 +231,7 @@
                 tension: 0.1,
 
             },
-          ]
+            ]
         };
 
         Chart.defaults.color = 'black';
@@ -236,60 +241,60 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-     
+
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            hora_atual=registro.HORA
-            tempAtual=registro.temperatura
-            umidAtual=registro.umidade
+            hora_atual = registro.HORA
+            tempAtual = registro.temperatura
+            umidAtual = registro.umidade
 
 
-            if(registro.numeroEstufa == sessionStorage.NUMERO_ESTUFA){
-            labels.push(registro.HORA);
-            labels2.push(registro.HORA);
-            dados.datasets[0].data.push(registro.temperatura);
-            dados2.datasets[0].data.push(registro.umidade);
+            if (registro.numeroEstufa == sessionStorage.NUMERO_ESTUFA) {
+                labels.push(registro.HORA);
+                labels2.push(registro.HORA);
+                dados.datasets[0].data.push(registro.temperatura);
+                dados2.datasets[0].data.push(registro.umidade);
 
-            if(registro.temperatura > maiorTemperatura){
-                maiorTemperatura = registro.temperatura
-                hora_max_temp = registro.HORA
-            }
-            if(registro.umidade > maiorUmidade){
-                maiorUmidade = registro.umidade
-                hora_max_umid = registro.HORA
-            }
-            if(registro.temperatura < menorTemperatura){
-                menorTemperatura = registro.temperatura
-                hora_min_temp = registro.HORA
-            }
-            if(registro.umidade < menorUmidade){
-                menorUmidade = registro.umidade
-                hora_min_umid = registro.HORA
-            }
+                if (registro.temperatura > maiorTemperatura) {
+                    maiorTemperatura = registro.temperatura
+                    hora_max_temp = registro.HORA
+                }
+                if (registro.umidade > maiorUmidade) {
+                    maiorUmidade = registro.umidade
+                    hora_max_umid = registro.HORA
+                }
+                if (registro.temperatura < menorTemperatura) {
+                    menorTemperatura = registro.temperatura
+                    hora_min_temp = registro.HORA
+                }
+                if (registro.umidade < menorUmidade) {
+                    menorUmidade = registro.umidade
+                    hora_min_umid = registro.HORA
+                }
 
-            if(registro.temperatura >= 24 && registro.temperatura < 27){
-                alerta.style.backgroundImage=`url(assets/Alerta.png)`
-            }  if(registro.temperatura >= 27){
-                alerta.style.backgroundImage=`url(assets/perigo.png)`
-            }
+                if (registro.temperatura >= 24 && registro.temperatura < 27) {
+                    alerta.style.backgroundImage = `url(assets/Alerta.png)`
+                } if (registro.temperatura >= 27) {
+                    alerta.style.backgroundImage = `url(assets/perigo.png)`
+                }
 
 
             }
         }
- 
+
 
         minTemp.innerHTML += `${menorTemperatura}`
         maxTemp.innerHTML += `${maiorTemperatura}`
         minUmid.innerHTML += `${menorUmidade}`
         maxUmid.innerHTML += `${maiorUmidade}`
 
-        minHora.innerHTML +=`${hora_min_temp}`
-        maxHora.innerHTML +=`${hora_max_temp}`
-        atualHora.innerHTML +=`${hora_atual}`
-        atualTemp.innerHTML +=`${tempAtual}`
-        atualUmid.innerHTML +=`${umidAtual}`
+        minHora.innerHTML += `${hora_min_temp}`
+        maxHora.innerHTML += `${hora_max_temp}`
+        atualHora.innerHTML += `${hora_atual}`
+        atualTemp.innerHTML += `${tempAtual}`
+        atualUmid.innerHTML += `${umidAtual}`
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -302,13 +307,44 @@
         const config = {
             type: 'line',
             data: dados,
-            options: {}
+            options: {
+                plugins: {
+                    autocolors: false,
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                yMin: 15,
+                                yMax: 15,
+                                borderColor: 'rgb(255, 99, 132)',
+                                borderWidth: 2,
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 10,
+                        max: 40,
+                    }
+                }
+            }
         };
         const config2 = {
             type: 'line',
             data: dados2,
-            options: {}
+            options: {
+                scales: {
+                    y: {
+                        min: 10,
+                        max: 100,
+
+                    }
+                }
+            }
         };
+
+
         let myChart = new Chart(
             document.getElementById('myChart'),
             config
@@ -319,12 +355,12 @@
         );
 
 
-        setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+        setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2, myChart, myChart2), 2000);
 
     }
 
     function atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2, myChart, myChart2) {
- 
+
 
 
 
@@ -342,7 +378,7 @@
                     if (novoRegistro[0].HORA == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                     
+
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].temperatura)
                         console.log("Horário do último dado capturado:")
@@ -355,76 +391,76 @@
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-                        
+
                         dados2.labels.shift(); // apagar o primeiro
                         dados2.labels.push(novoRegistro[0].HORA); // incluir um novo momento
-                        
+
                         dados2.datasets[0].data.shift();  // apagar o primeiro de umidade
                         dados2.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
 
-                        hora_atual=novoRegistro[0].HORA
-                        tempAtual=novoRegistro[0].temperatura
-                        umidAtual=novoRegistro[0].umidade
+                        hora_atual = novoRegistro[0].HORA
+                        tempAtual = novoRegistro[0].temperatura
+                        umidAtual = novoRegistro[0].umidade
 
                         console.log('maior temperatura' + maiorTemperatura)
-                        console.log('menor temperatura' +menorTemperatura)
-                        console.log('maior umidade' +maiorUmidade)
+                        console.log('menor temperatura' + menorTemperatura)
+                        console.log('maior umidade' + maiorUmidade)
                         console.log('menor umidade' + menorUmidade)
 
-                        
-                        if(novoRegistro[0].temperatura > maiorTemperatura){
+
+                        if (novoRegistro[0].temperatura > maiorTemperatura) {
                             maiorTemperatura = novoRegistro[0].temperatura
                             hora_max_temp = novoRegistro[0].HORA
                         }
-                        if(novoRegistro[0].umidade > maiorUmidade){
+                        if (novoRegistro[0].umidade > maiorUmidade) {
                             maiorUmidade = novoRegistro[0].umidade
                             hora_max_umid = novoRegistro[0].HORA
                         }
-                        if(novoRegistro[0].temperatura < menorTemperatura){
+                        if (novoRegistro[0].temperatura < menorTemperatura) {
                             menorTemperatura = novoRegistro[0].temperatura
                             hora_min_temp = novoRegistro[0].HORA
                         }
-                        if(novoRegistro[0].umidade < menorUmidade){
+                        if (novoRegistro[0].umidade < menorUmidade) {
                             menorUmidade = novoRegistro[0].umidade
                             hora_min_umid = novoRegistro[0].HORA
                         }
-            
-                        if(novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
-                        || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
-                        || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
-                        || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80){
-                            alerta.style.backgroundImage=`url(assets/Alerta.png)`
+
+                        if (novoRegistro[0].temperatura >= 24 && novoRegistro[0].temperatura < 27
+                            || novoRegistro[0].temperatura <= 15 && novoRegistro[0].temperatura > 12
+                            || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
+                            || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80) {
+                            alerta.style.backgroundImage = `url(assets/Alerta.png)`
                         }
-                        if(novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <=12
-                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80){
-                            alerta.style.backgroundImage=`url(assets/perigo.png)`
-            
+                        if (novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <= 12
+                            || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80) {
+                            alerta.style.backgroundImage = `url(assets/perigo.png)`
+
                         }
 
                         minTemp.innerHTML = `${menorTemperatura}`
                         maxTemp.innerHTML = `${maiorTemperatura}`
                         minUmid.innerHTML = `${menorUmidade}`
                         maxUmid.innerHTML = `${maiorUmidade}`
-                
-                        minHora.innerHTML =`${hora_min_temp}`
-                        maxHora.innerHTML =`${hora_max_temp}`
-                        atualHora.innerHTML =`${hora_atual}`
-                        atualTemp.innerHTML =`${tempAtual}`
-                        atualUmid.innerHTML =`${umidAtual}`
-                        
+
+                        minHora.innerHTML = `${hora_min_temp}`
+                        maxHora.innerHTML = `${hora_max_temp}`
+                        atualHora.innerHTML = `${hora_atual}`
+                        atualTemp.innerHTML = `${tempAtual}`
+                        atualUmid.innerHTML = `${umidAtual}`
+
                         myChart.update();
                         myChart2.update();
-                      
+
 
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2, myChart, myChart2), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados,dados2, myChart, myChart2), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2, myChart, myChart2), 2000);
             }
         })
             .catch(function (error) {
@@ -433,7 +469,6 @@
 
     }
 
-  
- 
-</script>
 
+
+</script>
