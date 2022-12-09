@@ -108,9 +108,11 @@
     </div>
 </body>
 <script>
+    var tokenEmpresa = '';
+
     function pegarToken() {
 
-        var tokenEmpresa = token_input.value
+        tokenEmpresa = token_input.value;
 
         fetch("/usuarios/pegarToken", {
             method: "POST",
@@ -123,40 +125,39 @@
                 tokenEmpresaServer: tokenEmpresa,
             }),
         }).then(function (resposta) {
-                if (resposta.ok) {
-                    console.log(resposta);
+            if (resposta.ok) {
+                console.log(resposta);
 
-                    resposta.json().then((json) => {
-                        console.log(json);
-                        console.log("Resposta" + JSON.stringify(json));
-                        setTimeout(function () {
+                resposta.json().then((json) => {
+                    console.log(json);
+                    console.log("Resposta" + JSON.stringify(json));
+                    setTimeout(function () {
 
-                            sessionStorage.NOME_EMPRESA = json.nomeComercial;
-                            sessionStorage.ID_EMPRESA = json.idEmpresa;
-                            sessionStorage.TOKEN_EMPRESA = json.Token;
-                            console.log(sessionStorage.NOME_EMPRESA);
-                            console.log(sessionStorage.ID_EMPRESA);
-                            console.log(sessionStorage.TOKEN_EMPRESA);
+                        sessionStorage.NOME_EMPRESA = json.nomeComercial;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+                        sessionStorage.TOKEN_EMPRESA = json.Token;
+                        console.log(sessionStorage.NOME_EMPRESA);
+                        console.log(sessionStorage.ID_EMPRESA);
+                        console.log(sessionStorage.TOKEN_EMPRESA);
 
-                            //   window.location = "Perfil.html";
+                        //   window.location = "Perfil.html";
 
-                            if (sessionStorage.TOKEN_EMPRESA == "undefined" || token_input.value != sessionStorage.TOKEN_EMPRESA) {
-                                alert("Token invalido.");
-                                token_input.style = "border: solid 3px red;";
-                                console.log("Token falso");
-                            } else {
-                                console.log("SessionStorage carregada com sucesso!")
-                                CadastroUsuario();
-                            }
-                        }, 10); // apenas para exibir o loading
-                    });
-                } else {
-                    alert("Token invalido.");
-                    token_input.style = "border: solid 3px red;";
-                    console.log("Houve um erro ao tentar realizar o login!");
-                }
-            })
-            .catch(function (erro) {
+                        if (sessionStorage.TOKEN_EMPRESA == "undefined" || token_input.value != sessionStorage.TOKEN_EMPRESA) {
+                            alert("Token invalido.");
+                            token_input.style = "border: solid 3px red;";
+                            console.log("Token falso");
+                        } else {
+                            console.log("SessionStorage carregada com sucesso!")
+                            CadastroUsuario();
+                        }
+                    }, 10); // apenas para exibir o loading
+                });
+            } else {
+                alert("Token invalido.");
+                token_input.style = "border: solid 3px red;";
+                console.log("Houve um erro ao tentar realizar o login!");
+            }
+        }).catch(function (erro) {
                 console.log(erro);
             });
 
