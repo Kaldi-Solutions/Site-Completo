@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -63,57 +63,56 @@ function entrar(req, res) {
 function pegarEmpresa(req, res) {
     var nomeComercial = req.body.nomeComercialServer;
 
-        
-        usuarioModel.pegarEmpresa(nomeComercial)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("nomeComercial inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo nomeComercial!");
-                    }
+    usuarioModel.pegarEmpresa(nomeComercial)
+        .then(
+            function (resultado) {
+                console.log(`\nResultados encontrados: ${resultado.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+                if (resultado.length == 1) {
+                    console.log(resultado);
+                    res.json(resultado[0]);
+                } else if (resultado.length == 0) {
+                    res.status(403).send("nomeComercial inválido(s)");
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo nomeComercial!");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function pegarToken(req, res) {
     var tokenEmpresa = req.body.tokenEmpresaServer;
+    usuarioModel.pegarToken(tokenEmpresa)
+        .then(
+            function (resultado) {
+                console.log(`\nResultados encontrados: ${resultado.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
-        
-        usuarioModel.pegarToken(tokenEmpresa)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Token da empresa inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de uma Empresa com o mesmo Token!");
-                    }
+                if (resultado.length == 1) {
+                    console.log(resultado);
+                    res.json(resultado[0]);
+                } else if (resultado.length == 0) {
+                    res.status(403).send("Token da empresa inválido(s)");
+                } else {
+                    res.status(403).send("Mais de uma Empresa com o mesmo Token!");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao pegar o Token! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao pegar o Token! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function cadastrarUsuario(req, res) {
     var nomeUsuario = req.body.usuarioServer;
@@ -128,33 +127,33 @@ function cadastrarUsuario(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está indefinido!");
-    }else if (cpf == undefined) {
+    } else if (cpf == undefined) {
         res.status(400).send("Seu cpf está indefinido!");
-    }else if (senha == undefined) {
+    } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    }else if (telCel == undefined) {
+    } else if (telCel == undefined) {
         res.status(400).send("Seu celular está indefinida!");
-    }else if (telFixo == undefined) {
+    } else if (telFixo == undefined) {
         res.status(400).send("Seu telefone está indefinido!");
-    }else if (idEmpresa == undefined) {
+    } else if (idEmpresa == undefined) {
         res.status(400).send("Seu idEmpresa está indefinido!");
     } else {
-        
+
         usuarioModel.cadastrarUsuario(nomeUsuario, email, cpf, senha, telCel, telFixo, idEmpresa)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 
 }
@@ -185,7 +184,7 @@ function cadastrarEmpresa(req, res) {
     } else if (comp == undefined) {
         res.status(400).send("Seu complemento está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrarEmpresa(cnpj, nomeC, nomeR, telFixo, cep, num, comp)
             .then(

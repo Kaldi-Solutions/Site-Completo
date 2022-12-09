@@ -13,7 +13,6 @@ CREATE TABLE Empresa (
     Complemento varchar(45),
     Token varchar(50)
     );
- select * from usuarios;   
     
 CREATE TABLE usuario (
     idUsuario int primary key auto_increment,
@@ -55,12 +54,10 @@ CREATE TABLE Leitura(
     primary key (idLeitura, fkSensor)
 );
 
-
 insert into empresa values 
-(null, 18457358124513, 'Kaldi Solutions', 'Ale', '22029458', '02960090', '216', '1325',1234567),
-(null, 18457358124512, 'MRI Tech', 'Bruno', '22029450', '02022020', '210', '1325',102030),
-(null, 18457358124511, 'Koldi solução', 'Jonatas', '22029412', '01310300', '270', '1525',777888);
--- (null, 18457358124511, 'Koldi solução', 'Jonatas', '22029412', '01310300', '270', '1525',777888);
+(null, 18457358124513, 'Kaldi Solutions', 'Ale', '22029458', '02960090', '216', '1325', '1234567'),
+(null, 18457358124512, 'MRI Tech', 'Bruno', '22029450', '02022020', '210', '1325', '102030'),
+(null, 18457358124511, 'Koldi solução', 'Jonatas', '22029412', '01310300', '270', '1525', '777888');
 
 
 INSERT INTO usuario VALUES

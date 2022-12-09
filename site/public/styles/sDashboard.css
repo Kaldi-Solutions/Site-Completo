@@ -28,7 +28,7 @@ body {
 
 header {
     border-radius: 0px 5px 5px 0px;
-    /* height: 100vh; */
+    height: 100vh;
     background-color: #865143;
     box-shadow: 0 3px 6px #865143;
 }
