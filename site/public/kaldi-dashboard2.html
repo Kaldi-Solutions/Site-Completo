@@ -430,10 +430,13 @@
                             || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
                             || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80) {
                             alerta.style.backgroundImage = `url(assets/Alerta.png)`
-                        }
+                        }else
                         if (novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <= 12
                             || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80) {
                             alerta.style.backgroundImage = `url(assets/perigo.png)`
+
+                        }else{
+                            alerta.style.backgroundImage = `none`
 
                         }
 

@@ -22,10 +22,6 @@
                 <div class="titulo">
                     <span id="ola">Olá,<span id="b_usuario"></span></span>
                 </div>
-
-                <button onclick="sair()" class="sair">
-                    Sair
-                </button>
                 <ul>
                     <a href="kaldi-dashboard2.html">
                         <li onclick="estufaNumero1()" id="estufa1">Estufa 1</li>
@@ -45,6 +41,9 @@
                     <a href="kaldi-dashboard2.html">
                         <li onclick="estufaNumero6()" id="estufa6">Estufa 6</li>
                     </a>
+                    <button onclick="sair()" class="sair">
+                        Sair
+                    </button>
                 </ul>
                 <span id="green"></span>Temperatura/umidade ideal!
                 <span id="yellow"></span>Atenção, saindo do ideal!
@@ -307,7 +306,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     var limite_linhas = 12
-    
+
     function obterDadosGrafico() {
         var limite_linhas = 12
         const idEmpresa = sessionStorage.ID_EMPRESA
@@ -430,12 +429,15 @@
                 if (registro.temperatura >= 24 && registro.temperatura < 27) {
                     alerta1.style.backgroundImage = `url(assets/Alerta.png)`
 
-                }
-                if (registro.temperatura >= 27) {
-                    alerta1.style.backgroundImage = `url(assets/perigo.png)`
-                    estufaone.style.backgroundColor = "red";
+                } else
+                    if (registro.temperatura >= 27) {
+                        alerta1.style.backgroundImage = `url(assets/perigo.png)`
+                        estufaone.style.backgroundColor = "red";
 
-                }
+                    } else {
+                        alerta1.style.backgroundImage = `none`
+
+                    }
                 minTemp.innerHTML = `${menorTemperatura}`
                 maxTemp.innerHTML = `${maiorTemperatura}`
                 minUmid.innerHTML = `${menorUmidade}`
@@ -524,33 +526,33 @@
                         console.log("---------------------------------------------------------------")
                     } else {
                         // tirando e colocando valores no gráfico
-                      
+
                         hora_atual = novoRegistro[0].HORA
                         tempAtual = novoRegistro[0].temperatura
                         umidAtual = novoRegistro[0].umidade
 
                         estufaone.style.backgroundColor = "transparent";
-                      //  estufatwo.style.backgroundColor = "transparent";
-                       // estufathree.style.backgroundColor = "transparent";
+                        //  estufatwo.style.backgroundColor = "transparent";
+                        // estufathree.style.backgroundColor = "transparent";
                         //estufafour.style.backgroundColor = "transparent";
-                       // estufafive.style.backgroundColor = "transparent";
-                       // estufasix.style.backgroundColor = "transparent";
+                        // estufafive.style.backgroundColor = "transparent";
+                        // estufasix.style.backgroundColor = "transparent";
 
                         for (let index = 0; index < novoRegistro.length; index++) {
 
                             if (novoRegistro[index].numeroEstufa == 1) {
                                 dados.labels.shift(); // apagar o primeiro
                                 dados.labels.push(novoRegistro[0].HORA); // incluir um novo momento
-        
+
                                 dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
                                 dados.datasets[0].data.push(novoRegistro[index].temperatura); // incluir uma nova medida de temperatura
-        
+
                                 dados2.labels.shift(); // apagar o primeiro
                                 dados2.labels.push(novoRegistro[0].HORA); // incluir um novo momento
-        
+
                                 dados2.datasets[0].data.shift();  // apagar o primeiro de umidade
                                 dados2.datasets[0].data.push(novoRegistro[index].umidade); // incluir uma nova medida de umidade
-        
+
                                 if (novoRegistro[index].temperatura > maiorTemperatura) {
                                     maiorTemperatura = novoRegistro[index].temperatura
                                     hora_max_temp = novoRegistro[index].HORA
@@ -561,7 +563,7 @@
                                 }
                                 if (novoRegistro[index].temperatura < menorTemperatura) {
                                     menorTemperatura = novoRegistro[index].temperatura
-                                    hora_min_temp = novoRegistro[0].HORA
+                                    hora_min_temp = novoRegistro[index].HORA
                                 }
                                 if (novoRegistro[index].umidade < menorUmidade) {
                                     menorUmidade = novoRegistro[index].umidade
@@ -573,16 +575,19 @@
                                     || novoRegistro[0].umidade <= 40 && novoRegistro[0].umidade > 30
                                     || novoRegistro[0].umidade >= 70 && novoRegistro[0].umidade < 80) {
                                     alerta1.style.backgroundImage = `url(assets/Alerta.png)`
-                                }
-                                if (novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <= 12
-                                    || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80) {
-                                    alerta1.style.backgroundImage = `url(assets/perigo.png)`
-                                    setTimeout(() => estufaone.style.backgroundColor = "transparent"
+                                } else
+                                    if (novoRegistro[0].temperatura >= 27 || novoRegistro[0].temperatura <= 12
+                                        || novoRegistro[0].umidade <= 30 || novoRegistro[0].umidade >= 80) {
+                                        alerta1.style.backgroundImage = `url(assets/perigo.png)`
+                                        setTimeout(() => estufaone.style.backgroundColor = "transparent"
 
-                                    , 1000);
-                                    estufaone.style.backgroundColor = "red"
+                                            , 1000);
+                                        estufaone.style.backgroundColor = "red"
 
-                                }
+                                    } else {
+                                        alerta1.style.backgroundImage = `none;`
+
+                                    }
 
                                 minTemp.innerHTML = `${menorTemperatura}`
                                 maxTemp.innerHTML = `${maiorTemperatura}`
@@ -593,7 +598,7 @@
                                 maxHora.innerHTML = `${hora_max_temp}`
                                 atualHora.innerHTML = `${hora_atual}`
                                 atualTemp.innerHTML = `${tempAtual}`
-                                atualUmid.innerHTML = `${umidAtual}`   
+                                atualUmid.innerHTML = `${umidAtual}`
 
                             }
                         }
@@ -621,16 +626,16 @@
     }
 
 
-    
-    
-    
+
+
+
 
     function obterDadosGrafico2() {
         var limite_linhas = 12
         const idEmpresa = sessionStorage.ID_EMPRESA
         console.log(idEmpresa)
         var numeroDaEstufa = '(2)'
-        
+
 
         fetch(`/medidas/ultimas2/${numeroDaEstufa}/${idEmpresa}/${limite_linhas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -664,7 +669,7 @@
         let menorTemperatura2 = 9999
         let menorUmidade2 = 9999
 
-        
+
         let tempAtual = 0
         let umidAtual = 0
 
@@ -720,7 +725,7 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        
+
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
@@ -734,7 +739,7 @@
                 labels2.push(registro.HORA);
                 dados.datasets[0].data.push(registro.temperatura);
                 dados2.datasets[0].data.push(registro.umidade);
-                
+
                 if (registro.temperatura > maiorTemperatura) {
                     maiorTemperatura = registro.temperatura
                     hora_max_temp = registro.HORA
@@ -751,22 +756,22 @@
                     menorUmidade = registro.umidade
                     hora_min_umid = registro.HORA
                 }
-                
+
                 if (registro.temperatura >= 24 && registro.temperatura < 27) {
                     alerta2.style.backgroundImage = `url(assets/Alerta.png)`
                 } if (registro.temperatura >= 27) {
                     alerta2.style.backgroundImage = `url(assets/perigo.png)`
                     setTimeout(() => estufatwo.style.backgroundColor = "transparent"
 
-                    , 1000);
+                        , 1000);
                     estufatwo.style.backgroundColor = "red"
                 }
 
 
             }
         }
-        
-        
+
+
         minTemp2.innerHTML = `${menorTemperatura}`
         maxTemp2.innerHTML = `${maiorTemperatura}`
         minUmid2.innerHTML = `${menorUmidade}`
@@ -777,7 +782,7 @@
         atualHora2.innerHTML = `${hora_atual}`
         atualTemp2.innerHTML = `${tempAtual}`
         atualUmid2.innerHTML = `${umidAtual}`
-        
+
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
@@ -785,7 +790,7 @@
         console.log('Dados:')
         console.log(dados.datasets)
         console.log('----------------------------------------------')
-        
+
         const config = {
             type: 'line',
             data: dados,
@@ -820,18 +825,17 @@
                     y: {
                         min: 10,
                         max: 100,
-                        
                     }
                 }
             }
         };
 
         setTimeout(() => obterDadosGrafico2(idEmpresa, numeroDaEstufa, limite_linhas, dados, dados2), 2000);
-        
+
     }
 
-    
-    
 
-    
+
+
+
 </script>
