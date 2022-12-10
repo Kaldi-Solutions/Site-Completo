@@ -25,6 +25,12 @@ body {
     margin-left: 30px;
     cursor: pointer;
 }
+.sair:hover{
+    background-color: rgb(255, 77, 77);
+    color: #fff;
+    
+}
+
 
 header {
     border-radius: 0px 5px 5px 0px;
