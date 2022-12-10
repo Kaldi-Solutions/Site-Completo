@@ -7,6 +7,10 @@ router.get("/ultimas/:numeroDaEstufa/:idEmpresa/:limite_linhas", function (req, 
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+router.get("/ultimas2/:numeroDaEstufa/:idEmpresa/:limite_linhas", function (req, res) {
+    medidaController.buscarUltimasMedidas2(req, res);
+});
+
 
 router.get("/tempo-real/:numeroDaEstufa/:idEmpresa/:limite_linhas", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
