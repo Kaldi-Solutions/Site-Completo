@@ -291,8 +291,15 @@ justify-content: center;
     list-style-type: none;
     text-decoration: none;
     border: #EEB000 2px solid;
-    color: white;
+    color: rgb(0, 0, 0);
     background-color: yellow;
+    font-weight: 400;
+    cursor: pointer;
+}
+.botao_manual:hover{
+    background-color: #EEB000;
+    cursor: pointer;
+    color: #fff;
 }
 
 .Manual {
@@ -366,4 +373,16 @@ justify-content: center;
 #close {
     top: 0;
     right: 2%;
+}
+#ajuda{
+    cursor: pointer;
+    font-weight: 400;
+
+}
+#ajuda:hover{
+    cursor: pointer;
+    font-weight: 400;
+    background-color: #3A3845;
+    color: #fff;
+    
 }
