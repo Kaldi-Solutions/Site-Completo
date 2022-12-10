@@ -281,3 +281,89 @@ justify-content: center;
     margin-left: 7px;
 
   }
+
+
+
+
+  /* Manual de instalação */
+
+.botao_manual{
+    list-style-type: none;
+    text-decoration: none;
+    border: #EEB000 2px solid;
+    color: white;
+    background-color: yellow;
+}
+
+.Manual {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+}
+
+.Manual:target {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 10, 10, .7);
+    position: fixed;
+    display: block;
+    z-index: 11;
+
+}
+
+.Manual .imgManual {
+    width: 1000px;
+    margin: 150px auto;
+}
+
+.btn {
+    color: white;
+    font-family: Arial;
+    text-decoration: none;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+
+}
+
+.imgManual img{
+  opacity: 0;
+
+}
+
+.Manual:target .imgManual img {
+    opacity: 1;
+    transition: opacity 0.4s linear;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin-left: 150px;
+    margin-top: 130px;
+ 
+}
+
+#ctimg{
+  height: 500px;
+  width: 700px;
+}
+
+#prev {
+    left: 5%;
+    top: 45%;
+}
+
+#next {
+    right: 5%;
+    top: 45%;
+}
+
+#close {
+    top: 0;
+    right: 2%;
+}
