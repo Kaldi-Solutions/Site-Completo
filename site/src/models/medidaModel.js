@@ -6,9 +6,9 @@ function buscarUltimasMedidas(idEmpresa,numeroDaEstufa, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade , leitura.dt, leitura.HORA 
+        leitura.umidade , idLeitura, leitura.HORA
         from Empresa join Estufa on fkEmpresa =idEmpresa 
-        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by HORA desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
@@ -32,9 +32,9 @@ function buscarUltimasMedidas2(idEmpresa,numeroDaEstufa, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade , leitura.dt, leitura.HORA 
+        leitura.umidade , leitura.HORA
         from Empresa join Estufa on fkEmpresa =idEmpresa 
-        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by HORA desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
@@ -58,9 +58,9 @@ function buscarMedidasEmTempoReal(idEmpresa,numeroDaEstufa, limite_linhas) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
         instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade , leitura.dt, leitura.HORA 
+        leitura.umidade ,idLeitura , leitura.HORA
         from Empresa join Estufa on fkEmpresa =idEmpresa 
-        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by HORA desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 

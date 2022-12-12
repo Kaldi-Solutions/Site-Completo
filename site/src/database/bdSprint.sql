@@ -168,6 +168,10 @@ SELECT * FROM Estufa;
 
 INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (20.0, 50.0, CURDATE(), CURTIME(), 1);
 
+INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (18.0, 55.0, CONVERT(VARCHAR(05), DATEADD(hour, -5, GETDATE()), 108)
+, CONVERT(VARCHAR(05), DATEADD(hour, -5, GETDATE()), 108)
+, 2);
+
 select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa, Sensor.statusSensor, idLeitura, leitura.temperatura,
         leitura.umidade , leitura.dt, leitura.HORA 
         from Empresa join Estufa on fkEmpresa =idEmpresa 
