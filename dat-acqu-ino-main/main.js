@@ -6,7 +6,7 @@ const sql = require('mssql');
 
 // não altere!
 const SERIAL_BAUD_RATE = 9600;
-const SERVIDOR_PORTA = 8080;
+const SERVIDOR_PORTA = 3300;
 
 // configure a linha abaixo caso queira que os dados capturados sejam inseridos no banco de dados.
 // false -> nao insere
@@ -77,7 +77,7 @@ const serial = async (
                 // -> altere nome da tabela e colunas se necessário
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> Importante! você deve ter o aquario de id 1 cadastrado.
-                sqlquery = `INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 3),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 4),  (${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 5),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 6),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 7),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 8)`;
+                sqlquery = `INSERT INTO Leitura (temperatura, umidade, dt, HORA, fkSensor) VALUES (${dht11Temperatura}, ${dht11Umidade}, default, default, 3), (${(dht11Temperatura * 0.90).toFixed(2)}, ${(dht11Umidade * 0.90).toFixed(2)},default,default, 4),  (${dht11Temperatura}, ${dht11Umidade},default,default, 5),(${dht11Temperatura}, ${dht11Umidade}, GETDATE(), GETDATE(), 6)`;
 
                 // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
                 // Importante! você deve ter criado o usuário abaixo com os comandos presentes no arquivo

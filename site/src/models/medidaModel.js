@@ -5,8 +5,9 @@ function buscarUltimasMedidas(idEmpresa,numeroDaEstufa, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade , idLeitura, leitura.HORA
+        instrucaoSql = `select CONVERT(VARCHAR, leitura.HORA, 108)as HORA,
+         Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
+        leitura.umidade , idLeitura 
         from Empresa join Estufa on fkEmpresa =idEmpresa 
         join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
@@ -31,10 +32,10 @@ function buscarUltimasMedidas2(idEmpresa,numeroDaEstufa, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade , leitura.HORA
+        instrucaoSql = `select CONVERT(VARCHAR, leitura.HORA, 108)as HORA, Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
+        leitura.umidade ,idLeitura
         from Empresa join Estufa on fkEmpresa =idEmpresa 
-        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
+        join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
@@ -57,8 +58,8 @@ function buscarMedidasEmTempoReal(idEmpresa,numeroDaEstufa, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql = `select Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
-        leitura.umidade ,idLeitura , leitura.HORA
+        instrucaoSql = `select CONVERT(VARCHAR, leitura.HORA, 108)as HORA, Empresa.idEmpresa, Estufa.numeroEstufa, Estufa.idEstufa, Estufa.fkEmpresa,  Sensor.statusSensor, leitura.temperatura,
+        leitura.umidade ,idLeitura
         from Empresa join Estufa on fkEmpresa =idEmpresa 
         join Sensor on idEstufa = fkEstufa join Leitura on idSensor = fkSensor where idEmpresa = ${idEmpresa} and numeroEstufa in ${numeroDaEstufa} order by idLeitura desc offset 0 rows FETCH NEXT ${limite_linhas} rows ONLY `;
 
